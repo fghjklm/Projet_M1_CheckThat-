@@ -1,16 +1,58 @@
+Overview of the CLEF-2023 CheckThat! Lab: Task 2 on
+Subjectivity in News Articles
+lien : https://ceur-ws.org/Vol-3497/paper-020.pdf
 
-https://ceur-ws.org/Vol-3497/
+#######################################################################################
 
-https://ceur-ws.org/Vol-3497/paper-020.pdf
-https://ceur-ws.org/Vol-3497/paper-026.pdf
+Compte rendu des équipes de l'année 2023:
+
+#######################################################################################
+lus
+DWReCO at CheckThat! 2023: Enhancing Subjectivity
+Detection through Style-based Data Sampling
+lien : https://ceur-ws.org/Vol-3497/paper-026.pdf
+
+NN at CheckThat! 2023: Subjectivity in News Articles
+Classification with Transformer Based Models
 https://ceur-ws.org/Vol-3497/paper-027.pdf
-https://ceur-ws.org/Vol-3497/paper-028.pdf
-https://ceur-ws.org/Vol-3497/paper-047.pdf
-https://ceur-ws.org/Vol-3497/paper-045.pdf
-https://ceur-ws.org/Vol-3497/paper-037.pdf
+
+Fraunhofer SIT at CheckThat! 2023: Can LLMs Be
+Used for Data Augmentation & Few-Shot
+Classification? Detecting Subjectivity in Text Using
+ChatGPT
+lien : https://ceur-ws.org/Vol-3497/paper-028.pdf
+
+à lire
+
+TOBB ETU at CheckThat! 2023: Utilizing ChatGPT to
+Detect Subjective Statements and Political Bias
+lien : https://ceur-ws.org/Vol-3497/paper-047.pdf
+
+Accenture at CheckThat! 2023: Impacts of
+Back-translation on Subjectivity Detection
+lien : https://ceur-ws.org/Vol-3497/paper-045.pdf
+
+ES-VRAI at CheckThat! 2023: Enhancing Model
+Performance for Subjectivity Detection through
+Multilingual Data Aggregation
+lien : https://ceur-ws.org/Vol-3497/paper-037.pdf
+
+Gpachov at CheckThat! 2023: A Diverse
+Multi-Approach Ensemble for Subjectivity Detection
+in News Articles
 https://ceur-ws.org/Vol-3497/paper-035.pdf
-https://ceur-ws.org/Vol-3497/paper-030.pdf 
 
-https://arxiv.org/pdf/2305.18034.pdf
+Thesis Titan at CheckThat! 2023: Language-Specific
+Fine-tuning of mDeBERTaV3 for Subjectivity
+Detection
+lien : https://ceur-ws.org/Vol-3497/paper-030.pdf 
 
-http://arxiv.org/abs/1911.02116
+######################################################################################
+articles liés lus:
+######################################################################################
+A Corpus for Sentence-level Subjectivity Detection
+on English News Articles
+lien : https://arxiv.org/pdf/2305.18034.pdf
+
+Unsupervised Cross-lingual Representation Learning at Scale
+lien : http://arxiv.org/abs/1911.02116
