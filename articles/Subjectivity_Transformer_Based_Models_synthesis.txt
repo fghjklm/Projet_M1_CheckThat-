@@ -1,7 +1,10 @@
-Lu : https://ceur-ws.org/Vol-3497/paper-027.pdf
-
-NN at CheckThat! 2023: Subjectivity in News Articles
+##############################################################################################
+Article lu:NN at CheckThat! 2023: Subjectivity in News Articles
 Classification with Transformer Based Models
+
+Auteur de la synthèse: Mouysset Martin
+
+lien : https://ceur-ws.org/Vol-3497/paper-027.pdf
 
 informations:
 (1)
@@ -30,10 +33,4 @@ Au final, le modèle XLM-RoBERTa avait 59,892,482 paramètres entrainables
 
 Au final, le modèle XLM-RoBERTa est le plus efficace, on pourrait se concentrer dessus pour voir ce qu'il est faisable.
 
-
-Unsupervised Cross-lingual Representation Learning at Scale
-
-lien :http://arxiv.org/abs/1911.02116
-
-Article détaillant le modèle XLM-RoBERTa.
-C'est un modèle très efficace pour du multilangue, pas forcément ce qui nous interesse, mais plutôt très efficace sur des jeux de données faible.
+##############################################################################################

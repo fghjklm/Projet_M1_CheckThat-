@@ -1,0 +1,36 @@
+##############################################################################################
+Article lu : Fraunhofer SIT at CheckThat! 2023: Can LLMs Be
+Used for Data Augmentation & Few-Shot
+Classification? Detecting Subjectivity in Text Using
+ChatGPT
+
+Auteur de la synthèse: Oleiwan Joe
+
+Lien : https://ceur-ws.org/Vol-3497/paper-028.pdf
+
+informations extraites:
+-(0)	: Edition 2023: Augmentation des données (équilibration de classes) en utilisant des 
+		LLMs (ici ChatGPT) sur corpus anglais et allemand
+-(1)	: Les LLMs sont des modèles deep learning entrainés sur beaucoup de text data, qui
+		peuvent produire en conséquence du texte cohérent
+-(1)	: Un challenge sur les LLMs de nos jours: contenu biaisé produit par ces modèles
+-(2.1)	: -Les LLM sont limités par leur date d'entrainement et ne connaissent donc pas 
+		d'informations au-delà.
+		  -Ils essayent d'estimer le prochain token le plus probable à la suite d'un token
+		  ce qui peut entraîner la génération de contenu biaisé ou fictif
+
+-(2.2)	: Zero et Few-Shot Learning:
+		Le Few-Shot Learning est un type de ML ou l'entrainement est fait sur un petit nombre de données et le but est de faire des prédiction pour une tâche NLP (natural language processing task) sans avoir vu de labels (zero-shot) ou très peu de labels (few-shot)
+		--> Les LLM, bien qu'ils sont efficace pour la génération de texte, peuvent aussi être
+			utilisées en zero et few-shot classifiers.
+-(3)	: Datasets utilisés pour cette étude : eng et ger, labélisés par humains
+-(4-4.1): ChatGPT a été utilisé pour enrichir et équilibrer les datasets:
+		-La différence de style d'ecriture généré par l'ia est potentiellement une cause de la sous-performance du modèle --> Résultat problématique : Il n'est pas recommendé de le faire
+
+-(4.2)	ChatGPT en few-shot: -good sur private test set (golden) english, bad pour dev set 
+							(notre test)
+							-bad sur private test set (golden) german, good for dev set (notre test)
+
+----> VOIR LES PROMPT UTILISEES DANS ARTICLE
+
+##############################################################################################

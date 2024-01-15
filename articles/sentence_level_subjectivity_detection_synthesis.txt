@@ -1,0 +1,71 @@
+##############################################################################################
+Article lu: A Corpus for Sentence-level Subjectivity Detection
+on English News Articles
+
+Auteur de la synthèse: Oleiwan Joe
+
+lien: https://arxiv.org/pdf/2305.18034.pdf
+
+informations extraites:
+-(0)	: Etude sur corpus italiens et anglais.
+-(1)	: La perception de la subjectivité est subjective en soit, elle dérive de différentes interprétation de langues,
+	  différentes expériences de la vie, et points de vus personnels.
+-(1)	: Des approches pour détécter la subjectivité sont : le -word spotting- et les -existing lexicons- 
+	  -> ces approches sont liées au domaine spécifique du language et donc ont besoin d'outils externes comme la traduction 
+	     automatique pour les language transformers (modèles).
+-(1)	: Procédure:	-1: développement de directive d'annotation indépendantes de la langue
+			-2: conception d'une procédure d'annotation basée sur le prescriptive paradigm pour atténuer les conflits
+			   -> explication: prescriptive: favorise l'objectivité et permet de former des modèles qui 
+							 appliquent systématiquement une croyance.
+					   descriptive:  favorise la subjectivité et permet d'étudier et de modéliser 
+							 différentes croyances.
+			-3: créer manuellement un corpus (ensemble de textes) pour un developpement durable concernant des sujets
+			    controversés.
+			    -> résultats: -1000 phrases annotées par au moins 2 personnes.
+					  -utilisation de BERT et SBERT sur corpus italien.
+					  -code source: https://www.dropbox.com/sh/pterfc16inz0h7b/AAB3csoKxYJNa11A-CZZt4xZa
+
+-(2) 	: La définition du terme "subjectif" est très large et peut inclure des opinions, des délires, des allégations, 
+	  des accusations, suspicions et spéculations
+-(2)	: Les travaux antérieurs ont utilisé des approches connues comme l'analyse des sentiments, et la détection des biais
+
+-(3)	: Une phrase est subjective si son contenu est basé sur ou influencé par des sentiments,
+		des goûts ou des opinions personnels.
+		Dans le cas contraire, la phrase est objective,
+		Plus précisément, une phrase est subjective si une ou plusieurs des conditions suivantes s'appliquent:
+					1. elle exprime une opinion personnelle explicite de l'auteur
+					(par exemple, des spéculations pour tirer des conclusions) ;
+					2. elle contient des expressions sarcastiques ou ironiques
+					3. contient des exhortations ou des encouragements personnels
+					4. contient des expressions discriminatoires ou dévalorisantes ;
+					5. contient des figures de rhétorique qui expriment l'opinion de l'auteur.
+		
+		Les cas ambigus suivants dans une phrase sont objec-tifs : l'opinion d'un tiers,
+		les commentaires qui ne tirent pas de conclusions et laissent des questions ouvertes, et les conclusions factuelles.
+		
+		Note 1 : Les guillemets représentent l'opinion explicite d'un tiers lorsqu'ils sont
+				utilisés pour citer une tierce personne, et sont donc objectifs.
+
+		Note 2 : Sentiments personnels, émotions ou humeurs de l'auteur
+				, sans émettre d'opinions sur la question, sont considérés comme
+				objectifs puisque l’auteur est la source la plus fiable.
+			
+----> VOIR ANNEXE POUR LES GUIDELINES DETAILLES
+
+
+
+-(3)	: procédure d'annotation: 1. contre-intuitif: on labélise comme obj les phrase ou 
+									l'auteur exprime explicitement ses sentiments (ils n'influencent pas le message)
+								  2. pour le reste: deux annotateurs étiquettent leur phrases 
+								  	asssignées; 
+								  3. chaque couple d'annotateurs discute des phrases ambiguës pour s'entendre sur une décision commune; 
+								  4. dans les cas où le deux annotateurs ne parviennent pas à s'entendre, un troisième annotateur labelise la sentence contestée.
+
+
+	
+-(4)	: modèles expérimentés de classification binaire: SVM, regression logitique (LR), 
+		multilingualBERT (M-BERT), M-SBERT
+-(5)	: Résultats: M-BERT et M-SBERT meilleur que SVM et LR. pour cette étude M-BERT 
+		meilleur
+
+##############################################################################################

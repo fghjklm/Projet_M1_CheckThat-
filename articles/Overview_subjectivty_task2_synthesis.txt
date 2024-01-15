@@ -1,0 +1,43 @@
+#############################################################################################
+Article lu: Overview of the CLEF-2023 CheckThat! Lab: Task 2 on
+Subjectivity in News Articles
+
+Auteur de la synthèse: Oleiwan Joe
+
+Lien: https://ceur-ws.org/Vol-3497/paper-020.pdf
+
+informations extraites:
+-(0)	: Edition 2023: 6 langues, 9530 phrases, 12 équipes, 40 soumissions
+-(2)	: Les données de train et dev sont à la base un dataset split en 0.8-0.2 pour la majorité des langues (de, en, ger, turk)
+-(3.7)	: Les données multilangues sont des échantillions de 50 phrases obj et 50 phrases subj des dataset des 6 langues disponibles
+-(4)	: La task 2 est défini: étant donné une phrase s, extraite d'un article de presse ou d'un tweet, déterminez si elle subj ou obj
+-(4)	: Les modèles utilisés sont:	-BERT
+					-RoBERTa
+					-XLM RoBERTa
+					-GigaBERT
+					-M-BERT
+					-M-DeBERTa
+					-S-BERT
+					-SetFit
+					-ChatGPT
+					-GPT-3
+					-BART
+					-LSTM
+					-Gradient Boosting
+
+-(4)	: Les optimisations utilisées sont:	-Multi-lingual training
+						-Data augmentation
+						-Feature Selection
+						-Ensemble
+
+-(4)	: Décision d'utiliser le macro-averaged F1 score au lieu du F1 score standard sur les classes positives,
+	  afin de surmonter ses limites dans les contextes où la distribution des classes est fortement déséquilibrée
+-(5)	: La plupart des contributions se sont concentrées sur l'utilisation de modèles pré-entraînés, 
+certaines ont exploité des technologies plus récentes basées sur le dialogue telles que ChatGPT. 
+Les approches les plus réussies ont incorporé des connaissances supplémentaires dans leur modèle grâce à 
+un pré-entraînement multilingue des modèles ou à une augmentation des données. Les meilleurs scores macro F1 
+se situent entre 0,75 et 0,82, ce qui montre que la tâche peut être abordée avec succès, mais qu'elle n'est 
+pas encore complètement résolue.
+
+
+################################################################################################
