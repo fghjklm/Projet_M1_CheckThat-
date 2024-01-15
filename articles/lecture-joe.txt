@@ -1,0 +1,196 @@
+Synthèse de lecture d'articles scientifique
+Lecteur et rédacteur du document: Oleiwan Joe
+
+#############################################################################################
+
+Article lu: Overview of the CLEF-2023 CheckThat! Lab: Task 2 on
+Subjectivity in News Articles
+
+Lien: https://ceur-ws.org/Vol-3497/paper-020.pdf
+
+informations extraites:
+-(0)	: Edition 2023: 6 langues, 9530 phrases, 12 équipes, 40 soumissions
+-(2)	: Les données de train et dev sont à la base un dataset split en 0.8-0.2 pour la majorité des langues (de, en, ger, turk)
+-(3.7)	: Les données multilangues sont des échantillions de 50 phrases obj et 50 phrases subj des dataset des 6 langues disponibles
+-(4)	: La task 2 est défini: étant donné une phrase s, extraite d'un article de presse ou d'un tweet, déterminez si elle subj ou obj
+-(4)	: Les modèles utilisés sont:	-BERT
+					-RoBERTa
+					-XLM RoBERTa
+					-GigaBERT
+					-M-BERT
+					-M-DeBERTa
+					-S-BERT
+					-SetFit
+					-ChatGPT
+					-GPT-3
+					-BART
+					-LSTM
+					-Gradient Boosting
+
+-(4)	: Les optimisations utilisées sont:	-Multi-lingual training
+						-Data augmentation
+						-Feature Selection
+						-Ensemble
+
+-(4)	: Décision d'utiliser le macro-averaged F1 score au lieu du F1 score standard sur les classes positives,
+	  afin de surmonter ses limites dans les contextes où la distribution des classes est fortement déséquilibrée
+-(5)	: La plupart des contributions se sont concentrées sur l'utilisation de modèles pré-entraînés, 
+certaines ont exploité des technologies plus récentes basées sur le dialogue telles que ChatGPT. 
+Les approches les plus réussies ont incorporé des connaissances supplémentaires dans leur modèle grâce à 
+un pré-entraînement multilingue des modèles ou à une augmentation des données. Les meilleurs scores macro F1 
+se situent entre 0,75 et 0,82, ce qui montre que la tâche peut être abordée avec succès, mais qu'elle n'est 
+pas encore complètement résolue.
+
+
+##############################################################################################
+Article lu: A Corpus for Sentence-level Subjectivity Detection
+on English News Articles
+
+lien: https://arxiv.org/pdf/2305.18034.pdf
+
+informations extraites:
+-(0)	: Etude sur corpus italiens et anglais.
+-(1)	: La perception de la subjectivité est subjective en soit, elle dérive de différentes interprétation de langues,
+	  différentes expériences de la vie, et points de vus personnels.
+-(1)	: Des approches pour détécter la subjectivité sont : le -word spotting- et les -existing lexicons- 
+	  -> ces approches sont liées au domaine spécifique du language et donc ont besoin d'outils externes comme la traduction 
+	     automatique pour les language transformers (modèles).
+-(1)	: Procédure:	-1: développement de directive d'annotation indépendantes de la langue
+			-2: conception d'une procédure d'annotation basée sur le prescriptive paradigm pour atténuer les conflits
+			   -> explication: prescriptive: favorise l'objectivité et permet de former des modèles qui 
+							 appliquent systématiquement une croyance.
+					   descriptive:  favorise la subjectivité et permet d'étudier et de modéliser 
+							 différentes croyances.
+			-3: créer manuellement un corpus (ensemble de textes) pour un developpement durable concernant des sujets
+			    controversés.
+			    -> résultats: -1000 phrases annotées par au moins 2 personnes.
+					  -utilisation de BERT et SBERT sur corpus italien.
+					  -code source: https://www.dropbox.com/sh/pterfc16inz0h7b/AAB3csoKxYJNa11A-CZZt4xZa
+
+-(2) 	: La définition du terme "subjectif" est très large et peut inclure des opinions, des délires, des allégations, 
+	  des accusations, suspicions et spéculations
+-(2)	: Les travaux antérieurs ont utilisé des approches connues comme l'analyse des sentiments, et la détection des biais
+
+-(3)	: Une phrase est subjective si son contenu est basé sur ou influencé par des sentiments,
+		des goûts ou des opinions personnels.
+		Dans le cas contraire, la phrase est objective,
+		Plus précisément, une phrase est subjective si une ou plusieurs des conditions suivantes s'appliquent:
+					1. elle exprime une opinion personnelle explicite de l'auteur
+					(par exemple, des spéculations pour tirer des conclusions) ;
+					2. elle contient des expressions sarcastiques ou ironiques
+					3. contient des exhortations ou des encouragements personnels
+					4. contient des expressions discriminatoires ou dévalorisantes ;
+					5. contient des figures de rhétorique qui expriment l'opinion de l'auteur.
+		
+		Les cas ambigus suivants dans une phrase sont objec-tifs : l'opinion d'un tiers,
+		les commentaires qui ne tirent pas de conclusions et laissent des questions ouvertes, et les conclusions factuelles.
+		
+		Note 1 : Les guillemets représentent l'opinion explicite d'un tiers lorsqu'ils sont
+				utilisés pour citer une tierce personne, et sont donc objectifs.
+
+		Note 2 : Sentiments personnels, émotions ou humeurs de l'auteur
+				, sans émettre d'opinions sur la question, sont considérés comme
+				objectifs puisque l’auteur est la source la plus fiable.
+			
+----> VOIR ANNEXE POUR LES GUIDELINES DETAILLES
+
+
+
+-(3)	: procédure d'annotation: 1. contre-intuitif: on labélise comme obj les phrase ou 
+									l'auteur exprime explicitement ses sentiments (ils n'influencent pas le message)
+								  2. pour le reste: deux annotateurs étiquettent leur phrases 
+								  	asssignées; 
+								  3. chaque couple d'annotateurs discute des phrases ambiguës pour s'entendre sur une décision commune; 
+								  4. dans les cas où le deux annotateurs ne parviennent pas à s'entendre, un troisième annotateur labelise la sentence contestée.
+
+
+	
+-(4)	: modèles expérimentés de classification binaire: SVM, regression logitique (LR), 
+		multilingualBERT (M-BERT), M-SBERT
+-(5)	: Résultats: M-BERT et M-SBERT meilleur que SVM et LR. pour cette étude M-BERT 
+		meilleur
+
+##############################################################################################
+Article lu : Fraunhofer SIT at CheckThat! 2023: Can LLMs Be
+Used for Data Augmentation & Few-Shot
+Classification? Detecting Subjectivity in Text Using
+ChatGPT
+
+Lien : https://ceur-ws.org/Vol-3497/paper-028.pdf
+
+informations extraites:
+-(0)	: Edition 2023: Augmentation des données (équilibration de classes) en utilisant des 
+		LLMs (ici ChatGPT) sur corpus anglais et allemand
+-(1)	: Les LLMs sont des modèles deep learning entrainés sur beaucoup de text data, qui
+		peuvent produire en conséquence du texte cohérent
+-(1)	: Un challenge sur les LLMs de nos jours: contenu biaisé produit par ces modèles
+-(2.1)	: -Les LLM sont limités par leur date d'entrainement et ne connaissent donc pas 
+		d'informations au-delà.
+		  -Ils essayent d'estimer le prochain token le plus probable à la suite d'un token
+		  ce qui peut entraîner la génération de contenu biaisé ou fictif
+
+-(2.2)	: Zero et Few-Shot Learning:
+		Le Few-Shot Learning est un type de ML ou l'entrainement est fait sur un petit nombre de données et le but est de faire des prédiction pour une tâche NLP (natural language processing task) sans avoir vu de labels (zero-shot) ou très peu de labels (few-shot)
+		--> Les LLM, bien qu'ils sont efficace pour la génération de texte, peuvent aussi être
+			utilisées en zero et few-shot classifiers.
+-(3)	: Datasets utilisés pour cette étude : eng et ger, labélisés par humains
+-(4-4.1): ChatGPT a été utilisé pour enrichir et équilibrer les datasets:
+		-La différence de style d'ecriture généré par l'ia est potentiellement une cause de la sous-performance du modèle --> Résultat problématique : Il n'est pas recommendé de le faire
+
+-(4.2)	ChatGPT en few-shot: -good sur private test set (golden) english, bad pour dev set 
+							(notre test)
+							-bad sur private test set (golden) german, good for dev set (notre test)
+
+----> VOIR LES PROMPT UTILISEES DANS ARTICLE
+
+##############################################################################################
+Article lu : DWReCO at CheckThat! 2023: Enhancing Subjectivity
+Detection through Style-based Data Sampling
+
+Lien : https://ceur-ws.org/Vol-3497/paper-026.pdf
+
+
+informations extraites:
+-(0)	: Edition 2023: Equilibration de classes en utilisant des ressources d'entrainement 		supplémentaires générées avec des modèles de GPT-3 avec des 
+		des prompts de style différents d'une checkliste basé sur la perspective journalistique.
+-(1)	: Déséquilibrage de données intra-classes: obj >>>> subj
+-(1)	: La subjectivité en tâches journalistiques est différente de la subjectivité dans les autres tâches.
+-(1)	: Trois langues d'experimentation pour cette équipe: anglais, turque, allemand.
+-(1)	: Cette équipe démontre que l'utilisation de différents styles subjectifs = 
+		performance++ en détéction de subjectivité.
+-(2.2)	: Ratio obtenu environ 50 50 entre données subj et obj.
+-(2.2)	: Comparaison entre deux modèles GPT-3: text-davinci-003, gpt-3.5-turbo. les perfs 
+		dépendent de la tâche donnée
+-(4)	: La checkliste de subjectivité est construite avec différents indicateurs que les 
+		journalistes utilisent pour détécter la subjéctivité
+-(4.1)	: A cause de la vaste def de la subj et des réponses biaisées des modèles GPT-3, il 
+		faut faire attention aux texte généré qu'il soit adéquat au style journalistique attendu.
+-(4.2)	: Template de style d'écriture pour anglais, essayé avec les autres langues = failed; 		  patron de style crée pour chaque langue par conséquent
+-(4.3)	: Méthode de génération et échantillonage:    
+			Calcul de la différence entre le nombre d'échantillons subjectifs et objectifs pour chaque langue du jeu de données d'entraînement, suivi d'une sélection aléatoire d'échantillons objectifs en fonction de cette différence pour chaque style dans la liste de vérification.
+
+   			Sélection d'échantillons de la distribution de classe subjective pour le style normal, définis comme des échantillons subjectifs qui ne sont pas exagérément orientés vers une autre catégorie de style spécifique. Ceci est utilisé comme base de comparaison pour les autres styles dans la liste de vérification.
+
+    		Génération de nouveaux textes à partir des échantillons sélectionnés en utilisant les modèles OpenAI GPT-3.
+ -(4.4)	: Modèles entrainés : Roberta-base for anglais
+ 							  German Bert for allemand
+ 							  BERTurk for turque
+-(5.1)	: Les résultats montrent que l'ajout d'échantillons basés sur le style améliore la 
+		robustesse des modèles de transformateurs en anglais et en turc, mais n'a pas d'effet significatif sur les transformateurs en allemand.
+		(generation de texte par text-davinci-003 ) pas de changement notables avec ChatGPT (3.5 turbo).
+-(5.2)	: L'évaluation qualitative des textes générés par text-davinci-003 et Chat-GPT en anglais, allemand et turc montre que l'anglais a les phrases les plus plausibles. Le modèle 2 excelle en qualité (Q1) mais tend à exagérer les styles, affectant la naturalité (Q2), surtout en anglais et allemand. En turc, le modèle 2 est supérieur en grammaire et sens, mais les textes ne sont pas toujours parfaits. Un problème commun est l'utilisation répétitive d'altérations de style par les modèles, notamment l'ajout de pronoms dans le style subjectif.
+-(6)	: Conclusion: style based data augmentation > paraphraser du texte.
+
+##############################################################################################
+Article lu : ES-VRAI at CheckThat! 2023: Enhancing Model
+Performance for Subjectivity Detection through
+Multilingual Data Aggregation
+
+Lien : https://ceur-ws.org/Vol-3497/paper-037.pdf
+
+
+
+
+
+
+
