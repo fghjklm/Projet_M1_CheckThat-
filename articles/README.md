@@ -1,1 +1,3 @@
-Ce dossier a pour but de contenir les résumés et liens des articles lus / à  lire
+Convention d'écriture des titres de synthèses txt des articles scientifiques:
+-Si nom équipe : nomEquipe_motClef1_motClefIeme_synthesis
+-Sinon : motClef1_motClefIeme_synthesis

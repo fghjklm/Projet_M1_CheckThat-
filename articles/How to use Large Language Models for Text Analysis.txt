@@ -1,0 +1,109 @@
+Synthèse de lecture d'articles scientifique
+Lecteur et rédacteur du document: Delmote Adrien 
+
+#############################################################################################
+
+Article lu: How to use Large Language Models for Text Analysis
+
+Lien: https://arxiv.org/abs/2307.13106
+
+
+Résumé
+
+Cet article explique comment utiliser les LLM (installer le logiciel , préparer l'API , charger les données, développer et analyser les prompts, analyser le texte et valider les résultat) visant les étudiants et les chercheurs. Ils ont utilisé les LLM dans le but d'identifier le populisme au sein de textes scientifiques.
+
+
+C'est quoi un LLM ?
+
+Les LLM c'est une IA qui interprète le langage humain. Ils sont basés sur les systèmes neuronaux artificiel. Il existe des LLMs qui sont plus ou moins performants, les plus performants permettent de répondre aux humains et d'entretenir un discours peu importe ce qui est dit en face.
+
+
+Quand les LLMs sont utilisés ?
+
+Il faut faire attention avec l'utilisation des LLMs car :
+
+- ils sont sensibles aux choix des recherches comme les prompts design. De ce fait, les modèles peuvent avoir des incompréhensions de tâche. La 		formulation de la tâche pour les LLMs doit être une tâche clés dans la conception. (prompt)
+- ils peuvent être influencés par les textes de recherches. Les modèles n'ont donc pas d'objectivité et d'impartialité. Ils peuvent être susceptibles de 	mal comprendre des choses et faire des préjugés tout va dépendre des données d'entraînement.
+- On ne connaît pas leurs limites et leurs portées. Ils peuvent donc y avoir des erreurs inattendus dans des tâches.
+
+Un LLM sera utilisé dans des datasets avec des données pertinentes ou non dans des millions de données, car le LLM peut être lent face à trop de données (mais toujours plus rapide que les humains).
+Pour utiliser les LLMs il est nécessaire de découper un texte partie par partie en fonction de la taille du texte, car le LLM à un nombre de jetons, permettant de faire une réponse, limité (des context windows), et après rassembler les différentes réponses dans le post-analyse.
+
+Pour utiliser les LLMs il est nécessaire de découper un texte partie par partie en fonction de la taille du texte car le LLM à un nombre de jetons, permettant de faire une réponse, limité (des context windows), et après rassembler les différentes réponse dans le post-analyse.
+
+Il y a aussi le case éthique :
+
+- les LLM ne doivent pas utiliser des données confidentielles.
+- les biais et les limites doivent être signalés et examinés avec soin, pour éviter de perpétuer des biais.
+- les habituels problèmes éthique (vie privée …).
+
+Comment peut-on utiliser les LLMs étape par étape ?
+Dans le doc il montre avec l'API de chatGPT, mais on peut le faire avec d'autres LLMs.
+
+
+Étape 1 Se connecter à l'API
+
+Pour cette partie il faut suivre les instructions sur le site du LLM
+Il faut utiliser jupyter Notebook et il faut installer les librairies nécessaire (pour chatgpt c'est openai et pandas) .
+Il faut aussi mettre la clé pour accéder à l'API et utiliser une autre fonction pour accéder à l'api (dépends du LLM) elle va retourner la réponse de la question (la question est un paramètre de la fonction).
+L'API est payante est à peut-être des utilisations limitées donc il faut faire attention.
+
+
+Étape 2 Préparer les datas
+
+On n'a pas besoin de traiter les données.
+La seule chose à faire est de faire des textes courts car les LLMs ne peuvent pas traiter des textes trop longs. Il faut donc uniquement séparer le texte en plusieurs parties où la taille va dépendre du modèle que l'on utilise.
+Pour utiliser des données on peut utiliser pandas.
+
+
+Étape 3 Prompt enginneering
+
+C'est la formulation d'instruction aux LLM pour effectuer des tâches. Elle dit aux LLMs comment analyser le texte.
+C'est très important pour guider le LLM pour la réponse
+Il y a plusieurs aspects qui doivent être pris en compte pour la formulation d'une demande:
+
+1- Définir clairement la tâche afin de pouvoir évaluer les résultats du modèle. Déterminez les informations spécifiques que vous souhaitez extraire des données textuelles.
+
+2- Déterminer le résultat souhaité par exemple des données factuelles, des opinions ou des nombres.
+
+3- Prendre en compte la longueur du prompt et sa spécificité : plus il est précis plus le LLM sera efficace moins il est précis plus le LLM va explorer des possibilités de réponse (donc plus lent et moins précis)
+
+4- Inclure des instructions ou un contexte afin de guider le LLM. Il peut s'agir de préciser le type de réponse souhaité, de fournir des informations contextuelles ou de demander au modèle de prendre en compte des aspects spécifiques du texte.
+
+5- Partir des recherches existantes: un bon point de départ pour une invite est souvent d'examiner les instructions données aux codeurs humains pour effectuer des tâches de codage similaires. ?
+
+6- Rendre les résultats analysables par un programme par exemple si on recherche 4 codes numériques, on peut ajouter le texte suivant à votre question : "[Répondez au format : "0, 1, 2, 3". Ne motivez pas votre réponse]".
+
+7- Répéter et tester : tester différents prompt et observer les analyses puis affiné le prompt en conséquence
+
+Exemple de prompt (par rapport à l’objectif d’identifier le populisme dans les textes)
+
+notre tâche est d'évaluer le niveau de populisme d'un texte politique. [...] 
+Un texte populiste se caractérise par les DEUX éléments suivants : 
+	1. Centrage sur le peuple : dans quelle mesure le texte se concentre-t-il sur "le peuple" ou "les gens ordinaires" en tant que communauté indivisible ou homogène ? Le texte promeut-il une politique comme étant la volonté populaire du "peuple" ? Les appels à des sous-groupes spécifiques de la population (tels que les ethnies, les groupes régionaux, les classes) sont intrinsèquement contraires au populisme. 
+	2. Anti-élitisme : dans quelle mesure le texte se concentre-t-il sur "l'élite" et dans quelle mesure les élites en général sont-elles décrites en termes négatifs ? 
+Dans les textes populistes, l'élite est souvent décrite comme corrompue et la juxtaposition entre les gens ordinaires et l'élite est présentée comme une lutte morale entre le bien et le mal. La critique d'éléments spécifiques au sein d'une élite n'est pas populiste : un appel populiste doit considérer l'élite dans son ensemble comme un anathème. [...]7 [Répondez par un chiffre compris entre 0 et 2, suivi d'un point-virgule, puis d'une brève motivation. une brève motivation. Par exemple : "1.23 ; Le texte présente de nombreux éléments d'un texte populiste". N'utilisez pas de guillemets.]"
+
+
+Étape 4 : appeler le LLM et analyser les résultats.
+
+-définir une fonction qui appelle l’API et gère les erreurs 
+-définir une fonction qui analyse le résultat du LLM, il prend en entrée le texte retourner par le LLM et le retourne en donnée, cette fonction dépend de ce qu’on demande au LLM 
+- le main : un loop qui passe en revue les données, analyse le texte, analyse les réponses du LLM et stock le résultat.
+Si le processus crash, le processus reprendra au moment du crash après le redémarrage 
+
+
+Validation 
+
+	Il permet de savoir si le LLM retourne ce qu’on voulait et sans biais et préjugés.
+On peut comparer les résultats selon des points de référence, des données réels ou des données d’experts.
+Un moyen simple est de demander à des codeurs de classifier les résultats et de le comparer avec le LLM.
+Pour calculer la correspondance entre les données de validation et du LLM on peut utiliser le Krippendorff’s alpha  qui retourne un nombre en 0 et 1 sachant que 1, c’est une correspondance totale et 0 pas de correspondance.
+En python la librairie simpledorff à la fonction calculate_krippendorffs_alpha_for_df
+
+
+Processus itératif de concept et de développement de prompt
+
+Pour avoir le meilleur résultat possible il est recommandé d'exécuter le LLM avec différent prompt
+Une stratégie utile consiste à examiner de plus près, les cas où le LLM et les codeurs ne sont pas d'accord et à comparer les motivations des deux. Cela ne doit pas être considéré comme un simple ajustement des instructions LLM car le LLM peut être plus précis que l'homme donc les résultats de l'homme ne sont pas forcément la référence incontestable.
+Si on n'a pas accès aux motivations des codeurs humains on peut voir les différences et effectuer notre propre jugement.
