@@ -2,6 +2,11 @@ Overview of the CLEF-2023 CheckThat! Lab: Task 2 on
 Subjectivity in News Articles
 lien : https://ceur-ws.org/Vol-3497/paper-020.pdf
 
+On the Definition of Prescriptive Annotation
+Guidelines for Language-Agnostic Subjectivity
+Detection
+lien : https://ceur-ws.org/Vol-3370/paper10.pdf
+
 #######################################################################################
 
 Compte rendu des équipes de l'année 2023:
