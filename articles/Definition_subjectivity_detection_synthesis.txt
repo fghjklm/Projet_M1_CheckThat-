@@ -1,0 +1,51 @@
+#############################################################################################
+Article lu: On the Definition of Prescriptive Annotation
+Guidelines for Language-Agnostic Subjectivity
+Detection
+Auteur de la synthèse: Mouysset Martin
+
+Lien: https://ceur-ws.org/Vol-3370/paper10.pdf
+traduction DEEPL subjectivity
+La subjectivité est une caractéristique du langage : en prononçant un énoncé, le locuteur exprime simultanément sa position, son attitude et ses sentiments à l'égard de l'énoncé, laissant ainsi sa propre empreinte.
+exprime à la fois sa position, son attitude et ses sentiments à l'égard de l'énoncé, laissant ainsi sa propre marque.
+
+L'article détaille la manière dont les données du dataset ont été annoté en tant que subjectives ou objectives.
+
+Les phrases sont annotées telles quels sans le contextes duquels elles ont été extraites.
+
+il y a eu certain cas "litigeux" rencontrés, tels que :
+Les émotions, considérées comme objectives car il n'existe pas de manière plus objectives de les décrire.
+Les citations, considérées comme objctives quelles que soit leur contenu.
+Les "intensifieur", considérés comme subjectifs
+Les spéculation, considérées comme subjectives
+
+Les critères initiaux étaients: 
+
+"
+(i) it explicitly reports the personal opinion of its author;
+(ii) it contains sarcastic or ironic expressions;
+(iii) it contains exhortations or personal auspices;
+(iv) it contains discriminating or downgrading expressions;
+(v) it contains rhetorical figures explicitly made by its author to convey their opinion;
+(vi) it contains a conclusion made by its author that is drawn despite insufficient factual infor-
+mation.
+"
+
+auxquels ont été ajoutés:
+
+"(vii) a sentence is objective when it describes the personal feelings, emotions or moods of its author,
+without conveying opinions on other matters;
+(viii) a sentence is objective if it expresses an opinion, claim, emotion, or a point of view that is
+explicitly attributable to a third-party (e.g., a person mentioned in the text). The presence
+of quotation marks ( “ ” ), when used to quote a third person (be it at the beginning of the
+sentence, at the end, or both), represents an explicit third-party opinion, even if it is not
+clearly stated in the sentence."
+
+puis la 1er a été finalement modifié :
+"
+(ix) a sentence is subjective if it contains intensifiers that can be attributed to its author to express
+their opinion.
+Moreover, annotation criteria (i) is modified to address speculations: speculations that draw
+conclusions are considered opinions
+"
+
