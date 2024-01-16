@@ -1,0 +1,78 @@
+Article lu: Gpachov at CheckThat! 2023: A Diverse
+Multi-Approach Ensemble for Subjectivity Detection
+in News Articles
+Auteur de la synthèse: Mouysset Martin
+
+Lien: https://ceur-ws.org/Vol-3497/paper-035.pdf
+
+Seulement disponible pour le dataset anglais
+2e meilleur score, solution intéressante
+
+Solution proposée: une méthode d'ensemble comprennant l'affinement d'un "large pre-trained language model" sur la tâche de la subjectivité, le "few-shot learning" et l'affinement d'un "sentence embedding model"
+
+(2) Travaux liés:
+
+-l'utilisation d'un seul réseau avec des couches partagées lors de l'apprentissage surdeux ensembles de données sémantiquement liés peut améliorer les performances sur les deux ensembles de données.
+http://arxiv.org/abs/2201.05363
+
+-Comparaison des modèles d'intégration Word2Vec et BERT dans le contexte de la détection de la subjectivité:
+BERT meilleur avec ressources élevées, Word2Vec meilleur avec ressources faibles
+10.2991/978-94-6463-094-7_20
+
+- Les modèles de transformateurs (transformer models) ont une meilleur performance pour la classification de courts textes qu'une très grande variété d'autres modèles, testés ici:
+ arXiv:2211.16878
+
+Données:
+
+Phrases plutot courtes, dataset déséquilibré (bien plus d'OBJ que de SUBJ)
+
+4.1:
+
+1er point d'amélioration: sentence embdedding.
+
+Le modèle baseline utilise une simple regression logistique pour classifier les phrase à partir 
+
+définition de chatGPT de sentence embedding: 
+"Les embeddings de phrases (sentence embeddings) font référence à une représentation vectorielle de phrases dans un espace continu où la distance entre les vecteurs représente la sémantique ou la similarité sémantique entre les phrases. Cette technique est souvent utilisée dans le domaine du traitement automatique du langage naturel (NLP) et de la compréhension du langage naturel."
+
+test de différent classificateur à partir des données vectorisées du modèle de baseline, le meilleur étant toujours un régression linéaire
+(voir partie 4.1)
+
+Réduction de dimension aussi réalisée (PCA réduisant de 384 à 110 les dimension, gardant 92.5% de la variance)
+
++ fine tuning le modèle en utilisant la similarité réelle  
+
+Au total, on trouve une augmentation de performance de 0.74 à 0.81 en gardant le reste identique au baseline
+
+4.2
+Few-shot learning
+
+https://arxiv.org/pdf/2209.11055.pdf
+
+Voir modèle SetFit.
+
+Résultats similaires mais utilisant bien moins de données spécifiques, promettant une bien meilleure généralisation du modèle.
+
+Utilisation de "transformer model" (transformant les phrases en vecteurs)
+Les modèles utilisées viennent du hub "HuggingFace" et ont été testé en architechture "base et "large" (nombre de paramètres utilisées, il existe plus grand mais cela demande du matériel très performant)
+
+Tout a été testé uniquement en anglais au début, et sur d'autre langues plus tard.
+
+Ils ont aussi utilisé le dataSet English renforcé avec le dataSet German, traduit vers l'anglais avec un système de réseau de neurones
+(voir https://arxiv.org/pdf/2008.00401.pdf)
+
+Ils ont donc utilisé les trois modèles simultanéments(
+modèle 1: Fine-tuned SBERT, PCA, ElasticNet (ressemblant à baseline)
+modèle 2: Set-Fit model
+modèle 3: xlm-roberta-base entrainé sur le dataset anglais/allemand traduit)
+avant de renvoyer la solution majoritaire renvoyée par ces modèles.
+
+L'ensemble a obtenu un score macro F1 de 0.85 sur le set de validation, et de 0.77 sur le set de test.
+Il semble donc y avoir des problèmes de généralisation/ le set de test était plus "dur".
+
+Piste possible:
+modèle DeBERTa-V3 semblant plus efficace
+https://arxiv.org/abs/2111.09543
+
+
+

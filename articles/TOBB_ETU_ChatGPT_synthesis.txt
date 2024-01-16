@@ -1,0 +1,36 @@
+Article lu: TOBB ETU at CheckThat! 2023: Utilizing ChatGPT to
+Detect Subjective Statements and Political Bias
+Auteur de la synthèse: Mouysset Martin
+
+Lien: https://ceur-ws.org/Vol-3497/paper-047.pdf
+
+Utilisation de ChatGTP pour la classification.
+
+Pour la subjectivité, ChatGPT est moins performant que le modèle utilisé en baseline, avec l'exception des datasets Néerlandais et Allemands.
+
+utilisation de ChatGPT de deux manière :
+
+Zero-shot:
+Donner une instruction, par exemple "Can you tell in one word whether this article expresses an objective or subjective opinion" et le contenu à analyser,
+par exemple:
+ ”It’sall justified in the name of racial equity. But it’s nothing more than a nice way of saying they want to destroy the Historic American Nation.”
+
+Few shot:
+Même chose, mais en rajoutant des exemple sur lesquels ChatGPT peut se baser.
+Exemple:
+"
+Here are some examples:
+1) Theresa May made this more explicit: ‘Socialism is about levelling down. (Objective)
+2) But he said the risk of a violent backlash had grown this year. (Objective)
+3) Many originate with educational, recreational and sociological enthusiasts [...]. (Objective)
+4) This week, authorities in Belgrade put a stop to EuroPride, [...]. (Objective)
+5) “Normally, the majority opinion would speak for itself. The decision is [...]. (Objective)
+6) White House officials have touted their efforts to cut down on the paperwork [...]. (Subjective)
+7) One day’s work in every four belongs to government. (Subjective)
+8) The battle to set our economic machine in motion in this emergency takes new [...]. (Subjec-
+tive)
+9) An indebted state-owned bus company in Lanzhou, the capital of Gansu [...] (Subjective)
+10) Still, many of the nation’s 3.1 million public-school teachers have become [...]. (Subjective)
+"
+
+Surprenamment, ChatGPT a été plus performant en utilisant la méthode Zero-shot que Few-shot

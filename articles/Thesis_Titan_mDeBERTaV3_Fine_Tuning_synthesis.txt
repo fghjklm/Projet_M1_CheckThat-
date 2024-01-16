@@ -1,0 +1,30 @@
+Article lu: Thesis Titan at CheckThat! 2023: Language-Specific
+Fine-tuning of mDeBERTaV3 for Subjectivity
+Detection
+Auteur de la synthèse: Mouysset Martin
+
+Lien: https://ceur-ws.org/Vol-3497/paper-030.pdf
+
+
+Modèle utilisé : mDeBERTaV3-base
+
+Rangs: 
+	1: Allemand, Italien, Turc
+	2: Arabe, multilingue
+	3: Anglais
+
+ Challenge de la tâche: le contexte n'est pas utilisé pour détecter la subjectivité d'une phrase. 
+
+Dans le dataset originiel, il subsistait un grand déséquilibre entre les données objectives (4071) et subjectives (1957).
+Ils ont donc réduit le nombre de données objectives utilisées pour réduire cet écart.
+
+structure du modèle :
+"The model structure has a hidden size of 768, 12 layers and 12 attention heads."
+voir document pour les hyperparaètres en détails (Section 3)
+
+modèles abandonnés:
+	mBERT
+	BERTje
+	RobBERT
+
+utlisation de BiLSTM n'a pas semblé pertinente.
