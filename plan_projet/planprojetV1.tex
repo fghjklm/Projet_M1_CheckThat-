@@ -11,7 +11,7 @@
 \usepackage{parskip}
 \usepackage{xurl}
 
-\title{Plan Projet Subjectivity in FakeNews V1}
+\title{Plan Projet Subjectivity Detection V1}
 \author{IAFA-tigable - contributors: Oleiwan Joe, Delmote Adrien..}
 
 \date{13/01/2024}
@@ -27,16 +27,15 @@ Dans le cadre du CLEF 2024, Conferences and Labs of the Evaluation Forum, le lab
 \smallskip
 \begin{motsclefs}
 \smallskip
-\centerline{-Désinformation-}
-\centerline{-Subjectivité-}
-\centerline{-Détection-}
-\centerline{-Subjectivité-}
-\centerline{-Objectivité-}
-\centerline{-Méthodes-}
-\centerline{-Recherche-}
-\centerline{-Développement-}
-\centerline{-Dictionnaire-}
 \centerline{-LLM-}
+\centerline{-Recherche-}
+\centerline{-Méthodes-}
+\centerline{-Détection-}
+\centerline{-Objectivité-}
+\centerline{-Subjectivité-}
+\centerline{-Dictionnaire-}
+\centerline{-Développement-}
+\centerline{-Désinformation-}
 \end{motsclefs}
 
 \tableofcontents
@@ -44,13 +43,13 @@ Dans le cadre du CLEF 2024, Conferences and Labs of the Evaluation Forum, le lab
 \chapter{Contexte}
 Le laboratoire CheckThat! a été organisé pour la 7e fois dans le cadre de CLEF 2024. Notre but est de réaliser la tâche 2 qui consiste à l’identification de la subjectivité. Dans le but de promouvoir l’intelligence artificielle dans la détection de fragments de texte subjectifs dans les articles de presse. La subjectivité est une caractéristique du langage : en prononçant une énoncé, le locuteur exprime simultanément sa position, son attitude et ses sentiments à l'égard de celle-ci, laissant ainsi sa propre empreinte. Selon le laboratoire, une phrase est considérée comme subjective si elle contient plusieurs critères tels que :
 \begin{itemize}
-    \item rapporter explicitement l'opinion personnelle de son auteur ;
-    \item contenir des expressions sarcastiques ou ironiques ;
-    \item contenir des exhortations ou des auspices personnels ;
-    \item contenir des expressions discriminatoires ou dévalorisantes ;
-    \item contenir des figures de rhétorique explicitement formulées par son auteur pour exprimer son opinion ;
-    \item contenir une conclusion tirée par son auteur en dépit d'informations factuelles insuffisantes ;
-    \item contenir des intensificateurs qui peuvent être attribués à son auteur pour exprimer son opinion ;
+    \item Rapporter explicitement l'opinion personnelle de son auteur ;
+    \item Contenir des expressions sarcastiques ou ironiques ;
+    \item Contenir des exhortations ou des auspices personnels ;
+    \item Contenir des expressions discriminatoires ou dévalorisantes ;
+    \item Contenir des figures de rhétorique explicitement formulées par son auteur pour exprimer son opinion ;
+    \item Contenir une conclusion tirée par son auteur en dépit d'informations factuelles insuffisantes ;
+    \item Contenir des intensificateurs qui peuvent être attribués à son auteur pour exprimer son opinion ;
 \end{itemize}
 La tâche propose des corpus composés de 9 530 phrases annotées manuellement, couvrant six langues - arabe, néerlandais, anglais, allemand, italien et turc.
 
@@ -129,15 +128,15 @@ Lien github : \url{https://github.com/fghjklm/Projet_M1_CheckThat-}
 
 \chapter{La Recherche}
 \section{Les méthodes précédemment utilisées et les résultats}
+CLEF : Conference and Labs of the Evaluation Forum.\\
+Pour orienter notre recherche, nous explorons les méthodes d'apprentissage automatique utilisées par des équipes de recherche participantes au CLEF au cours des années précédentes. En analysant leurs résultats, nous pouvons apprendre et identifier les méthodes les plus pertinentes pour comparer avec notre projet.
 
-\section{Les modèles d'apprentissages automatiques ciblées}
--------------------------TO VERIFY--------------------
-Nous regardons différents modèles d’apprentissage automatique à travers des textes scientifiques, dans le but de connaître le modèle en détail ainsi que de pouvoir les implémenter pour notre projet. Notre cliente a commencé à nous parler d’un modèle que l’on peut utiliser. Afin de connaître ce modèle, nous avons lu divers articles scientifiques. Ce modèle est le Large Language Models (LLM), il permet d’interpréter le langage humain. Ils sont basés sur les systèmes de réseau neuronaux artificiels. Les LLMs les plus performants peuvent entretenir une conversation avec des humains (par exemple ChatGPT). 
-Les différents rapports de CheckThat de 2023 sur la subjectivité nous ont aussi fait mention de divers modèles comme ...
+\section{Les modèles d'apprentissage automatique ciblés}
+Nous mettons l'accent sur les deux méthodes ciblées par notre projet : LLM et Dictionnaire pour identifier leurs domaines d'application et leurs processus de développement.
+
+
 \section{Le prompt engineering}
-Nous regardons les différents prompts dans le but de pouvoir les utiliser avec des LLMs. Les prompts sont des formulations d'instruction aux LLM pour effectuer des tâches. Elle dit aux LLMs comment analyser le texte. Il existe différents types de prompt comme les mother prompts, ce sont des prompts qui permet de faire d’autres prompts. Le but est de recherche et lire des articles scientifiques qui concerne les prompts dans le but de les utiliser au mieux pour avoir de corrects résultats avec les LLMs.
-
-
+Les prompts sont des formulations d'instruction aux LLMs pour effectuer des tâches, nous apprenons des notions liées à l'ingénieurie des prompt pour perfectionner nos requêtes dans le but de faire du traitement de données.
 
 
 
