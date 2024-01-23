@@ -105,5 +105,16 @@ En python la librairie simpledorff à la fonction calculate_krippendorffs_alpha_
 Processus itératif de concept et de développement de prompt
 
 Pour avoir le meilleur résultat possible il est recommandé d'exécuter le LLM avec différent prompt
+
+
+CRITIQUE :
++
+	- L’article définit bien le LLM ainsi que tous les termes technique autour du LLM 
+	- L’article donne un exemple d’application d’un LLM tout au long de l’article ce qui permet de comprendre facilement l’utilisation d’un LLM
+
+-
+	- L’article utilise une API pour utiliser le LLM, cependant les API sont payant. Pour bien utiliser les étapes d’utilisation dans l ‘article il faut 			obligatoirement payé.
+ 	- En terme d’exemple code, l’article n’est pas très précis on ne comprends pas forcément à quoi corresponds les variables 
+
 Une stratégie utile consiste à examiner de plus près, les cas où le LLM et les codeurs ne sont pas d'accord et à comparer les motivations des deux. Cela ne doit pas être considéré comme un simple ajustement des instructions LLM car le LLM peut être plus précis que l'homme donc les résultats de l'homme ne sont pas forcément la référence incontestable.
 Si on n'a pas accès aux motivations des codeurs humains on peut voir les différences et effectuer notre propre jugement.
