@@ -61,3 +61,9 @@ lien : https://arxiv.org/pdf/2305.18034.pdf
 
 Unsupervised Cross-lingual Representation Learning at Scale
 lien : http://arxiv.org/abs/1911.02116
+
+How to use Large Language Models for Text Analysis
+lien : https://arxiv.org/abs/2307.13106
+
+A Survey on Concept-Level Sentiment Analysis Techniques of Textual Data
+lien : https://www.researchgate.net/publication/352621441_A_Survey_on_Concept-Level_Sentiment_Analysis_Techniques_of_Textual_Data
