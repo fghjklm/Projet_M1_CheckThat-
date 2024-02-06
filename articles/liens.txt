@@ -67,3 +67,6 @@ lien : https://arxiv.org/abs/2307.13106
 
 A Survey on Concept-Level Sentiment Analysis Techniques of Textual Data
 lien : https://www.researchgate.net/publication/352621441_A_Survey_on_Concept-Level_Sentiment_Analysis_Techniques_of_Textual_Data
+
+LLaMA: Open and Efficient Foundation Language Models
+Lien: https://arxiv.org/pdf/2302.13971.pdf
