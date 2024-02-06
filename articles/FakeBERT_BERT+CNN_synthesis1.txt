@@ -1,0 +1,53 @@
+#####################################################################
+Article lu : FakeBERT: Fake news detection in social media
+with a BERT-based deep learning approach
+
+Auteur de la synthèses: Oleiwan Joe
+Path from seed (Clef Overview) : 29-15
+Lien : https://link.springer.com/article/10.1007/s11042-020-10183-2
+
+OBJECTIF: est d'utiliser BERT et un CNN pour détécter les fake news
+MODELE : Un modèle deep learning basé sur BERT en combinant différents blocs parallèles du CNN de couche unique : FakeBERT with BERT
+
+word embedding: GloVe, BERT
+AUTRES MODELES : DeepLearning : CNN with BERT, LSTM with GloVe, LSTM with BERT
+				 MachineLearning: MNB with GloVe(0.89), KNN with GloVe, DT with GloVe (0.73), RF with GloVe
+RESULTAT : 0.989 en précision
+
+	 |		obj predit                  |	  subj predit
+-----|----------------------------------|-------------------
+obj  |			TN: 1045  				|		FP: 6
+-----|----------------------------------|-------------------
+subj |			FN: 17 					| 		TP: 1012
+
+
+
+									  (3 parallel blocks)
+Le modèle FakeBERT:                   | 1D-CNN Maxpool |  
+					INPUT: Embeddings |	1D-CNN Maxpool | 1D-CNN Maxpool | 1D-CNN Maxpool | Dense 1 | Dense 2 | OUTPUT: classe obj ou subj
+									  | 1D-CNN Maxpool |
+
+Couche de convolution : 
+	Elle est constituée d'un ensemble de filtres et de noyaux visant à obtenir de meilleures représentations sémantiques de mots de longueurs différentes. Les principales opérations consistent en des multiplications matricielles, suivies d'une fonction d'activation pour produire la sortie finale. Notre modèle utilise trois blocs parallèles de 1D-CNN, chacun ayant une couche dans chaque bloc et deux couches simples après le processus de concaténation, avec des tailles de noyau et des filtres différents.
+
+Couche de mise en commun maximale : 
+	Cette couche réduit efficacement la sortie de la couche de convolution et diminue le nombre d'opérations de calcul nécessaires. Sa fonction est de réduire progressivement la taille spatiale de la représentation afin de diminuer la quantité de paramètres et de calcul dans le réseau. Notre modèle utilise cinq couches de mise en commun maximale, dont trois dans des blocs parallèles de 1D-CNN et deux dans des couches de convolution simples.
+
+Couche d'aplanissement : 
+	Placée entre la couche de convolution et la couche entièrement connectée, cette couche transforme une matrice bidimensionnelle de caractéristiques en un vecteur pouvant être utilisé par un classificateur de réseau neuronal entièrement connecté.
+
+Couche dense : 
+	Cette couche, composée d'une série de neurones, reçoit une entrée de tous les neurones de la couche précédente, établissant ainsi une connexion dense. Elle est caractérisée par une matrice de poids, un vecteur de biais et les activations de la couche précédente. Dans de nombreuses méthodes antérieures, une ou deux couches denses ont principalement été utilisées dans les réseaux proposés pour éviter le surajustement. Notre modèle comprend également deux couches denses, chacune comportant un nombre variable de filtres.
+
+Dropout : 
+	Cette technique de régularisation consiste à ignorer aléatoirement certains neurones pendant l'apprentissage. Sa principale contribution à l'activation des neurones en aval est temporairement supprimée lors de la passe avant, et les mises à jour des poids ne sont pas appliquées aux neurones lors de la passe arrière. Dans notre modèle, le dropout est appliqué aux couches denses du réseau, où les arêtes sortantes des unités cachées sont aléatoirement définies à 0 à chaque mise à jour de la phase d'entraînement. Une valeur de dropout de 0,2 est utilisée dans ces expériences.
+
+Fonction d'activation ReLU : 
+	La fonction ReLU (Rectifier Unit) est la plus couramment utilisée pour les sorties des neurones de CNN. Son principal avantage par rapport à d'autres fonctions d'activation réside dans son comportement sélectif, n'activant pas simultanément tous les neurones. Dans notre modèle, ReLU est calculé après la convolution et est une fonction d'activation non linéaire, tout comme tanh ou sigmoid.
+
+Fonction de perte (L) : 
+	L'entropie croisée compare la prédiction du modèle avec l'étiquette, qui représente la distribution de probabilité réelle. L'entropie croisée diminue à mesure que la prédiction devient plus précise, atteignant zéro en cas de prédiction parfaite. Cette fonction de perte est utilisée pour l'entraînement d'un modèle de classification. En cas de classification binaire, l'entropie croisée peut être calculée comme suit :
+
+	L = − (ylog(p) + (1 − y)log(1 − p)) (2)
+
+Pour une classification avec plus de deux classes, une perte distincte est calculée pour chaque étiquette de classe par observation et les résultats sont sommés.
