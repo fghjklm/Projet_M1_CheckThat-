@@ -11,7 +11,7 @@
 \usepackage{parskip}
 \usepackage{xurl}
 
-\title{Plan de projet: Détection de subectivité dans les news}
+\title{Plan de projet: Détection de subjectivité dans les news}
 \author{IAFA-tigable - Responsable: OLEIWAN Joe \\ Contributeur: DELMOTE Adrien \\ Approbateur: MEUNIER Mortimer}
 
 \date{13/01/2024}
@@ -56,14 +56,14 @@ La tâche propose des corpus composés de 9 530 phrases annotées manuellement, 
 \section{Objectif}
 \qquad Il s'agira de développer des modèles basés sur de l'apprentissage automatique. Les modèles utilisés pourront s’appuyer sur des technologies de type  LLM (chatGPT, LangChain, etc.) et/ou sur d'autres modèles de machine learning en se basant sur un dictionnaire de textes (ex. : les forêts aléatoires).
 
-Les différents modèles et différentes configurations seront évalués (évaluation de l'efficacité) sur plusieurs jeux de données labellisés.
+Les différents modèles et différentes configurations seront évalués (évaluation de l'efficacité) sur plusieurs jeux de données labelisés.
 
-Fonctionnalité minimale : Un modèle d'apprentissage profond présentant des résultats corrects (cf. Contrôle qualité) sur la langue anglaise.
+Fonctionnalité minimale : Un modèle d'apprentissage profond présentant des résultats corrects (cf.\ref{Controle}) sur la langue anglaise.
 
 Fonctionnalités complémentaires :
 \begin{itemize}
-\item Un deuxième modèle présentant de bons résultats (cf. Contrôle Qualité) <----------------------------------------- sur une langue moins côtée (définition: langue sur laquelle les modèles sont moins entrainés par manque de données). 
-\item Sur chaque langue: un deuxième modèle utilisant l'autre architecture (LLM ou forêt, démerde toi avec la formulation).<------------------------------------------------------------
+\item Un deuxième modèle présentant de bons résultats (cf.\ref{Controle}) sur une langue moins côtée (définition: langue sur laquelle les modèles sont moins entrainés par manque de données). 
+\item Dans le contexte de chaque langue, il est proposé un deuxième modèle qui exploite l'autre architecture, soit le Large Language Model (LLM) ou le modèle basé sur la forêt.
 \end{itemize}
 
 \section{Parties prenantes}
@@ -80,14 +80,19 @@ Dates et intitulés des livrables:
     \item Dépôt Soutenance finale (Transparent) : avant fin avril 2024
 \end{itemize}
 
+\subsection{Communication avec l'UE Management} 
+
+La communication avec les responsables de l'UE management ce fait durant les cours de travaux dirigés prévus ainsi qu'à travers un serveur discord crée par les responsables pour échanger et poser d'éventuelles questions.
+
 
 \subsection{Client}
-\qquad Le client est Mme. Josiane Mothe, Professeur en Système d'information, Big Data, Recherche d'information, Exploration d'information et Apprentissage automatique à L'institut de Recherche Informatique de Toulouse (IRIT). Responsable et contributrice à plusieurs projets au cours des années, Mme MOTHE nous a proposé ce sujet sur la détection de la subjectivité s'appuyant sur la tâche 2 du CLEF 2023 et 2024 dont le but global est la détection de fake News.
+\qquad Le client est Mme. Josiane Mothe, Professeur en Système d'information, Big Data, Recherche d'information, Exploration d'information et Apprentissage automatique à L'institut de Recherche Informatique de Toulouse (IRIT). Responsable et contributrice à plusieurs projets au cours des années, Mme Mothe nous a proposé ce sujet sur la détection de la subjectivité s'appuyant sur la tâche 2 du CLEF 2023 et 2024 dont le but global est la détection de fake News.
 
 Même si nos modèles répondent aux mêmes critères que ceux demandés pour participer au CLEF 2024, nous ne faisons qu'utiliser les informations et données mises à notre disposition.
 
+\subsection{Communication avec le client}
+\qquad Afin d'assurer une bonne communication avec le client, il a été conclu pendant la réunion de lancement du projet que des réunions de 5 à 15 minutes seront faites en fin de journées sur chacun des deux jours prévus pour le projet dans la semaine, lundi et mardi. Ces réunions rapides nous permettent de tenir la cliente informée de l'avancement du projet et de définir dynamiquement les tâches à effectuer par la suite. Hors des réunions, nous communiquons par mails avec tous les participants en copie (\ref{Controle}). 
 
-\subsection{AMO}
 
 \subsection{Capture du besoin}
 \begin{center}
@@ -96,41 +101,46 @@ Même si nos modèles répondent aux mêmes critères que ceux demandés pour pa
  Source : référentiel projet - Lien : lien github ici ----------------ATTENTION---------------------
 \end{center}
 
-\chapter{Organisation}
-\section{Organisation globale}
+\subsection{Assistants maître d'ouvrage (AMO)}
 
-\subsection{Organisation du travail}
-\qquad Le projet se découpe en deux phases principales que nous abordons chacune avec leur propre méthode de management de projet.
-
-La première phase est la phase de recherche. Nous réalisons un Etat de l'Art des méthodes utilisées par les équipes de l'année 2023, des recherches effectuées sur la détection automatique de la subjectivité ainsi que l'avancement de la recherche sur les technologies qui pourraient nous être utiles (tel que le prompt engineering). Afin de pouvoir aisément diriger nos recherches, nous adoptons ici une méthode KanBan avec des discussions interne et avec le client de manière régulière.
-
-Après avoir effectué le choix de technologie, nous basculeront vers une méthode AGILE pour mieux convenir aux besoins de management de la phase de développement. (mettre un pointeur vers quelque chose qui va changer? maybe des milestones de la méthode agile?) <-------------------------
-
-\subsection{Communication avec le client}
-\qquad Afin d'assurer une bonne communication avec le client, il a été conclu pendant la réunion de lancement du projet que des réunions de 5 à 15 minutes seront faites en fin de journées sur chacun des deux jours prévus pour le projet dans la semaine, lundi et mardi. Ces réunions rapides nous permettent de tenir le client informé 
-de l'avancement du projet et de définir dynamiquement les tâches à effectuer par la suite. Hors des réunions, nous communiquons par mails avec tous les participants en copie (cf XXX titre de la partie qualité). <--------
-
-\subsection{Communication avec l'UE Management} 
+Les Assistants à la Maîtrise d'Ouvrage (AMO) M. Julien Contarin et M. Antoine Maîresse, anciens étudiants de M1 ayant fait ce projet en 2023 peuvent avoir le rôle de valider une proposition technique de notre part si besoin, de valider l'organisation du projet, d'accepter la gestion des risques du projet, de proposer des éléments d'assurance et de contrôle qualité ou aussi de nous conseiller dans les exigences à exprimer quant à la maintenabilité ou la pérennité du produit développé, d'assurer la validation des livrables, de valider le référentiel projet.
 
 \subsection{Communication avec les AMO} 
 
+La communication avec les Assistants maître d'ouvrage est établie à travers les mails échangés avec la cliente ainsi que dans une section dédié sur le même serveur discord que nous utilisons interne (\ref{ discord interne }) pour organiser des réunions de gestion projet.
+
+
+
+\chapter{Organisation}
+\section{Organisation du travail}
+\qquad Le projet se découpe en deux phases principales que nous abordons chacune avec leur propre méthode de management de projet.
+
+La première phase est la phase de recherche. Nous réalisons un État de l'Art des méthodes utilisées par les équipes de l'année 2023, des recherches effectuées sur la détection automatique de la subjectivité ainsi que l'avancement de la recherche sur les technologies qui pourraient nous être utiles (tel que le prompt engineering). Afin de pouvoir aisément diriger nos recherches, nous adoptons ici une méthode KanBan avec des discussions internes et avec la cliente de manière régulière.
+
+Après avoir effectué le choix de technologie, nous basculeront vers une méthode AGILE pour mieux convenir aux besoins de management de la phase de développement. \ref{referentiel projet}
+
+
+
+
+
 \section{Organisation interne de l'équipe}
 \subsection{Communication}
+\label{ discord interne }
 \qquad Afin de faciliter la communication interne, nous utilisons la plateforme de messagerie instantanée: Discord. L'objectif de Discord est de nous permettre de communiquer rapidement et de se partager des documents avant validation. Pour s'assurer que le serveur Discord reste organisé, chaque membre du groupe a les permissions nécessaires afin de créer, remanier ou supprimer les canaux de discussion.
 Au besoin, selon les tâches en cours, nous nous rassemblons en présentiel pour collaborer.
 
 \subsection{Suivi des tâches}
 \qquad Nous utilisons un outil de gestion de projet en ligne inspiré de la méthode KanBan : Trello. Il nous permet d’indiquer les différentes tâches à faire, les tâches en cours ainsi que les tâches finies, afin d’avoir un réel suivi sur le projet pour l’ensemble des membres du groupe. Le Trello nous sert aussi à regrouper tous les points à aborder et les informations importantes transmises lors des réunions, avant de les transcrire proprement dans les comptes-rendus de réunions.
 
-Référenctiel de structure projet : Nous établissons un document excel qui permet de sauvegarder la structuration de projet au niveau OBS (Organisation Breakdown Structure), PBS (Project Breakdown Structure), WBS (Work Breakdown Structure), diagramme de Gantt intial et un Giagramme de gantt que nous mettons à jour au fur et à mesure des besoins.
+Référenctiel de structure projet : Nous établissons un document excel qui permet de sauvegarder la structuration de projet au niveau OBS (Organisation Breakdown Structure), PBS (Project Breakdown Structure), WBS (Work Breakdown Structure), diagramme de Gantt intial et un diagramme de gantt que nous mettons à jour au fur et à mesure des besoins.
 
 \subsection{Gestion des ressources et de la production}
-\qquad Pour gérer nos ressources et nos productions, nous utilisons un système de contrôle de version distribué populaire : github. Nous déposons dans ce dépôt tous les documents validés d'après nos règles de qualité (cf qualité chapitre mon cul).<------------------------------------------------------- La gestion automatique des versions fournie par git et github nous permettent de pouvoir constamment accéder aux versions antérieures de chaque document. Le dépôt est visible publiquement afin de permettre aux parties prenantes de pouvoir consulter les ressources qui les intéressent.
+\qquad Pour gérer nos ressources et nos productions, nous utilisons un système de contrôle de version distribué populaire : github. Nous déposons dans ce dépôt tous les documents validés d'après nos règles de qualité (cf.\ref{Controle}). La gestion automatique des versions fournie par git et github nous permettent de pouvoir constamment accéder aux versions antérieures de chaque document. Le dépôt est visible publiquement afin de permettre aux parties prenantes de pouvoir consulter les ressources qui les intéressent.
 
 Lien github : \url{https://github.com/fghjklm/Projet_M1_CheckThat-}
 
-En parallèle, nous utilisons le logiciel Zotero afin de regrouper tous les articles potentiellement liés à nos objectifs. Nous effectuons des synthèses de ceux nous semblant les plus pertinents qui se retrouvent dans le github.
-Lien github des synthèses. <------------------------------------
+En parallèle, nous utilisons le logiciel Zotero afin de regrouper tous les articles potentiellement liés à nos objectifs. Nous effectuons des synthèses de ceux nous semblant les plus pertinents qui se retrouvent dans le dépôt \href{https://github.com/fghjklm/Projet_M1_CheckThat-/tree/main/articles}{git}.
+
 
 \chapter{Phase de Recherche}
 \section{Modèles et résultats des équipes de CLEF 2023}
@@ -139,27 +149,87 @@ CLEF : Conference and Labs of the Evaluation Forum.\\
 \qquad L'accès aux rapports des équipes de CLEF 2023 est une opportunité de taille dans la réalisation de notre projet. Nous explorons les méthodes ayant été utilisées et essayons d'en extraire les informations utiles : les modèles, méthodes de fine-tuning ou les raisons des mauvais résultats de certaines équipes.
 
 \section{État de l'Art de la détection automatique de la subjectivité}
-\qquad Nous effectuons également un état de l'art de la détection automatique de la subjectivité afin découvrir s'il existe des pistes différentes de celles explorées par les équipes de l'an dernier.
-lien vers github synthèse des articles <----------------
+\qquad Nous effectuons également un \href{https://github.com/fghjklm/Projet_M1_CheckThat-/tree/main/articles}{état de l'art de la détection automatique de la subjectivité} afin découvrir s'il existe des pistes différentes de celles explorées par les équipes de l'an dernier.
 
 
-\section{Avancement de la recherche sur le prompt engeeniring}
-\qquad Il est quasiment certain que nous aurons à utiliser le prompt engineering lors du dev, c'est pourquoi nous effectuons des recherches afin de trouver les méthodes les plus efficaces de prompt engineering. L'objectif est de perfectionner les requêtes que nous formulerons au LLM sélectionné dans le choix de technologie.
- (lien vers github rapport choix de techno) <----------------
+
+\section{Avancement de la recherche sur le prompt engineering}
+\qquad Il est quasiment certain que nous aurons à utiliser le prompt engineering lors du dev, c'est pourquoi nous effectuons des recherches afin de trouver les méthodes les plus efficaces de prompt engineering. L'objectif est de perfectionner les requêtes que nous formulerons au LLM sélectionné dans \href{https://github.com/fghjklm/Projet_M1_CheckThat-/tree/main/choix_techno}{le choix de technologie}.
+
 
 
 
 \chapter{Phase de développement}
 \centerline{En construction - à établir dans une version future du Plan Projet.}
 
-\chapter{Contrôle Qualité}
-\centerline{En construction}
 
+
+
+
+\chapter{Contrôle Qualité}
+\label{Controle}
+\qquad Dans le but de mener à bien le projet, nous définissons plusieurs objectifs, tant sur la qualité des livrables que sur la qualité de notre organisation générale. ( partie en cours de réflexion) 
+
+\section{Clarté de communication avec les parties prenantes}
+\begin{enumerate}
+    \item Au préalable des réunions, résumer au maximum les informations obtenues dans la journée
+    \item Lors des réunions, ne pas perdre de temps sur le son/écran fonctionnant mal. S'il y a un souci, les autres l'indiqueront.
+    \item Lors des réunions, un seul interlocuteur résume l'ensemble et la personne concernée détaille son point si demandé/nécessaire
+    \item Le trello sert de référentiel pour le travail à effectuer, il doit être mis à jour avant ou après chaque réunion 
+    \item S'il y a des remarques ou question à poser au client, elles doivent apparaître sur le Trello dans l'onglet adéquat
+    \item Template de CR de réunion à suivre
+    \item Les Mails doivent avoir une syntaxe [ IAFA-tigable ][Check that! Subjectivity] objet et en copie tout le monde ( CLient AMO et l'équipe)
+\end{enumerate}
+
+\section{Accessibilité des informations récoltées}
+\begin{enumerate}
+    \item Tous les articles lus, même de manière incomplète, doivent apparaitre sur zotero
+    \item Tout article utile au projet doit être synthétisé (au moins les informations utiles)
+    \item Le github contient la liste des articles utiles mais pas encore synthétisés
+    \item Toutes les synthèses d'article doivent être dans le github (accessibilité pour nous et les enseignants)
+    \item Nom des commit github: écrits en minuscules et underscore à la place des espaces
+    \item Clarté des synthèses :
+    \begin{enumerate}
+        \item La synthèse doit suivre le Template de synthèse de lecture de papiers de recherche (Template différent pour les CR des équipes 2023).
+        \item Nom des synthèses des CR des équipes 2023: "nom équipe" "quelques mots clef (2/3)" "synthèse".
+        \item Nom des synthèses d'articles scientifiques: "sujet article""mots clef (2/3)""synthèse"
+        \item La synthèse d'un document lu doit contenir en haut de page le nom du lecteur afin de savoir à qui s'adresser pour obtenir plus d'informations
+        \item Si possible, indiquer le paragraphe du document contenant l'information notée
+        \item Le lien vers l'article doit apparaît tout en haut de la synthèse
+    \end{enumerate}
+\end{enumerate}
+
+\section{Accessibilité des travaux effectués}
+\begin{enumerate}
+    \item Le discord ne sert qu'à communiquer à un instantanément ou à montrer un document avant qu'il soit validé. Après validation, il faut transférer les ressources dans l'endroit adéquat du github
+    \item Pour les documents nécessitant un logiciel (par exemple le gantt): le format de base doit être présent sur le github pour pouvoir le modifier aisément mais également une image (png ou jpeg) afin que tous puissent le consulter facilement.
+    \item ECRIRE LES REGLES DU GITHUB ( à définir)
+    \item Nom des commit github: écrits en minuscules et underscore à la place des espaces
+\end{enumerate}
+\section{Clarté des livrables d'UE}
+\begin{enumerate}
+    \item Cohérence des différentes parties du plan de projet
+    \item Division correcte des parties du plan de projet
+    \item Garder une trace des révisions effectuées et des anciennes versions des documents importants: 
+    \item Plan projet écrit au présent
+    \item Repasser, à froid, par une personne différente, sur les documents écrits pour vérifier les fautes de français
+    \item Les documents suivants doivent être validés par au moins deux personnes qui ne les as pas écrites avant d'apparaître sur le github: Gantt, CR de réunion.
+    \item Les documents suivants doivent être validés par tous à chaque version avant d'apparaître sur le github: plan de projet, Référentiel de structure de projet
+    \item La validation consiste en une réaction check vert sur discord
+\end{enumerate}
+\section{Clarté des livrables auprès de la cliente}
+\begin{enumerate}
+    \item Repasser, à froid, par une personne différente, sur les documents écrits pour vérifier les fautes de français
+    \item Les documents suivants doivent être validés par au moins deux personnes qui ne les as pas écrites avant d'apparaitre sur le github: Gantt, CR de réunion.
+    \item Les documents suivants doivent être validés par tous à chaque version avant d'apparaître sur le github:choix de technologie, les rapports de dev à rendre,
+    \item La validation consiste en une réaction check vert sur discord
+\end{enumerate}
 
 \chapter{ État actuel du projet}
 \qquad Dans cette section, nous présentons des liens vers les ressources actuelles du projet, structurées sur un dépôt github (cliquez sur les bouttons représentés par <- Boutton ->), vous y trouverez le référentiel de structure du projet, le diagramme de Gantt, les différentes versions de ce document et les avancements de la recherche et du développement.
 
 \section{Référentiel de structure du projet}
+\label{referentiel projet}
 \qquad Le référentiel du plan projet, comprenant l'organisation de la structure à travers l'Organisation Breakdown Structure (OBS), le Project Breakdown Structure (PBS), le Work Breakdown Structure (WBS), est accessible ici :
 \href{https://github.com/fghjklm/Projet_M1_CheckThat-/tree/main/referentiel_projet}{<- Référentiel projet ->}
 
@@ -183,6 +253,6 @@ lien vers github synthèse des articles <----------------
 \qquad Toutes les autres ressources liées au projet, tels que les rapports intermédiaires, les documents de conception, et les résultats des tests, sont également disponibles dans notre page GitHub.
 
 
-\chapter{\quad Bilan}
+\chapter{Bilan}
 \centerline{En construction - à établir dans la version 3 du Plan Projet.}
 \end{document}
