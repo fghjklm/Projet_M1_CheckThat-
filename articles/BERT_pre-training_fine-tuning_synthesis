@@ -30,4 +30,17 @@ sQuaD: stanford question answering dataset
 MNLI: Multigenre Natural language inference
 NER: Named entity recognition
 
-###########################################################################s
+###########################################################################
+Critique par rapport au projet de détéction de la subjectivité dans les news :
+Récapitulatif : Le document "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding" introduit BERT, un modèle 
+de représentation linguistique profondément bidirectionnel conçu pour améliorer la compréhension du langage.
+
+Points positifs :
+
+    -Le modèle est opensource
+    -Il est facilement flexible, pouvant être adapté à diverses tâches NLP avec un simple ajustement de la couche de sortie.
+    
+
+Points négatifs pour votre projet :
+
+   -Ancien et fait objet de beaucoup de recherches déja établies avec des variantes de ce modèle, les reproduire ne sera pas créatif ou nouveau.
