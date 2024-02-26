@@ -34,3 +34,16 @@ informations extraites:
 ----> VOIR LES PROMPT UTILISEES DANS ARTICLE
 
 ##############################################################################################
+Critique par rapport au projet de détéction de la subjectivité dans les news:
+Récapitulatif: Le document "Fraunhofer SIT at CheckThat! 2023" explore l'utilisation de LLMs comme ChatGPT pour l'augmentation des données 
+et la classification en few-shot, se concentrant sur la détection de la subjectivité dans les textes.
+
+
+points positifs:
+	 - bon résultats sur le fichier private test set (golden) en anglais
+	 - bon résultats sur le fichier dev set (notre test) en allemand
+
+points négatifs:
+	- Cette technique affaibli les performances tenant compte de la divergence des styles d'écritures générés.
+	- Mauvais résultats sur le fichier dev set en anglais
+	- Mauvais résultats sur le fichier test set (golden) en allemand
