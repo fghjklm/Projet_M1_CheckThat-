@@ -1,0 +1,36 @@
+Synthèse du CR de KUCST
+https://arxiv.org/pdf/2306.09108.pdf
+
+
+- Résultats :
+Anglais : 4
+
+- Modèles :
+K-Nearest Neighbors (𝐾 = 5) -> worst
+Logistic Regression
+Linear Support Vector Machine
+Multilayer Perceptron
+Decision Tree
+Random Forest
+Gradient Boosting -> best
+
+
+- Fine-tuning :
+All models are trained using a Train/test validation procedure, where two thirds of
+the data are used for training and the remaining part is used for testing (0.66 vs 0.33)
+
+
+- Traitement des données
+Plusieurs techniques de tokenisation:
+    - Word-level Bag-of-words (chaque mot)
+    - TF-IDF Weighted Bag-of-Words (attribution de poids en fonction de l'importance d'un mot et de sa fréquence) -> poor results
+    - Character-level Bag-of-Words (séquence de 1-4 caractère)
+    - POS Tagg Bag-of-Word (étiquettes grammaticales 1-4 lettres)
+    - Morphological features (analyse d'utiés lexicales et de leurs structures??)
+    - BERT encoding
+
+- Problèmes rencontrés
+
+
+
+- Eventuels tables ou critiques (un tiret pour chaque)

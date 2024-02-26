@@ -1,0 +1,30 @@
+Synthèse du CR de ES_VRAI
+
+- Résultats :
+Multilingue: 4 +
+
+- Modèles :
+BERT-Multilingual
+XLM-RoBERTa
+
+tests sur chaque modèle avec: dataset de base / dataset+upsampling / dataset + downsampling.
+Meilleurs résultats avec BERT-Multilingual sur dataset + upsampling
+
+
+- Fine-tuning :
+
+
+
+- Traitement des données :
+Deux tests différents: Upsampling (de la classe minoritaire) et downsampling (de la classe majoritaire).
+
+data aggregation: ils ont réuni tous les dataSet en un seul multilingue pour augmenter la taille du set d'apprentissage.
+
+
+
+- Problèmes rencontrés :
+imbalance
+
+
+- Critiques:
+aucun détail sur les méthodes utilisés
