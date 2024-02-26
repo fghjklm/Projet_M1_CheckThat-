@@ -51,3 +51,20 @@ Fonction de perte (L) :
 	L = − (ylog(p) + (1 − y)log(1 − p)) (2)
 
 Pour une classification avec plus de deux classes, une perte distincte est calculée pour chaque étiquette de classe par observation et les résultats sont sommés.
+
+##########################################################################################################################################################################
+Critique par rapport au projet de détéction de la subjectivité dans les news :
+Récapitulatif: Le document "FakeBERT: Fake News Detection in Social Media with a BERT-Based Deep Learning Approach" décrit une méthode de détection de fausses nouvelles en utilisant une combinaison de BERT et de réseaux de neurones convolutionnels pour améliorer l'exactitude de la classification.
+
+Points positifs :
+
+   
+    -Résultats de plusieurs modèles machine learning et deep learning fournis.
+    -Le document fournit une analyse exhaustive des performances et de l'architecture fakeBert utilisée, ce qui pourrait enrichir l'approche méthodologique de notre projet.
+    -La précision de 0,989 indique que le modèle est très performant pour une tâche de classification.
+
+Points négatifs :
+    
+    - Les caractéristiques linguistiques qui déterminent la subjectivité peuvent différer de celles utilisées pour juger de la véracité. Il faudrait réexaminer et potentiellement reconfigurer le modèle pour qu’il puisse distinguer correctement entre subjectivité et objectivité.
+    - La mise en œuvre de modèles aussi complexes pourrait nécessiter des ressources importantes et une expertise technique approfondie.
+    - Il faut considérer les risques de surajustement sur notre ensemble de données.
