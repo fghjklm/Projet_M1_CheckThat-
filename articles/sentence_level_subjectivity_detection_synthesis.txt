@@ -69,3 +69,20 @@ informations extraites:
 		meilleur
 
 ##############################################################################################
+Critique par rapport au projet de détéction de la subjectivité dans les news :
+Récapitulatif : Le document "A Corpus for Sentence-level Subjectivity Detection on English News Articles" décrit la création d'un 
+corpus annoté manuellement pour la détection de la subjectivité au niveau des phrases dans des articles d'actualité anglais, en utilisant
+des directives d'annotation indépendantes de la langue.
+
+Points positifs :
+
+    -Point de vu intéressant pour comprendre notre tâche de détéction de la subjectivité.
+    -Les auteurs ont tenté de surmonter les limites des approches précédentes en définissant la subjectivité d'une manière qui peut être appliquée à d'autres langues.
+    
+
+Points négatifs  :
+
+  
+    -L'accent est mis sur la subjectivité au niveau de la phrase, ce qui est très spécifique.
+    -Les biais des annotateurs et la subjectivité de tels corpus peuvent affecter leur applicabilité.
+    -Les paramètres de niveau linguistiques seront appris automatiquement par les réseaux de neuronnes, utile si l'on utilise du feature engineering en ML.
