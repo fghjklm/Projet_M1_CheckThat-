@@ -38,6 +38,21 @@ Les approches les plus réussies ont incorporé des connaissances supplémentair
 un pré-entraînement multilingue des modèles ou à une augmentation des données. Les meilleurs scores macro F1 
 se situent entre 0,75 et 0,82, ce qui montre que la tâche peut être abordée avec succès, mais qu'elle n'est 
 pas encore complètement résolue.
+##################################################################################################################
+Critique par rapport au projet de détéction de la subjectivité dans les news :
+Récapitulatif: Le document "Overview of the CLEF-2023 CheckThat! Lab on Subjectivity in News Articles" présente les résultats d'un défi collaboratif visant
+à identifier la subjectivité dans les articles de presse en plusieurs langues. Il détaille les méthodes utilisées par différentes équipes, l'utilisation de modèles pré-entraînés, 
+et les stratégies d'augmentation des données pour améliorer la détection de la subjectivité.
 
+Points positifs :
+
+    -Comparaison inter-équipes, permettant d'identifier les méthodologies les plus efficaces pour notre projet.
+    -Références vers les rapports de chaque équipe permettant d'analyser leurs études.
+   
+
+Points négatifs pour votre projet :
+
+    -Rapport de certaines équipes non disponibles.
+    -Manque d'informations par rapport à l'architecture utilisés par les équipes.
 
 ################################################################################################
