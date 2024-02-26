@@ -1,0 +1,364 @@
+\documentclass[11pt]{rapport_class}
+\usepackage[export]{adjustbox}
+\usepackage[utf8]{inputenc}
+% fonts
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+
+% images, pdfs, urls insertion
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{pdfpages}
+\usepackage{parskip}
+\usepackage{xurl}
+
+\title{Choix de technologie}
+\author{IAFA-tigable \\ Oleiwan Joe, Delmote Adrien, Meunier Mortimer, Bienassis Jules, Mouysset Martin}
+
+\date{12/02/2024}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Dans le cadre de notre sur la détection automatique de la subjectivité dans un texte de presse. Nous réalisons une revue des modèles existants afin d’effectuer le choix de l’architecture de celui que nous allons implémenter. Ce document synthétise toutes les informations pertinentes trouvées lors de la phase de recherche et argumente la direction actuelle de notre choix.
+\end{abstract}
+
+
+\tableofcontents
+
+\chapter {Introduction}
+\qquad Le postulat de base indique la création de deux modèles de classification: un premier utilisant la technologie des LLM et un deuxième utilisant une architecture plus classique. Cependant, nos recherches ont révélé que les résultats des modèles LLM sur cette tâche sont supérieurs. Ainsi nous avons pu explorer différentes pistes: 
+\begin{itemize}
+\item CheckThat 2023 : Utilisation de BERT et ses variantes (LLMs fine-tunables).
+\item BERT + LSTM et FakeBERT: BERT + CNN.
+\item Différent modèle de ‘LLMs généralisés’ (utilisés à travers des prompts).
+\end{itemize}
+Nous avons examiné les avantages et les inconvénients de chaque piste, en mettant l'accent sur l’importance de ces derniers quant à la détection de la subjectivité dans un texte.
+
+
+\chapter{LLMs “fine-tunable” (rapport des équipes de 2023)}
+
+\qquad Lors du “CheckThat! lab”  de l’édition 2023 de l’initiative CLEF, une dizaine d’équipes ont proposé des modèles ayant pour but de classifier des phrases comme étant soit objectives soit subjectives. Bien que ces équipes aient toutes utilisé des modèles différents, on peut noter de nombreuses similitudes. \\
+En effet, les équipes ont utilisé des variantes du modèle BERT (cf. “Table 3”)[\ref{Overview}], qu'elles soient monolingues ou multilingues. Le modèle BERT permet en effet d’obtenir un représentation sémantique des mots et des phrases, très utile pour détecter la subjectivité.  Ces modèles ont ensuite été “fine-tuned” sur les données spécifiques du projet de manière à apprendre à les classifier.
+NB: chatGPT n'est généralement pas utilisé lors de la classification. Une équipe a essayé de classifier avec ChatGPT, mais a obtenu des résultats plus faibles que la baseline (cf. \url{https://gitlab.com/checkthat_lab/clef2024-checkthat-lab/-/tree/main/task2/}) pour l’ensemble des langues évaluées, nous n'utilisons donc pas leur architecture.
+
+\begin{center}
+\includegraphics[height=12cm]{overview_Task2.png}\\
+\begin{tiny}
+    \href{https://ceur-ws.org/Vol-3497/paper-020.pdf}{cf. Overview of the CLEF-2023 CheckThat! Lab: Task 2 on
+Subjectivity in News Articles}\\
+\end{tiny}
+\end{center}
+
+\begin{center}
+\includegraphics[height=15cm]{table4.png}\\
+\begin{tiny}
+    \href{https://ceur-ws.org/Vol-3497/paper-020.pdf}{cf. Overview of the CLEF-2023 CheckThat! Lab: Task 2 on
+Subjectivity in News Articles}\\
+\end{tiny}
+\end{center}
+
+\qquad Du point de vue du volume des données, nous avons noté que la majorité des équipes ont considéré le label-bias : déséquilibrage dans la quantité de données étiquettées subjectives et objectives comme un point de qualité essentiel qui affecte les résultats. Plusieurs techniques de "data augmentation" on été utilisées comme par exemple :
+\begin{itemize}
+
+    \item chatGPT pour générer une phrase de la classe opposée d'une phrase donnée (cf. \href{https://ceur-ws.org/Vol-3497/paper-028.pdf}{Fraunhofer SIT at CheckThat! 2023: Can LLMs Be Used for Data Augmentation \& Few-Shot Classification? Detecting Subjectivity in Text Using ChatGPT}
+    et \href{https://ceur-ws.org/Vol-3497/paper-041.pdf}{TUDublin at CheckThat! 2023: ChatGPT for Data
+Augmentation}).
+    
+    \item "under-sampling and over-sampling" : sous-échantillonage sur la classe minoritaire et sur-échantillonage sur la classe majoritaire des données. (cf. \href{https://ceur-ws.org/Vol-3497/paper-026.pdf}{DWReCO at CheckThat! 2023: Enhancing Subjectivity Detection through Style-based Data Sampling}).
+   
+    \item back-translation : un processus de rétro-traduction vers une langue temporaire (cf. \href{https://ceur-ws.org/Vol-3497/paper-045.pdf}{Accenture at CheckThat! 2023: Impacts of Back-translation on Subjectivity Detection}).
+
+    \item data aggregation: processus qui réuni tous les dataSet en un seul multilingue pour augmenter la taille du set d'apprentissage. (cf. \href{https://ceur-ws.org/Vol-3497/paper-037.pdf}{ES-VRAI at CheckThat! 2023: Enhancing Model Performance for Subjectivity Detection through Multilingual Data Aggregation}).
+\end{itemize}
+ De plus, Une équipe a analysé l'impact du style d'écriture générée sur la classification (cf. \href{https://ceur-ws.org/Vol-3497/paper-026.pdf}{DWReCO at CheckThat! 2023: Enhancing Subjectivity Detection through Style-based Data Sampling}) ils démontrent à partir de cela que l'augmentation de données en tenant compte du style d'écriture est plus avantageuse que de la paraphrase, sauf que le meilleure style choisi diffère d'une langue à une autre.  
+ 
+Si le choix d’utiliser un BERT fine-tuné est fait, il conviendra donc d’essayer les méthodes de traitement des données qui s'avèrent efficaces afin de mesurer les diverses performances en essayant plusieurs combinaisons de paramètres.\\
+Ces architectures seront plus simples à mettre en œuvre grâce au nombre d’exemples et d'hyperparamètres cités dans les rapports de l’an dernier. Les équipes ont rencontré une légère difficulté quant à l’amélioration de leurs modèles à cause du manque de données. De plus, les meilleurs scores obtenus sont autour de 80.00 (en score F1, score prenant en compte les faux positifs et faux négatifs)(cf “Table 4”)[\ref{Overview}], il convient donc de s’assurer qu’il n’existe pas déjà une autre possibilité obtenant de meilleurs résultats.
+
+
+    
+\chapter{BERT+CNN/LSTM}
+\section{BERT+CNN}
+\qquad Dans le but de détecter les fake news, Rohit Kumar Kaliyar , Anurag Goswami et Pratik Narang nous présentent un modèle de LLM pouvant classifier si une news est véridique.[\ref{FakeBert}].
+
+Le modèle présenté combine à la fois une base d’encodage BERT relié en sortie à un réseau de neurones convolutionnel qui finit par classifier l’entrée donnée au modèle entrainé.
+
+Le jeu de données utilisé se compose de deux fichiers train.csv et test.csv : un ensemble de données de test sans labels. Il s'agit d'une collection de fausses et vraies nouvelles propagées à l'époque de l'élection présidentielle générale américaine-2016.
+
+Les chercheurs ont aussi testé d’autres modèles inclus dans leur rapport tel que ; 
+En Deep Learning : CNN avec BERT, LSTM avec GloVe, LSTM avec BERT.
+En MachineLearning: Multinominal Naive Bayes with GloVe (0.89 accuracy), K-Nearest Neighbors with GloVe, Decision Tree with GloVe word embedding (0.73 accuracy), Random Forest with GloVe.
+
+\begin{center}
+\subsection {Architecture FakeBERT : BERT + CNN }
+\includegraphics[height=10cm]{fakebert.png}\\
+\begin{tiny}
+    (cf. \href{https://link.springer.com/article/10.1007/s11042-020-10183-2}{FakeBERT: Fake news detection in social media with a BERT-based deep learning approach})
+\end{tiny}
+\end{center}
+
+
+Le FakeBERT se compose de 5 couches:
+\begin{itemize}
+    \item Couche de convolution chargée d’améliorer la représentation sémantique des mots de longueur différente.
+    \item Couche de mise en commun maximale chargée de réduire la taille de la représentation des mots afin d’optimiser le nombre de calculs.
+    \item Couche d’aplanissement chargée de modifier le format des données.
+    \item Deux couches denses chargées d’effectuer la classification finale.
+\end{itemize}
+
+
+\subsection{Les résultats du modèle}
+\includegraphics[height=6cm]{fakebert_result1.png}\\
+Précision atteinte : 0.989
+
+\qquad Le graphe de précision montre que l'exactitude du modèle sur les données d'entraînement et de test augmente avec le nombre d'époques. Il semble que le modèle n'ait pas de surajustement (overfitting) significatif puisque la précision de test suit de près la précision d'entraînement.
+De même, le graphe de la loss indique une diminution typique au fur et à mesure que le nombre d'époques augmente, ce qui est attendu lors de l'entraînement d'un modèle neuronal. Encore une fois, le fait que la perte de test suive la perte d'entraînement indique que le modèle généralise bien et n'est pas surajusté.
+
+\begin{center}
+    \includegraphics[height=3.5cm]{fakebert_result2.png}\\
+    \begin{tiny}
+        (cf. \href{https://link.springer.com/article/10.1007/s11042-020-10183-2}{FakeBERT: Fake news detection in social media with a BERT-based deep learning approach})\\
+    \end{tiny}
+\end{center}
+
+\qquad Ces résultats montrent un taux très élevé de vrais positifs et de vrais négatifs, ce qui indique une performance élevée dans la classification correcte des nouvelles. Les nombres relativement faibles de faux positifs et de faux négatifs montrent que le modèle est fiable et ne commet pas beaucoup d'erreurs de classification.
+
+La précision de 0,989 indique que le modèle est très performant pour une tâche de classification, mais il faudrait réexaminer et potentiellement reconfigurer le modèle pour qu'il puisse distinguer correctement entre subjectivité et objectivité. Les caractéristiques linguistiques qui déterminent la subjectivité peuvent être subtiles et différer de celles utilisées pour juger de la véracité. Par exemple, le modèle devra être affiné pour reconnaître les opinions, l’ironie et le sarcasme, et les expressions discriminantes d'après la définition de la subjectivité de CheckThat \href{https://ceur-ws.org/Vol-3370/paper10.pdf}{On the Definition of Prescriptive Annotation
+Guidelines for Language-Agnostic Subjectivity
+Detection}, plutôt que la présence de faits vérifiables.
+
+\section{BERT+LSTM}
+\qquad Un autre bon modèle, quoiqu'ayant montré des résultats légèrement plus faibles, est l'utilisation d'une couche de LSTM après les couches de convolution.
+\vspace{0mm}
+
+Les modèles de type BERT permettent une représentation précise de la sémantique de la phrase, tandis qu'une architecture de type LSTM (ou les deux) permet de classifier en utilisant des “patterns” assez complexes, nous semblant pertinent pour détecter la subjectivité, tel que le modèle BERT + LSTM suivant détectant le sarcasme, dont l'architecture est décrite comme suit:
+
+\begin{center}
+    \includegraphics[height=10cm]{archi.png}\\
+    \begin{tiny}
+        (cf. \href{https://link-springer-com.gorgone.univ-toulouse.fr/article/10.1007/s10844-022-00755-z}{BERT-LSTM model for sarcasm detection in code-mixed social media post})\\
+        \vspace{0mm}
+    \end{tiny}
+\end{center}
+
+\qquad Une couche de neurone dense s’occupe ensuite de faire la classification en deux classes. Nous supposons ici que la détection de sarcasme est proche de la détection de subjectivité. En effet, une phrase contenant du sarcasme est automatiquement considérée comme subjective.Sur le dataset entraîné, le modèle a obtenu un f1 score de 0.98, ce qui est excellent sur la tâche précise sur laquelle il a été entraîné. 
+
+
+\section{Limitations des modèles FakeBERT et BERT+LSTM}
+\qquad Ces deux architectures, bien qu’efficaces, requièrent un grand nombre de données (le minimum observé pour un modèle monolingue est 6000 données distinctes). Cela peut être un problème dans le cadre de notre projet où le nombre de données est assez réduit (~6000 toutes langues confondues, entre 800 et 1600 par langue). Ces modèles ayant été testé sur des ensembles de données monolingues, c’est un problème à résoudre si on veut utiliser ce type d’architecture.
+
+
+
+
+    
+\chapter{LLMs généralisés}
+
+\section{Concernant l’utilisation les LLMs généralisés}
+\qquad Contrairement aux autres pistes qui possèdent de la littérature concernant cette tâche particulière de classification de texte, nous n’avons pas trouvé d’information concernant l’utilisation de LLM généralisés comme Llama ou Mistral. Cela pourrait être un nouvel angle d’attaque du problème qui pourrait être pertinent mais demandera de développer en grande partie nous même la solution. On pourrait, par exemple, se baser sur un mistral fine-tuned déjà existant. \\
+Dans le but d'explorer la piste des LLM généralisés dans la détection de textes subjectifs, nous allons devoir effectuer une comparaison afin de choisir celui qui semble le plus efficace.
+
+\section{Collection de références}
+\qquad Une collection de références est un ensemble de tests standardisés utilisé pour évaluer et comparer les performances des modèles d'intelligence artificielle, en particulier dans le domaine de la compréhension du langage naturel. 
+
+
+Chaque benchmark est conçu pour tester des aspects spécifiques de la compréhension et du raisonnement d'un modèle d'IA. Par exemple :
+
+\textbf{Explication des benchmarks pour compréhension des résultats :}
+\begin{itemize}
+\item BoolQ (Boolean Questions) : Un benchmark de compréhension de lecture où les modèles répondent à des questions fermées par oui ou non en se basant sur un passage de texte court.
+\item PIQA (Physical Interaction QA) : Teste la compréhension physique d'un modèle par des questions pratiques, demandant de prédire l'issue d'interactions physiques dans des scénarios donnés.
+\item SIQA (Social Interaction QA) : Un benchmark de raisonnement social qui pose des questions basées sur des scénarios de la vie quotidienne pour tester la compréhension des normes sociales et des conséquences des actions.
+\item HellaSwag : Un benchmark pour l'évaluation de la compréhension du langage modèle et la prédiction de fin d'histoires. Les modèles doivent choisir la continuation la plus plausible d'un scénario parmi plusieurs options.
+\item WinoGrande : Un test de raisonnement de bon sens à grande échelle qui améliore le WSC (Winograd Schema Challenge) original. Il évalue la capacité d'un modèle à résoudre des problèmes de désambiguïsation pronominale.
+\item ARC (AI2 Reasoning Challenge) Easy (ARC-e) et Challenge (ARC-c) : Un ensemble de questions de quiz scientifique de niveau scolaire. ARC-e contient des questions plus faciles, tandis que ARC-c comprend des questions jugées plus difficiles pour les modèles d'IA.
+\item OBQA (Open Book Question Answering) : Un benchmark de compréhension de lecture qui teste la capacité du modèle à répondre à des questions de connaissance générale sans accéder à une source externe d'information (comme si l'examen était "à livre ouvert").
+\end{itemize}
+
+De plus, nous pourrons utiliser la plateforme de \href{https://huggingface.co/spaces/HuggingFaceH4/open_llm_leaderboard}{ Hugging Face } comportant un classement des LLM open source par rapport à ces benchmarks. Ce classement est mis à jour chaque semaine et nous permet de récuperer des modèles modifiés.
+
+
+
+\newpage
+
+\section{Comparaison LLAMA}
+
+\qquad Meta AI propose une gamme de modèles LLaMA (Large Language Model Meta AI) de traitement du langage naturel avec des architectures allant de 7B à 65B paramètres [\ref{LLaMA}], utilisant un algorithme de tokenisation byte-pair encoding (BPE) basé sur le SentencePiece de Kudo et Richardson (2018). Les modèles ont été entraînés sur un ensemble de données opensources, offrant ainsi une variété de capacités adaptées à divers besoins en NLP.
+
+\subsection{Principales caractéristiques}
+
+\qquad L’architecture de LLaMA à évolué par rapport à l’architecture originale Transformer voici ses modifications : 
+\begin{itemize}
+\item LLaMA utilise une technique de pré-normalisation où la normalisation est appliquée à l'entrée de chaque sous-couche du transformateur au lieu de sa sortie. Ceci est fait pour améliorer la stabilité durant l'entraînement. La fonction de normalisation utilisée est RMSNorm, qui a été introduite par Zhang et Sennrich en 2019.
+\item Au lieu de l'activation ReLU habituellement utilisée dans les réseaux de neurones, LLaMA utilise la fonction d'activation SwiGLU, proposée par Shazeer en 2020. Cette fonction est connue pour améliorer les performances du modèle. LLaMA utilise une dimension de 2/3×4d pour cette fonction d'activation, contrairement à PaLM qui utilise une dimension de 4d.
+\item LLaMA élimine les embeddings positionnels absolus et utilise à la place des embeddings positionnels rotatifs (RoPE), qui ont été introduits par Su et al. en 2021. Ces embeddings sont ajoutés à chaque couche du réseau et permettent au modèle de mieux capturer la relation entre les positions dans les séquences de données.
+\end{itemize}
+
+
+
+\subsection{Principaux résultats}
+\begin{center}
+    \includegraphics[height=7cm]{Zero_show_perf.png}\\
+
+    \begin{tiny}
+        (cf. \href{https://arxiv.org/pdf/2302.13971.pdf}{LLaMA: Open and Efficient Foundation Language Models})
+    \end{tiny}
+\end{center}
+
+\textbf{Tâches en Zero-shot et Few-shot : }
+\begin{itemize}
+\item Zero-shot : Description textuelle de la tâche et exemple de test donnés, le modèle génère une réponse ou classe des réponses proposées.
+\item Few-shot : Quelques exemples de la tâche (entre 1 et 64) et un exemple de test sont donnés, le modèle génère la réponse ou classe différentes options.
+\end{itemize}
+\begin{tiny}
+    (cf. \href{https://arxiv.org/pdf/2302.13971.pdf}{LLaMA: Open and Efficient Foundation Language Models})
+\end{tiny}
+
+
+\vspace{5mm}
+\textbf{Performances sur les benchmarks : } \\
+\vspace{0mm}
+\qquad LLaMA montre des performances compétitives sur une variété de benchmarks de raisonnement de bon sens, y compris BoolQ, PIQA, SIQA, HellaSwag, WinoGrande, ARC (facile et challenge) et OpenBookQA. De plus, Sur des benchmarks de question-réponse en livre fermé comme Natural Questions et TriviaQA, LLaMA-65B atteint des performances de pointe en zero-shot et few-shot. Et pour finir, LLaMA-13B est compétitif avec GPT-3 et Chinchilla malgré sa taille plus petite,fonctionnant sur un seul GPU V100 pendant l'inférence. 
+
+\vspace{3mm}
+
+
+\vspace{5mm}
+\textbf{Compréhension massive en multitâche : } \\
+
+\begin{center}
+    \includegraphics[height=10cm]{multitâche.png}\\
+    \begin{tiny}
+        (cf. \href{https://arxiv.org/pdf/2302.13971.pdf}{LLaMA: Open and Efficient Foundation Language Models})
+    \end{tiny}
+\end{center}
+
+\qquad Sur le benchmark MMLU, LLaMA-65B est légèrement derrière Chinchilla et PaLM, ce qui pourrait être dû à l'utilisation limitée de livres et de documents académiques dans les données d'entraînement de LLaMA.
+
+\vspace{3mm}
+\textbf{Point sur la toxicité, biais et vérité de réponses du modèle } \\
+\vspace{0mm}
+\qquad Les modèles de langage, incluant LLaMA, peuvent produire du langage toxique et présenter des biais, notamment en termes de genre, âge, et religion. Des évaluations telles que RealToxicityPrompts, CrowS-Pairs, et WinoGender révèlent une augmentation de la toxicité avec la taille du modèle et des biais spécifiques, bien que LLaMA surpasse légèrement d'autres modèles. Malgré des scores plus élevés dans TruthfulQA par rapport à GPT-3, indiquant une meilleure adéquation à la vérité, les réponses de LLaMA restent mitigés. 
+
+
+
+\subsection{Conclusion}
+\qquad Pour conclure, LLaMA est un modèle de langage puissant et polyvalent avec des améliorations architecturales significatives et des optimisations efficaces. Cependant, il fait face à des défis liés à la toxicité, aux biais, et à la qualité des réponses. De plus, il est moins efficace que certains modèles dans la compréhension massive en multitâche. Nous verrons à travers l’étude suivante sur le LLM Mixtral comment répondre à ces manques, pour répondre aux besoins spécifiques d'applications comme la détection de la subjectivité dans les FakeNews.
+
+
+
+\newpage
+
+\section{Comparaison Mistral et Mixtral}
+
+\qquad La société MistralAI propose deux modèles Open sources, Mistral 7B et Mixtral 8x7B dans leur papier de présentation, ces modèles sont comparés aux modèles Llama et GPT.
+
+\subsection{Présentation des modèles}
+
+\qquad Mistral 7B est un modèle basé sur l’architecture Transformers comme les modèles Llama, mais avec quelques modifications.
+
+\begin{itemize}
+    \item Un système d’attention par fenêtre glissante, au lieu que tous les tokens précédent soient conservés, l’attention n’est gardée que sur un nombre fixe de tokens qui s'enchaînent au fur et à mesure que le traitement se réalise.  Cela augmente la vitesse de traitement et donc réduit la latence pour un traitement du même nombre de tokens tout en conservant l’influence de tous les tokens pour réaliser les prédictions.
+    \item Le nombre fixe de tokens permet d'implémenter une mémoire tampon roulante. Au lieu de devoir conserver tous les tokens précédent entre 2 séparateurs, et donc d’avoir un cache de taille croissant tout le long de la prédiction, ici le cache atteint une taille maximale et est écrasé constamment au long de la prédiction. Cela permet de réduire la quantité de mémoire utilisée sans toucher à la qualité des prédictions.
+    \item La prédiction des tokens se fait en séquence, mais le prompt est connu dans sa totalité dès le début, il est donc découpé en morceau ce qui permet de définir la taille de la fenêtre à la taille des morceaux et de pré-remplir la mémoire tampon par morceaux plutôt que mot à mot.
+\end{itemize} 
+
+
+\qquad Mixtral 8x7B est un modèle d’un nouveau type, Sparse Mixture of Experts (SMoE). Les tokens au lieu de tous être traités par un seul modèle vont être répartis selon un réseau de routage vers deux des LLM experts qui pourront traiter leurs tokens, leur sortie étant enfin additionnée pour obtenir un résultat. Mixtral pour ce faire utilise donc 8 modèles 7B comme experts qui sont entrainés en même temps que le réseau de routage. Ce qui permet d’utiliser par traitement un nombre bien plus faible de paramètres (13B) que ce qui est accessible (47B).
+
+\vspace{12cm}
+
+\subsection{Principaux résultats}
+\qquad MistralAI nous a facilité le travail en publiant une comparaison entre les modèles LLama, Mistral et GPT. Voici ici compilés leurs résultats. Afin d'avoir une comparaison plus neutre, nous avons rajouté en *couleur* les scores publiés par LLama.
+
+
+\begin{center}
+    \includegraphics[height=13cm]{comparaison_mistral_mixtral.png}\\
+    \begin{tiny}
+         ce tableau est une combinaison de plusieurs tableaux provenant de diverse documents: \href{https://arxiv.org/pdf/2401.04088v1.pdf}{Mixtral of Experts}, \href{https://arxiv.org/pdf/2303.08774v4.pdf}{GPT-4 Technical Report},\\
+         \href{https://arxiv.org/pdf/2307.09288v2.pdf}{Llama 2 : Open Foundation and Fine-Tuned Chat Models},
+         \href{https://arxiv.org/pdf/2310.06825v1.pdf}{Mistral 7B},
+         \href{https://arxiv.org/pdf/2005.14165v4.pdf}{Language Models are Few-Shot Learners}
+         \\
+    \end{tiny} 
+\end{center}
+
+\vspace{0mm}
+\qquad Dans ce tableau regroupant plusieurs informations de différents articles scientifiques. On remarque que Mistral 7B obtient des performances similaires à Llama 2 33B et Mixtral que le modèle 70B, sur l’ensemble des benchmarks réalisés. De plus, en se basant sur les mêmes conditions utilisées par OpenAI, Mistral 7B a également des résultats cotoyant ceux de GPT 3.5.
+
+\vspace{5mm}
+
+\begin{center}
+    \includegraphics[height=5cm, center]{biais.png}\\
+    \begin{tiny}
+         ( cf. \href{https://arxiv.org/pdf/2401.04088v1.pdf}{Mixtral of Experts})\\
+    \end{tiny} 
+\end{center}
+Concernant le biais dans les réponses données par Mixtral, celles-là ont de meilleurs résultats que celles fournies par Llama 2. Cependant, cela pourrait être encore amélioré.
+\vspace{10mm}
+
+\begin{center}
+\includegraphics[height=2.5cm, center]{multilangue.png}\\
+    \begin{tiny}
+       ( cf. \href{https://arxiv.org/pdf/2401.04088v1.pdf}{Mixtral of Experts})\\
+    \end{tiny} 
+\end{center}
+
+
+\qquad Le modèles Mixtral a également été entraîné avec des données multilingues et donc testé sur une collection de références multilingue et on peut voir que les résultats sont très bons également dans d’autres langues en plus de l’Anglais.
+
+\subsection{Conclusion}
+\qquad Les modèles proposés par MistralAI montrent une plus grande efficacité que les modèles Llama ou GPT en utilisant moins de paramètre et en réalisant plus rapidement leur traitement. Les biais contenu dans les réponses est plus réduit que les autres modèles et Mixtral et très performant dans plusieurs langues. De plus, ces modèles ont l'avantage d’être sous Licence Apache 2.0 plutôt qu’une licence propriétaire. Tous ces critères sont d'excellentes nouvelles pour notre projet. Si nous partons sur cette piste, il faudra vérifier s'il nous est possible d'utiliser Mixtral ou si nous devrons cantonner à Mistral.
+
+
+
+\chapter{Conclusion : choix}
+\qquad Suite à nos recherches, nous avons exploré diverses pistes pour la détection automatique de la subjectivité dans les articles de presse. L'architecture Bert-fineTuned, largement adoptée par les meilleures équipes du CheckThat 2023, apparaît comme une solution fiable et aisément implémentable grâce à l'abondance de documentation. Toutefois, étant donné que les performances maximales atteintes par ces équipes ne sont pas spécifiées, il serait judicieux d'envisager d'autres options.
+
+Les architectures combinant BERT avec CNN (surnommé FakeBERT) et BERT avec LSTM montrent un potentiel certain pour cette tâche, en raison de leur aptitude à comprendre des structures de phrases complexes et à identifier des éléments tels que le sarcasme ou la véracité des informations. Ces compétences sont essentielles pour la détection de la subjectivité. Néanmoins, leur efficacité dépend de la disponibilité d'une importante quantité de données d'entraînement, ce qui pourrait limiter leur applicabilité à notre projet, compte tenu de la taille relativement modeste de notre ensemble de données. Une stratégie envisageable consiste à adopter une approche "multilingue" globale, similaire à celle employée par certaines équipes en 2023. La question de développer une architecture neuronale spécifique à nos données demeure ouverte et mérite d'être discutée avec notre client.
+
+Par ailleurs, les modèles de langage à grande échelle (LLM) pré-entraînés, tels que Mistral, ouvrent de nouvelles perspectives. Grâce à leur capacité d'adaptation à des tâches spécifiques avec un minimum de données supplémentaires via le prompt engineering, ces modèles représentent une voie prometteuse à explorer. Bien qu'il n'existe pas encore de documentation sur leur application spécifique à la détection de la subjectivité, leur flexibilité et leur performance en traitement du langage naturel en font des candidats attrayants. Il Restera à déterminer le choix entre Mistral et Mixtral.
+
+Au vu de ces éléments, nous suggérons l'ordre de tests suivant :
+\begin{itemize}
+    \item  Mistral ou Mixtral, pour évaluer leur potentiel innovant dans notre contexte.
+    \item  Un modèle FakeBert (BERT+CNN), qui a montré d'excellents résultats dans la détection de fausses nouvelles. Les performances précises (score) restent à spécifier.
+    \item L'architecture Bert-fineTuned, pour bénéficier de résultats éprouvés et fiables.
+\end{itemize}
+
+La priorisation de ces tests sera discutée avec le client. Étant donné l'ampleur du projet et les contraintes de temps, il est possible que nous ne puissions pas explorer chaque piste pour toutes les langues envisagées. Cette démarche stratégique permettra d'aligner nos efforts de recherche et développement avec les objectifs et les ressources disponibles.
+
+\chapter{Références}
+\begin{enumerate}  
+    \item \label{LLaMA} LLaMA par Meta Ai :\\
+    \url{https://arxiv.org/pdf/2302.13971.pdf}
+    \medskip
+    \item \label{FakeBert} FakeBert :\\
+    \url{https://link.springer.com/article/10.1007/s11042-020-10183-2}
+    \medskip
+    \item \label{Annotation} Annotation Guidelines for subjectivity detection: \\
+    \url{ https://ceur-ws.org/Vol-3370/paper10.pdf}
+    \item \label{LSTM} Bert + LSTM : \\
+    \url{https://link-springer-com.gorgone.univ-toulouse.fr/article/10.1007/s10844-022-00755-z}
+    \item \label{Initiative} Initiative CLEF :  \\
+    \url {https://www.clef-initiative.eu/}
+    \item \label{GIT} CLEF 2023, Task 2: \\ 
+    \url {https://checkthat.gitlab.io/clef2023/task2/}
+    \item \label{Overview} Overview CLEF2023 Task 2 : \\ 
+    \url {https://ceur-ws.org/Vol-3497/paper-020.pdf} 
+    \item \label{GPT-4} GPT-4 Technical Report :\\
+    \url{https://arxiv.org/pdf/2303.08774v4.pdf}
+    \item \label{llama 2} Llama 2: Open Foundation and Fine-Tuned Chat Models :\ 
+    \url{https://arxiv.org/pdf/2307.09288v2.pdf}
+    \item \label{Mixtral} Mixtral of Experts :\\
+    \url {https://arxiv.org/pdf/2401.04088v1.pdf}
+    \item \label{Mistral} Mistral 7B :\\
+    \url{https://arxiv.org/pdf/2310.06825v1.pdf}
+    \item \label{Few-Shot} Language Models are Few-Shot Learners : \\
+    \url{https://arxiv.org/pdf/2005.14165v4.pdf}
+\end{enumerate}
+
+
+\end{document}
