@@ -63,3 +63,13 @@ Transofrmations souvent similaires pour chaque style et innapropriées (détaill
 plan to investigate data selection methods
 
 
+
+Critique par rapport au projet de détéction de la subjectivité dans les news:
+Récapitulatif: L'article  "DWReCO at CheckThat! 2023: Enhancing Subjectivity Detection through Style-based Data Sampling" et présenté au CheckThat! Lab lors de la conférence CLEF 2023, décrit une méthode innovante pour améliorer la détection de la subjectivité dans les textes journalistiques en utilisant des modèles GPT-3 pour générer des données d'entraînement supplémentaires basées sur différents styles de subjectivité. L'approche vise à remedier au problème de déséquilibre des classes dans les tâches de détection de subjectivité en enrichissant l'ensemble de données avec des textes générés dans différents styles journalistiques.
+
+points positifs:
+	 - Technique efficace pour notre projet étant donné que la subjectivité peut varier considérablement selon les contextes culturels et linguistiques.
+	 - Tenir compte du style d'écriture est plus avantageux en termes de performances que du praphrasage.
+
+points négatifs:
+	 -Le meilleure style à choisir n'est pas le même pour toutes les langues, il diffère d'une langue à une autre.
