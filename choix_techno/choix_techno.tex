@@ -134,7 +134,7 @@ Detection}, plutôt que la présence de faits vérifiables.
 \qquad Un autre bon modèle, quoiqu'ayant montré des résultats légèrement plus faibles, est l'utilisation d'une couche de LSTM après les couches de convolution.
 \vspace{0mm}
 
-Les modèles de type BERT permettent une représentation précise de la sémantique de la phrase, tandis qu'une architecture de type LSTM (ou les deux) permet de classifier en utilisant des “patterns” assez complexes, nous semblant pertinent pour détecter la subjectivité, tel que le modèle BERT + LSTM suivant détectant le sarcasme, dont l'architecture est décrite comme suit:
+Les modèles de type BERT permettent une représentation précise de la sémantique de la phrase, tandis qu'une architecture de type LSTM (ou les deux) permet de classifier en utilisant des “patterns” assez complexes. Ces deux architectures nous semblent pertinentes pour détecter la subjectivité, telles qu'utilisées dans le modèle BERT + LSTM devant détecter le sarcasme décrit ici:
 
 \begin{center}
     \includegraphics[height=10cm]{archi.png}\\
@@ -144,7 +144,9 @@ Les modèles de type BERT permettent une représentation précise de la sémanti
     \end{tiny}
 \end{center}
 
-\qquad Une couche de neurone dense s’occupe ensuite de faire la classification en deux classes. Nous supposons ici que la détection de sarcasme est proche de la détection de subjectivité. En effet, une phrase contenant du sarcasme est automatiquement considérée comme subjective.Sur le dataset entraîné, le modèle a obtenu un f1 score de 0.98, ce qui est excellent sur la tâche précise sur laquelle il a été entraîné. 
+\qquad Une couche de neurone dense s’occupe ensuite de faire la classification en deux classes. Nous supposons ici que la détection de sarcasme est proche de la détection de subjectivité. En effet, une phrase contenant du sarcasme est automatiquement considérée comme subjective, d'apèrs la définition de subjectivité de CheckThat!,\href{https://ceur-ws.org/Vol-3370/paper10.pdf}{On the Definition of Prescriptive Annotation
+Guidelines for Language-Agnostic Subjectivity
+Detection}, plutôt que la présence de faits vérifiables. Le modèle a obtenu un f1 score de 0.98, ce qui est excellent sur la tâche précise sur laquelle il a été entraîné. 
 
 
 \section{Limitations des modèles FakeBERT et BERT+LSTM}
