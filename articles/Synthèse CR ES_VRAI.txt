@@ -1,4 +1,6 @@
 Synthèse du CR de ES_VRAI
+https://ceur-ws.org/Vol-3497/paper-037.pdf
+
 
 - Résultats :
 Multilingue: 4 +
@@ -27,4 +29,5 @@ imbalance
 
 
 - Critiques:
-aucun détail sur les méthodes utilisés
+4ème en multilingue, aucune info sur chaque langue séparément.
+aucun détail sur les méthodes utilisés -< à part l'idée du down et upsampling on ne peut pas utiliser ceci de manière brute
