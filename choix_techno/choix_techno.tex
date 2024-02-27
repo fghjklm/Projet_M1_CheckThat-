@@ -47,16 +47,16 @@ NB: chatGPT n'est généralement pas utilisé lors de la classification. Une éq
 \begin{center}
 \includegraphics[height=12cm]{overview_Task2.png}\\
 \begin{tiny}
-    \href{https://ceur-ws.org/Vol-3497/paper-020.pdf}{cf. Overview of the CLEF-2023 CheckThat! Lab: Task 2 on
-Subjectivity in News Articles}\\
+    (cf. \href{https://ceur-ws.org/Vol-3497/paper-020.pdf}{Overview of the CLEF-2023 CheckThat! Lab: Task 2 on
+Subjectivity in News Articles})\\
 \end{tiny}
 \end{center}
 
 \begin{center}
 \includegraphics[height=15cm]{table4.png}\\
 \begin{tiny}
-    \href{https://ceur-ws.org/Vol-3497/paper-020.pdf}{cf. Overview of the CLEF-2023 CheckThat! Lab: Task 2 on
-Subjectivity in News Articles}\\
+    (cf.\href{https://ceur-ws.org/Vol-3497/paper-020.pdf}{Overview of the CLEF-2023 CheckThat! Lab: Task 2 on
+Subjectivity in News Articles})\\
 \end{tiny}
 \end{center}
 
@@ -112,7 +112,7 @@ Le FakeBERT se compose de 5 couches:
 
 \subsection{Les résultats du modèle}
 \includegraphics[height=6cm]{fakebert_result1.png}\\
-Précision atteinte : 0.989
+Précision atteinte : 0.989 (ce résultat n'est pas sur le jeu CLEF)
 
 \qquad Le graphe de précision montre que l'exactitude du modèle sur les données d'entraînement et de test augmente avec le nombre d'époques. Il semble que le modèle n'ait pas de surajustement (overfitting) significatif puisque la précision de test suit de près la précision d'entraînement.
 De même, le graphe de la loss indique une diminution typique au fur et à mesure que le nombre d'époques augmente, ce qui est attendu lors de l'entraînement d'un modèle neuronal. Encore une fois, le fait que la perte de test suive la perte d'entraînement indique que le modèle généralise bien et n'est pas surajusté.
@@ -325,7 +325,7 @@ Par ailleurs, les modèles de langage à grande échelle (LLM) pré-entraînés,
 
 Au vu de ces éléments, nous suggérons l'ordre de tests suivant :
 \begin{itemize}
-    \item  Mistral ou Mixtral, pour évaluer leur potentiel innovant dans notre contexte.
+    \item  Mistral, pour évaluer leur potentiel innovant dans notre contexte.
     \item  Un modèle FakeBert (BERT+CNN), qui a montré d'excellents résultats dans la détection de fausses nouvelles. Les performances précises (score) restent à spécifier.
     \item L'architecture Bert-fineTuned, pour bénéficier de résultats éprouvés et fiables.
 \end{itemize}
