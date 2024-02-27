@@ -48,8 +48,10 @@ Label bias (imbalance)
 
 
 - Critique:
+très mauvais résultats dans le tableau des scores (6/6 en italien et 11/11 en anglais)
+
 Aucune information sur la raison des choix de traitement de donneés: pourquoi tout convertir en minuscule, enlever les symboles et les mots vides?
 
-Beaucoup de pré-traitement de donnes, des biais ont peut-être té glissés à ce moment là.
+Beaucoup de pré-traitement de données, des biais ont peut-être été glissés à ce moment là.
 
 Pas de moyen de savoir si la technique de data augment (chatgpt 4) fonctionne correctement car pas de test de référence sans les autres modifications.

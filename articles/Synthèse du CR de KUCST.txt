@@ -33,4 +33,10 @@ Plusieurs techniques de tokenisation:
 
 
 
-- Eventuels tables ou critiques (un tiret pour chaque)
+- critique:
+Modèles simples à implémenter.
+
+Effectivement résultats médiocres (4ème en anglais alors que seule langue traitée) mais permet de voir que l'utilisation de LLM (BERT) a été bien plus efficace (surement une bonne piste)
+Bonne explication des techniques de tokenisation -> résumés peuvent être utiles puisqu'on as pas encore les connaissances.
+
+

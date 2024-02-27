@@ -65,7 +65,9 @@ vocabulaire à un rôle crucial dans la classification et cette méthode de data
 
 
 - critique:
-
+meilleurs résutats: 3èmes sur arabe et italien -> pas super efficace (vrmt pas terrible ailleurs)
+bonne explication détaillée de chaque modèle et technique utilisée
+au vue des résultats, back-translation pas hyper efficace car reformulations peuvent perdre des "mots-clefs" qui font la subjectivité.
 
 
 
