@@ -7,7 +7,6 @@ Auteur de la synthèse: Mouysset Martin
 Lien: https://ceur-ws.org/Vol-3370/paper10.pdf
 traduction DEEPL subjectivity
 La subjectivité est une caractéristique du langage : en prononçant un énoncé, le locuteur exprime simultanément sa position, son attitude et ses sentiments à l'égard de l'énoncé, laissant ainsi sa propre empreinte.
-exprime à la fois sa position, son attitude et ses sentiments à l'égard de l'énoncé, laissant ainsi sa propre marque.
 
 L'article détaille la manière dont les données du dataset ont été annoté en tant que subjectives ou objectives.
 
