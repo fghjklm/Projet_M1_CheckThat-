@@ -1,0 +1,73 @@
+Synthèse du CR de DWReCo
+https://ceur-ws.org/Vol-3497/paper-026.pdf
+
+
+
+- Résultats :
+English: 1
+German : 4
+Turkish : 2
+
+
+- Modèles :
+Roberta-base -> anglais
+German BERT -> allemand
+BERTurk -> turkish
+
+
+
+- Fine-tuning :
+short sentences -> max input size= 128 tokens
+3 epochs
+batch size= 8
+
+tests témoins, avec data augment de style "normal" (paraphrase) et avec fulls styles:
+anglais et turque profitent beaucoup de tous les styles, allemand ça ne change quasi rien.
+
+styles choisis pour chaque langue: Turque éxagération, Allemand Propagande et Anglais parti pris
+
+
+
+
+- Traitement des données
+
+subj en tâches journalistiques =!= subj dans autre tâche
+construct a subjectivity checklist from journalism and linguistic studies (table 2) => emotionnel, propagande, préjudice, partisan, derogatory, exagéré
+utilisation de différents styles subjectifs augmente les performances
+
+Comparaison entre deux modèles GPT-3: text-davinci-003, gpt-3.5-turbo. => résultats similaires
+text-davinci-003 globalement meilleur et a été choisi.
+prompts dans table 3 et 4.
+templates de prompt dans chaquer langue, car prompt en anglais pour texte en allemand/turk à moins bien marché
+prompts court et simples pour garder cohérence.-> pas beaucoup de contexte et on perds l'idée de journalisme.
+Essayer de construire des prompts plus complets?
+Compliqué sur les langues non-anglaises
+
+détails sur la génération de données:
+calcul de la différence entre le nombre de données obj et subj -> donne la taille des échantillons de chaque label à récupérer
+sélection de data obj aléatoirement.
+sélection de données subjectives attribuées au style "normal" (non exagérées d'une quelconque manière)
+création de nouvelles données dans chaque style à partir des échantillons objectifs
+over-sampling et under-sampling utilisé: over-sampling déjà expliqué, down sampling ils ont simplement supprimé différence/2 données objectives pour arriver à un 50/50
+
+
+
+
+- Problèmes rencontrés
+
+A cause de la vaste def de la subj et des réponses biaisées des modèles GPT-3, il faut faire attention aux texte généré qu'il soit adéquat au style journalistique attendu.
+Malgré tout ce qu'ils disent et ont essayé: au final ils ont donné les modèles entrainés sur les datasets under-sampled.....
+Les textes générés étaient souvnet écrit à la première personne (je) et donc peu ressemblant à un article de journal.
+Transofrmations souvent similaires pour chaque style et innapropriées (détaillé sur le document mais irrelevant dans une synthèse)
+-> plus de travail sur le prompting pourrait aider?
+plan to investigate data selection methods
+
+- critiques:
+Bons résultats en général (cf classements)
+
+Utilisation intéressante des différents styles de subjectivité -> styles sourcés et résultats prometteurs
+Meilleure utilisation de chatgpt que j'ai vue en 2023
+
+cf problèmes rencontrés.
+
+
