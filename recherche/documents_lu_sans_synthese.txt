@@ -1,0 +1,69 @@
+#######################################################################################
+
+CheckThat 2023:
+
+#######################################################################################
+
+Toutes les sources ont été synthétisées
+
+
+
+#######################################################################################
+
+Introduction et définition subjectivité:
+
+#######################################################################################
+
+Une seule synthèse sur le github.
+Nombre de sources sur zotero : 14
+
+
+
+#######################################################################################
+
+LLM + prompt:
+
+#######################################################################################
+
+Je n'ai que 2 comptes rendus et il y a beaucoup de sources sur zotero: 8 (actuellement difficilement accessibles à cause de zotero gratuit)
+
+
+
+
+#######################################################################################
+
+Modeles et Architectures:
+
+#######################################################################################
+
+An attention-based CNN-LSTM model for subjectivity detection in opinion-mining
+Lien: https://www.zotero.org/groups/5443590/iafa-tiguable/collections/EH4ENABE/items/Z3C6NCIF/attachment/97TQRP2K/reader
+
+BERT‑LSTM model for sarcasm detection in code‑mixed social media post
+Lien: https://www.zotero.org/groups/5443590/iafa-tiguable/collections/EH4ENABE/items/SG53M7XA/attachment/EPB972MD/reader
+
+DEBERTAV3: IMPROVING DEBERTA USING ELECTRA-STYLE PRE-TRAINING WITH GRADIENTDISENTANGLED EMBEDDING SHARING
+Lien: https://www.zotero.org/groups/5443590/iafa-tiguable/collections/EH4ENABE/items/IBYLXFWM/attachment/DLK4UVWJ/reader
+
+GPT-4 Technical Report
+Lien: https://www.zotero.org/groups/5443590/iafa-tiguable/collections/EH4ENABE/items/XJ4EHLMQ/attachment/2BFHHCLI/reader
+
+RoBERTa: A Robustly Optimized BERT Pretraining Approach
+Lien: https://www.zotero.org/groups/5443590/iafa-tiguable/collections/EH4ENABE/items/XYN4ATDD/attachment/PQP3JCQP/reader
+
+Transformers: State-of-the-Art Natural Language Processing
+Lien: https://www.zotero.org/groups/5443590/iafa-tiguable/collections/EH4ENABE/items/CL5KZMIM/attachment/5FBLUN9Q/reader
+
+
+#######################################################################################
+
+Pistes diverses:
+
+#######################################################################################
+
+Je n'ai que 1 synthèses (9 articles sur zotero) 
+
+
+
+
+
