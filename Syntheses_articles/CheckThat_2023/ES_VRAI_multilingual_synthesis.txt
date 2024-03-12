@@ -1,6 +1,6 @@
-Synthèse du CR de ES_VRAI
-https://ceur-ws.org/Vol-3497/paper-037.pdf
-
+Article lu: ES-VRAI at CheckThat! 2023: Enhancing Model Performance for Subjectivity Detection through Multilingual Data Aggregation
+Lien: https://ceur-ws.org/Vol-3497/paper-037.pdf
+Auteur de la synthèse: Mortimer MEUNIER
 
 - Résultats :
 Multilingue: 4 +

@@ -1,5 +1,5 @@
-Article lu: FakeBERT: Fake news detection in social media
-with a BERT-based deep learning approach
+Article lu: FakeBERT: Fake news detection in social media with a BERT-based deep learning approach
+Lien : https://link.springer.com/article/10.1007/s11042-020-10183-2
 Auteur de la synthèse: Mouysset Martin
 
 Papier détaillant un modèle nommé "FakeBert".

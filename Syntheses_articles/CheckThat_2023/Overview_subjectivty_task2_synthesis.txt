@@ -1,10 +1,9 @@
 #############################################################################################
-Article lu: Overview of the CLEF-2023 CheckThat! Lab: Task 2 on
-Subjectivity in News Articles
-
+Article lu: Overview of the CLEF-2023 CheckThat! Lab: Task 2 on Subjectivity in News Articles
+Lien: https://ceur-ws.org/Vol-3497/paper-020.pdf
 Auteur de la synthèse: Oleiwan Joe
 
-Lien: https://ceur-ws.org/Vol-3497/paper-020.pdf
+
 
 informations extraites:
 -(0)	: Edition 2023: 6 langues, 9530 phrases, 12 équipes, 40 soumissions

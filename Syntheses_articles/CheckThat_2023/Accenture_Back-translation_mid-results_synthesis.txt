@@ -1,5 +1,6 @@
-Synthèse du CR d'Accenture:
-https://ceur-ws.org/Vol-3497/paper-045.pdf
+Article lu : Accenture at CheckThat! 2023: Impacts of Back-translation on Subjectivity Detection
+Lien: https://ceur-ws.org/Vol-3497/paper-045.pdf
+Auteur de la synthèse: Mortimer MEUNIER
 
 
 - Résultats:

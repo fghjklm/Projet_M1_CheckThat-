@@ -1,11 +1,6 @@
-Synthèse de lecture d'articles scientifique
-Lecteur et rédacteur du document: Delmote Adrien 
-
-#############################################################################################
-
 Article lu: A Survey on Concept-Level Sentiment Analysis Techniques of Textual Data
-
 Lien: https://www.researchgate.net/publication/352621441_A_Survey_on_Concept-Level_Sentiment_Analysis_Techniques_of_Textual_Data
+Auteur de la synthèse: Delmote Adrien 
 
 Les numéros [X] correspondent au numéro de l’article dans les références de cet article si vous voulez avoir plus de détails.
 

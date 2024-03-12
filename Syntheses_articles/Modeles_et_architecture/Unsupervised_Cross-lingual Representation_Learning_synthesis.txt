@@ -1,10 +1,8 @@
-##############################################################################################
-
 Article lu :Unsupervised Cross-lingual Representation Learning at Scale
-
+lien :http://arxiv.org/abs/1911.02116
 Auteur de la synthèse: Mouysset Martin
 
-lien :http://arxiv.org/abs/1911.02116
+
 
 Article détaillant le modèle XLM-RoBERTa.
 C'est un modèle très efficace pour du multilangue, pas forcément ce qui nous interesse, mais plutôt très efficace sur des jeux de données faible.

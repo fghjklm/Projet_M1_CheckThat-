@@ -1,12 +1,6 @@
-Synthèse de lecture d'articles scientifique
-Lecteur et rédacteur du document: Delmote Adrien 
-
-#############################################################################################
-
 Article lu: How to use Large Language Models for Text Analysis
-
 Lien: https://arxiv.org/abs/2307.13106
-
+Auteur de la synthèse: Delmote Adrien 
 
 Résumé
 

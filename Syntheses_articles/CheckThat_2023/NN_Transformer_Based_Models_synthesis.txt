@@ -1,10 +1,8 @@
-##############################################################################################
-Article lu:NN at CheckThat! 2023: Subjectivity in News Articles
-Classification with Transformer Based Models
-
+Article lu:NN at CheckThat! 2023: Subjectivity in News Articles Classification with Transformer Based Models
+lien : https://ceur-ws.org/Vol-3497/paper-027.pdf
 Auteur de la synthèse: Mouysset Martin
 
-lien : https://ceur-ws.org/Vol-3497/paper-027.pdf
+
 
 informations:
 (1)

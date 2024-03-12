@@ -1,5 +1,6 @@
-Synthèse du CR de DWReCo
-https://ceur-ws.org/Vol-3497/paper-026.pdf
+Article lu: DWReCO at CheckThat! 2023: Enhancing Subjectivity Detection through Style-based Data Sampling
+Lien: https://ceur-ws.org/Vol-3497/paper-026.pdf
+Auteur de la synthèse: Mortimer MEUNIER
 
 
 

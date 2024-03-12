@@ -1,10 +1,8 @@
-##############################################################################################
-Article lu: A Corpus for Sentence-level Subjectivity Detection
-on English News Articles
-
+Article lu: A Corpus for Sentence-level Subjectivity Detection on English News Articles
+lien: https://arxiv.org/pdf/2305.18034.pdf
 Auteur de la synthèse: Oleiwan Joe
 
-lien: https://arxiv.org/pdf/2305.18034.pdf
+
 
 informations extraites:
 -(0)	: Etude sur corpus italiens et anglais.

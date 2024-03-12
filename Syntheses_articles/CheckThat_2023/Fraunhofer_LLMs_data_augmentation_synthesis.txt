@@ -1,12 +1,9 @@
 ##############################################################################################
-Article lu : Fraunhofer SIT at CheckThat! 2023: Can LLMs Be
-Used for Data Augmentation & Few-Shot
-Classification? Detecting Subjectivity in Text Using
-ChatGPT
-
+Article lu : Fraunhofer SIT at CheckThat! 2023: Can LLMs Be Used for Data Augmentation & Few-Shot Classification? Detecting Subjectivity in Text Using ChatGPT
+Lien : https://ceur-ws.org/Vol-3497/paper-028.pdf
 Auteur de la synthèse: Oleiwan Joe
 
-Lien : https://ceur-ws.org/Vol-3497/paper-028.pdf
+
 
 informations extraites:
 -(0)	: Edition 2023: Augmentation des données (équilibration de classes) en utilisant des 

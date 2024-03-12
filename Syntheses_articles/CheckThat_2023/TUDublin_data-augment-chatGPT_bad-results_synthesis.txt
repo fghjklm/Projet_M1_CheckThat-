@@ -1,5 +1,6 @@
-Synthèse du CR de TUDublin:
-https://ceur-ws.org/Vol-3497/paper-041.pdf
+Article lu: TUDublin at CheckThat! 2023: ChatGPT for Data Augmentation
+Lien: https://ceur-ws.org/Vol-3497/paper-041.pdf
+Auteur de la synthèse: Mortimer MEUNIER
 
 - Résultats:
 English: 11 -

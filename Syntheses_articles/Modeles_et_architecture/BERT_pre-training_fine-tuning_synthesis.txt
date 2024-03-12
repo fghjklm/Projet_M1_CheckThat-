@@ -1,6 +1,5 @@
 ##########################################################################
-Informations sur BERT
-Articles de base: BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding
+Article lu: BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding
 Lien : https://aclanthology.org/N19-1423.pdf
 Path from seed (Clef Overview) : 29-11
 Autheur: Joe Oleiwan

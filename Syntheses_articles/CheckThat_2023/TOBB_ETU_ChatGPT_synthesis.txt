@@ -1,8 +1,8 @@
-Article lu: TOBB ETU at CheckThat! 2023: Utilizing ChatGPT to
-Detect Subjective Statements and Political Bias
+Article lu: TOBB ETU at CheckThat! 2023: Utilizing ChatGPT to Detect Subjective Statements and Political Bias
+Lien: https://ceur-ws.org/Vol-3497/paper-047.pdf
 Auteur de la synthèse: Mouysset Martin
 
-Lien: https://ceur-ws.org/Vol-3497/paper-047.pdf
+
 
 Utilisation de ChatGTP pour la classification.
 

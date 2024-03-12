@@ -1,10 +1,7 @@
-#####################################################################
-Article lu : FakeBERT: Fake news detection in social media
-with a BERT-based deep learning approach
-
-Auteur de la synthèses: Oleiwan Joe
-Path from seed (Clef Overview) : 29-15
+Article lu : FakeBERT: Fake news detection in social media with a BERT-based deep learning approach
 Lien : https://link.springer.com/article/10.1007/s11042-020-10183-2
+Path from seed (Clef Overview) : 29-15
+Auteur de la synthèses: Oleiwan Joe
 
 OBJECTIF: est d'utiliser BERT et un CNN pour détécter les fake news
 MODELE : Un modèle deep learning basé sur BERT en combinant différents blocs parallèles du CNN de couche unique : FakeBERT with BERT

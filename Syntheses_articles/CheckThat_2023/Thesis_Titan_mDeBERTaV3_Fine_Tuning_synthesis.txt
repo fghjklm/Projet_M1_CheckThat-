@@ -1,9 +1,8 @@
-Article lu: Thesis Titan at CheckThat! 2023: Language-Specific
-Fine-tuning of mDeBERTaV3 for Subjectivity
-Detection
+Article lu: Thesis Titan at CheckThat! 2023: Language-Specific Fine-tuning of mDeBERTaV3 for Subjectivity Detection
+Lien: https://ceur-ws.org/Vol-3497/paper-030.pdf
 Auteur de la synthèse: Mouysset Martin
 
-Lien: https://ceur-ws.org/Vol-3497/paper-030.pdf
+
 
 
 Modèle utilisé : mDeBERTaV3-base

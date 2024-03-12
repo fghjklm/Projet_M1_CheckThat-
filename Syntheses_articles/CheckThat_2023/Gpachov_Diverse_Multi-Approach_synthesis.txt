@@ -1,9 +1,7 @@
-Article lu: Gpachov at CheckThat! 2023: A Diverse
-Multi-Approach Ensemble for Subjectivity Detection
-in News Articles
+Article lu: Gpachov at CheckThat! 2023: A Diverse Multi-Approach Ensemble for Subjectivity Detection in News Articles
+Lien: https://ceur-ws.org/Vol-3497/paper-035.pdf
 Auteur de la synthèse: Mouysset Martin
 
-Lien: https://ceur-ws.org/Vol-3497/paper-035.pdf
 
 Seulement disponible pour le dataset anglais
 2e meilleur score, solution intéressante

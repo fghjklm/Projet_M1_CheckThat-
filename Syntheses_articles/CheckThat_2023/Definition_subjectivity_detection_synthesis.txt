@@ -1,10 +1,8 @@
-#############################################################################################
-Article lu: On the Definition of Prescriptive Annotation
-Guidelines for Language-Agnostic Subjectivity
-Detection
+Article lu: On the Definition of Prescriptive Annotation Guidelines for Language-Agnostic Subjectivity Detection
+Lien: https://ceur-ws.org/Vol-3370/paper10.pdf
 Auteur de la synthèse: Mouysset Martin
 
-Lien: https://ceur-ws.org/Vol-3370/paper10.pdf
+
 traduction DEEPL subjectivity
 La subjectivité est une caractéristique du langage : en prononçant un énoncé, le locuteur exprime simultanément sa position, son attitude et ses sentiments à l'égard de l'énoncé, laissant ainsi sa propre empreinte.
 

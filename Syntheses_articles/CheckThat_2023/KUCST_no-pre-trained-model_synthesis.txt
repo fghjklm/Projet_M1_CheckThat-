@@ -1,6 +1,6 @@
-Synthèse du CR de KUCST
-https://arxiv.org/pdf/2306.09108.pdf
-
+Article lu: KUCST at CheckThat 2023: How good can we be with a generic model?
+Lien: https://arxiv.org/pdf/2306.09108.pdf
+Auteur de la synthèse: Mortimer MEUNIER
 
 - Résultats :
 Anglais : 4
