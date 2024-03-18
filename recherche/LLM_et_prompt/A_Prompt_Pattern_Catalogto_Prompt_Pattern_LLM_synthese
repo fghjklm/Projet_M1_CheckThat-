@@ -3,6 +3,9 @@ Lien : https://arxiv.org/abs/2302.11382
 Autheur: Adrien Delmote
 [x,y] x= le numéro de la page y= le numéro du paragraphe
 
+Résumé
+Cet article explique différents modeles prompts 
+
 I.Introduction 
 prompt :
 	 [1,3]Ensemble d’instructions données à un LLM qui programme le LLM en le personnalisant et/ou en améliorant ou affinant ses capacités.
