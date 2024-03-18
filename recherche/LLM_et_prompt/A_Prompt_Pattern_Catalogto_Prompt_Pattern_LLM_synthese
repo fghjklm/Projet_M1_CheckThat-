@@ -1,0 +1,274 @@
+Article lu: A Prompt Pattern Catalog to Enhance Prompt Engineering with ChatGPT
+Lien : https://arxiv.org/abs/2302.11382
+Autheur: Adrien Delmote
+[x,y] x= le numéro de la page y= le numéro du paragraphe
+
+I.Introduction 
+prompt :
+	 [1,3]Ensemble d’instructions données à un LLM qui programme le LLM en le personnalisant et/ou en améliorant ou affinant ses capacités.
+	Prompt définit le contexte de la conversation et indique au LLM quelles informations sont importantes et quelle devrait être la forme et le contenu de la sortie souhaitée.
+	[1,5] Exemple : À partir de maintenant, je voudrais que vous me posiez des questions pour déployer une application Python sur AWS. Lorsque vous aurez suffisamment d'informations pour déployer l'application, créez un script Python pour automatiser le déploiement."
+
+
+III.A CATALOG OF PROMPT PATTERNS FOR CONVERSATIONAL LLMS
+
+ Les modèles de prompt suivent un format spécifique dans l’article :
+	-un nom et une classification : ils sont dans le tableau 
+	-Contexte et l’Objectif : décrit le modèle et le problème qu’il résout et les objectifs qu’il atteint.
+	- la motivation : justification du problème et explique pourquoi le résoudre est important
+	- La structure : la structure est le squelette du modèle, cette structure peut varier selon le contexte, mais on doit garder des éléments fondamentaux.
+	- exemple
+- Conséquence : avantages et les inconvénients du modèle
+
+
+ les différent catégorie et les modèles dedans 
+-[4,2] Input sémantics :
+	-traite de la manière dont un LLM comprend l'entrée et de la façon dont il traduit l'entrée en quelque chose qu'il peut utiliser pour générer une sortie.
+	- Meta Language Creation
+- [4,3] Output Customization
+	La contrainte ou l'adaptation des types, formats, structures ou autres propriétés de la sortie générée par le LLM.
+	- Output Automater , Persona , Visualization generator, Recipe, Template
+- [4,4] Error identification
+	-L'identification et la résolution des erreurs dans la sortie générée par le LLM.
+	-Fact Check List , Reflection
+[4,5]- Prompt improvement
+	-l'amélioration de la qualité de l'entrée et de la sortie
+	- Question refinement, Alternative Approaches, Cognitive Verifier, Refusal Breaker 
+[4,6]- Interaction category
+	-L'interaction entre l'utilisateur et le LLM
+	- Flipped interaction, Game Play, Infinite Generation 
+[4,7]- Context Control
+	-le contrôle des informations contextuelles dans lesquelles opère le LLM
+
+	-Context Manager
+    Nom Pattern              Type                        Objectif                                         Contexte
+Méta Language Création | Sémantics            | Expliquer la sémantique d’une langue alternative | Créer un prompt via une langue alternative 
+                       |                      | (notation abrégée, transition d’états...)        |
+                       |                      |                                                  | 
+Output Automater       | Output Customization | Permet au LLM de générer un script pouvant       | Réduire l’effort manuel nécessaire pour mettre en œuvre 
+                       |                      | automatiquement exécuter toutes les étapes qu’il | les recommandations de sortie du LLM 
+                       |                      | recommande dans sa sortie                        |
+                       |                      |                                                  |
+Persona                | Output Customization | Donne au LLM une « Personalité » qui l’aide à    | La sortie du LLM adopte un certain point de vue ou une 
+                       |                      | sélectionner les types de sortie à générer et    | certaine perspective
+                       |                      | les détails sur lesquels se concentrer           | 
+                       |                      |                                                  |
+Fact Check List        | Error identification | Garantir que le LLM produit une liste de faits   | Utilisateur veut être informé sur les faits sur lesquels
+                       |                      | présents dans la sortie et constituant une partie| la sortie est basée
+                       |                      | importante des énoncés dans cette sortie         |
+                       |                      |                                                  |
+Question refinement    | Prompt Improvement   | Garantir que le LLM suggère toujours des         | Utilisateur cherche une question à poser pour obtenir  
+                       |                      | questions potentiellement meilleures ou plus     | une réponse précise
+                       |                      | affinées                                         |
+                       |                      |                                                  |
+Context Manager        | Context Control      | Permet aux utilisateurs de spécifier ou de       | Utilisateur veut un plus grand contrôle sur les déclarations
+                       |                      | supprimer le contexte d’une conversation avec un | que le LLM prend en compte ou ignore lors de la génération de sortie 
+                       |                      | LLM. Cela permet de focaliser la conversation sur|  
+                       |                      | des sujets spécifiques ou d’exclure les sujets   |
+                       |                      | non liés                                         |
+                       |                      |                                                  |
+Flipped interaction    | Interaction          | Demander au LLM de poser des questions pour      | Utilisateur souhaite que le LLM dirige la conversation 
+                       |                      | obtenir des informations qu’il aurait besoin     | afin de l’orienter vers un objectif spécifique 
+                       |                      |                                                  |
+Alternative Approaches | Prompt Improvement   | Assurer qu’un LLM propose toujours d’autre façon | Utilisateur souhaite réfléchir à ce qu’il fait et à déterminer
+                       |                      | poursuive pas uniquement les approches qui lui   | s’il s’agit de la meilleure approche pour atteindre son objectifs 
+                       |                      | d’accomplir une tâche afin que l’utilisateur ne  |
+                       |                      | sont familières                                  |
+                       |                      |                                                  |
+Infinite generation    | Interaction          | Générer automatiquement des séries de sorties    | Utilisateur demande plusieurs sortie d’une même instructions 
+                       |                      | sans avoir à réintroduire à chaque fois le       |
+                       |                      | prompt. Cela permet de limiter la quantité de    |
+                       |                      | texte que l’utilisateur doit taper pour produire |
+                       |                      | des sorties                                      |
+                       |                      |                                                  |
+Visualization generator| Output Customization | Utiliser la génération de texte pour créer des   | Utilisateur souhaite avoir des images ou des diagrammes pour
+                       |                      | visualisations tels que des images et des        | plus facilement comprendre les concepts 
+                       |                      | diagrammes                                       |
+                       |                      |                                                  |
+Reflection             | Error identification | Demander au modèle d’expliquer automatiquement   | Utilisateur veut évaluer plus précisément la validité des résultats
+                       |                      | la justification derrière les réponses données à |
+                       |                      | l’utilisateur                                    |
+
+
+
+(je vois pas l’utilité de mettre des paragraphe car c’est très bien structuré dans l’article donc je mets que la page)
+
+Les modèle de prompts :
+
+The Meta Language Creation Pattern [4]
+Motivations : un terme peut être plus concis, non ambigu ou clair dans une langue. Ou tout simplement il y a une certaine notation À avoir.
+Structure ; When I say X, I mean Y (or would like you to do Y) ou être lié à une action when I say X, I want you to do Y
+exemple :
+À partir de maintenant, chaque fois que je tape deux identifiants séparés par une "→", je décris un graphe. Par exemple, "a → b" décrit un graphe avec les nœuds "a" et "b" et un bord entre eux. Si je sépare les identifiants par "-[w:2, z:3]→", j'ajoute des propriétés au bord, comme un poids ou une étiquette."
+conséquence : 
+- peut créer des confusions, il ne faut pas d’ambiguïté par exemple "chaque fois que je sépare deux éléments par des virgules, cela signifie que le premier élément précède le second élément" pourrait créer un potentiel de confusion significatif et entraîner des sémantiques inattendues si la ponctuation impliquant des virgules est utilisée dans l'instruction.
+
+The output Automater Pattern [5]
+Motivation : sortie d’un LLM est souvent une séquence d’étapes à suivre pour l’utilisateur. Demander aux utilisateurs d'effectuer continuellement les étapes manuelles dictées par la sortie de LLM est fastidieux et sujet aux erreurs.
+Structure Whenever you produce an output that has at least one step to take and the following properties (alternatively, always do this)
+Produce an executable artifact of type X that will automate these steps
+le X correspond au script que l’on veut par exemple un script python 
+exemple : 
+Dorénavant, chaque fois que vous générez du code qui s'étend sur plusieurs fichiers, générez un script Python qui peut être exécuté pour créer automatiquement les fichiers spécifiés ou apporter des modifications aux fichiers existants pour insérer le code généré.
+Conséquence : 
+	-l'artefact d'automatisation doit être défini de manière concrète sinon le LLM dira qu’il ne pourra pas l’automatiser 
+	-LLM a besoin d'un contexte conversationnel suffisant pour générer un artefact d'automatisation fonctionnel dans le contexte cible, Par exemple le système de fichiers d’in projet sur un ordinateur MAC par rapport à Windows.
+- Les LLMs peuvent faire des erreurs sur les scripts.
+
+Persona [7]
+Motivation : on ne sait pas quels types de sorties ou quels détails sont importants, mais on peut savoir le rôle ou le type de personne à qui on confit la tache : le modèle permet aux utilisateurs d’exprimer ce dont ils ont besoin sans connaître les détails exacts des sorties.
+Structure
+Act as persona X ou Provide outputs that persona X would create
+le X s’agit du type de personne, il peut être exprimé de plusieurs manières, allant d'une description de poste, d'un titre, d'un personnage fictif, d'une figure historique, etc. La persona devrait susciter un ensemble d'attributs associés à un titre de poste bien connu, à un type de personne, si un champ d'application plus spécifique pour le type de sortie est connu, l'utilisateur peut le fournir dans cette déclaration.
+Exemple : 
+"À partir de maintenant, agissez en tant que réviseur de sécurité. Portez une attention particulière aux détails de sécurité de tout code que nous examinons. Fournissez des sorties telles que le ferait un réviseur de sécurité concernant le code."
+La personnalité peut être inhumain
+"Vous allez faire semblant d'être un terminal Linux pour un ordinateur qui a été compromis par un attaquant. Lorsque je tape une commande, vous allez produire le texte correspondant que le terminal Linux produirait."
+Conséquence
+	-Les LLM peuvent créer des hypothèses
+	-Les LLM peuvent demander où avoir besoin de plus de détail.
+
+
+
+Template
+Motivation : on doit avoir une sortie précise pour certains cas d’utilisation.
+I am going to provide a template for your output 
+X is my placeholder for content 
+Try to fit the output into one or more of the placeholders that I list 
+Please preserve the formatting and overall template that I provide 
+This is the template: PATTERN with PLACEHOLDERS
+exemple
+"Je vais fournir un modèle pour votre sortie. Tout ce qui est en majuscules est un espace réservé. Chaque fois que vous générez du texte, essayez de l'insérer dans l'un des espaces réservés que je liste. Veuillez conserver le formatage et le modèle global que je fournis sur https://myapi.com/NAME/profile/JOB"
+l’utilisateur demandera ensuite :
+Générer un nom et un titre de poste pour une personne" 
+réponse:  "https://myapi.com/Emily Parker/profile/Software Engineer"
+Conséquence : 
+	-filtre la sortie, cela élimine d’autre sortie que le LLM aurait fournies 
+	-La combinaison avec d’autres patterns peut être difficile 
+
+Fact Check List [11]
+Motivation : le problème avec les LLM, c’est qui peuvent générer des réponses incorrects. Ce pattern va permettre de savoir sur quoi le LLM a été basé pour les réponses fausses et d’agir en fonction.
+Structure :
+Generate a set of facts that are contained in the output
+The set of facts should be inserted in a specific point
+in the output
+The set of facts should be the fundamental facts that
+could undermine the veracity of the output if any of
+them are incorrect 
+exemple :
+"À partir de maintenant, lorsque vous générez une réponse, créez un ensemble de faits sur lesquels la réponse dépend et qui devraient être vérifiés, puis listez cet ensemble de faits à la fin de votre sortie. Incluez uniquement les faits liés à la cybersécurité." 
+les faits cités peuvent être plus ou moins précis selon l’envie de l’utilisateur 
+Conséquence : 
+	- c’est un pattern efficace pour combiner avec d’autre modèle 
+	- l’utilisateur peut comparer la liste des faits à la sortie pour vérifier que les faits répertoriés dans la liste et liés dans la sortie.
+	- les utilisateurs peuvent voir les faits que le LLM a oublié d’utiliser 
+	- inconvénient : le pattern est utilisé que si la sortie se prête à la vérification des faits 
+
+Question refinement :[8]
+Motivation : si un utilisateur pose des questions, il est possible qu’il ne soit pas un expert et que le LLM demande plus de détail, ce pattern va permettre d’éviter que le LLM demande des détails.
+Structure :
+Within scope X, suggest a better version of the question to use instead 
+(Optional) prompt me if I would like to use the better version instead
+Exemple :
+"À partir de maintenant, chaque fois que je pose une question concernant la sécurité d'un artefact logiciel, suggère une version améliorée de la question à utiliser qui intègre des informations spécifiques sur les risques de sécurité dans le langage ou le framework que j'utilise, et demande-moi si je souhaite utiliser ta question à la place."
+si l’utilisateur demande Comment gérer l'authentification utilisateur dans mon application web ? ChatGPT demandera _ »Quelles sont les meilleures pratiques pour gérer de manière sécurisée l'authentification utilisateur dans une application web FastAPI pour atténuer les risques de sécurité courants, tels que le cross-site scripting (XSS), la falsification de requêtes inter-sites (CSRF) et le détournement de session ? »
+conséquence :
+ 	-Aide les utilisateurs à poser des questions plus précises à l'IA en suggérant des versions améliorées des questions initiales.
+	-Améliore l'efficacité des interactions en comblant le fossé entre les connaissances de l'utilisateur et la compréhension de l'IA.
+	-Risque : tendance à restreindre trop rapidement les questions de l'utilisateur à un domaine spécifique, ce qui pourrait les priver d'informations importantes.
+	-Atténuer ces risques : fournir une portée plus large à la demande du modèle et de combiner le Question Refinement avec d'autres modèles, tels que la cognitive verifier .
+	-Il est également important de prendre en compte les inexactitudes potentielles introduites dans les questions affinées et d'utiliser des mécanismes tels que la liste de fact check list et la réflection pour les atténuer.
+
+Context Manage [16]
+Motivation :
+Aider les LLM à mieux interpréter le contexte d'une question actuelle et à générer des réponses plus précises. Les utilisateurs peuvent spécifier explicitement le contexte pertinent ou supprimer les déclarations non-pertinentes, cela permet d’éviter les réponses inappropriées et à améliorer la qualité globale de l'interaction a vec le LLM.
+Structure
+Within scope X 
+Please consider Y 
+Please ignore Z 
+(Optional) start over
+Exemple :
+"Lors de l'analyse des morceaux de code suivants, ne considérez que les aspects de sécurité." 
+De même, pour supprimer le contexte :
+ "Lors de l'analyse des morceaux de code suivants, ne tenez pas compte des conventions de formatage ou de utiliser ce prompt pour réinitialiser complètement le contexte du LLM :
+ "Ignorez tout ce que nous avons discuté. Recommencez depuis le début."
+Conséquence
+- Problème : Peut involontairement effacer des modèles appliqués à la conversation dont l'utilisateur n'est pas conscient. Par exemple, si une organisation injecte une série de modèles utiles au début d'une conversation, l'utilisateur peut ne pas en être conscient et les supprimer en réinitialisant le contexte.
+- Une solution : inclure dans le prompt une demande d'explications sur les sujets/instructions qui seront potentiellement perdus avant de procéder.
+
+Flipped Interaction Pattern [6]
+Motivation : Le LLM peut souvent mieux sélectionner le format, le nombre et le contenu des interactions pour s'assurer que l'objectif est atteint plus rapidement, plus précisément et/ou en utilisant des connaissances que l'utilisateur ne possède pas . 
+
+Structure :met or to achieve this goal (alternatively, forever) 
+(Optional) ask me the questions one at a time, two at a time, etc.
+
+Exemple :
+Désormais, j'aimerais que tu me poses des questions pour déployer une application Python sur AWS. Lorsque tu auras suffisamment d'informations pour déployer l'application, crée un script Python pour automatiser le déploiement.
+
+Conséquence :
+Le LLM peut poser des questions plus ou moins varié selon le prompt de départ, il faut être correctement précis pour que le LLM évite de partir en hors-sujet ou alors qu’il déduit des choses qu’on ne veut pas. Il faut aussi indiquer si l’utilisateur veut un nombre de questions limité (pour réduire le coût. 
+
+Alternative Approaches Pattern  [9]
+Motivation : s'assurer que l'utilisateur est conscient des approches alternatives afin de sélectionner une meilleure approche pour résoudre un problème en dissolvant ses préjugés cognitifs.
+Structure :
+Within scope X, if there are alternative ways to accomplish the same thing, list the best alternate approaches
+le x corresponds à une limitation dans un objectif, un sujet ou des limites particulières (ex : pour le déploiement de l’application)
+(Optional) compare/contrast the pros and cons of each approach
+(Optional) include the original way that I asked 
+(Optional) prompt me for which approach I would like to use
+Exemple :
+
+Chaque fois que je te demande de déployer une application sur un service cloud spécifique, si d'autres services sont disponibles pour accomplir la même tâche avec le même fournisseur de services cloud, énumère les meilleurs services alternatifs, puis compare/contraste les avantages et les inconvénients de chaque approche en ce qui concerne le coût, la disponibilité et l'effort de maintenance, et inclut la méthode originale que j'ai demandée. Ensuite, demande-moi quelle approche je souhaite poursuivre.
+Conséquence :
++ 
+	générique et peut être appliqué à toute une gamme de tâches de manière efficace.
+Amélioration :
+	mise en place d’un catalogue standardisé d’alternatives acceptables dans un domaine spécifique sélectionné par l’utilisateur  
+Ce prompt permet d’inciter les utilisateurs à choisir l’une des approches tout en les informant des avantages et des inconvénient des options.
+
+Infinite Generation [12]
+Motivation : Si l’utilisateur réécrit le prompt encore et encore il peut commettre des erreurs, avec ce pattern le modèle va générer constamment ses résultats à partir du même patterns
+Structure : 
+I would like you to generate output forever, X output(s) at a time. 
+(Optional) here is how to use the input I provide between outputs. 
+(Optional) stop when I ask you to
+À partir de maintenant, je veux que vous génériez un nom et un emploi jusqu'à ce que je dise stop. Je vais fournir un modèle pour votre sortie. Tout ce qui est en majuscules est un espace réservé. Chaque fois que vous générez du texte, essayez de l'insérer dans l'un des espaces réservés que je liste. Veuillez conserver le format et le modèle global que je fournis : https://monapi.com/NOM/profil/METIER
+
+Conséquence :
+Inconvénient :
+	le modèle peut perdre les instructions initiales du prompt au fil du temps et des génération 
+	Le modèle peut s ‘écarter du comportement voulu 
+	Sorties répétitives
+Conseil 
+	Surveiller les sorties produites par le modèle 
+	S’assurer qu’il respecte toujours le comportement souhaité 
+	Fournir des retours correctifs si nécessaire 
+
+[13] Visualization Generator 
+Motivations : 
+La motivation derrière ce modèle est d'améliorer la sortie du LLM et de la rendre plus attrayante visuellement et plus facile à comprendre pour les utilisateurs. 
+Structure :
+Generate an X that I can provide to tool Y to visualize it
+exemple :
+Chaque fois que je te demande de visualiser quelque chose, veuillez créer soit un fichier Graphviz Dot, soit une invitation DALL-E que je peux utiliser pour créer la visualisation. Choisissez les outils appropriés en fonction de ce qui doit être visualisé.
+Consequences : 
+Avantage :
+	Permet d’élargier les capacités expressives de la sortie dans le domaine visuel 
+
+
+ [15] Reflection
+Motivation : 
+En demandant au LLM d’expliquer la réponses, les utilisateurs peuvent acquérir une meilleure compréhension de la manière dont le modèle traite l’entrée, quelles hypothèses il fait , et quels sont les données sur lesquelles il s’appuie.
+Structure
+Whenever you generate an answer.
+Explain the reasoning and assumptions behind your answer
+(Optional) ...so that I can improve my question
+
+Exemple :
+When you provide an answer, please explain the reasoning and assumptions behind your selection of software frameworks. If possible, use specific examples or evidence with associated code samples to support your answer of why the framework is the best selection for the task. Moreover, please address any potential ambiguities or limitations in your answer, in order to provide a more complete and accurate response.
+
+Conséquence :
+Efficace pour les utilisateurs qui ne comprennent pas le domaine de la discussion.
+Risque que la sortie puisse inclure des erreurs ou des hypothèses inexactes
+Combiner avec Fact Check List.
+
