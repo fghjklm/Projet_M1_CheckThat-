@@ -1,0 +1,32 @@
+Article lu: A Sentimental Education: Sentiment Analysis Using Subjectivity Summarization Based on Minimum Cuts
+Lien: https://www.zotero.org/groups/5443590/iafa-tiguable/collections/TBSFMVGX/items/TWUASW3N/attachment/33M35G6S/reader
+Auteur de la synthèse: MEUNIER Mortimer
+
+- GOAL AND GENERAL METHOD:
+goal is to identify the viewpoint of a text (positive or negative) [abstract]
+used technic: extract subjectives sentences and then classify the viewpoint [introduction]
+detect subjectivity: minimum cut in a graph 
+classify: SVM and xxxxx [2.1 architecture]
+
+- SUBJ DETECTION METHOD:
+minimize the formula sum( probability_to_be_in_class_1 ) + sum( probability_to_be_in_class_2 ) + sum( proba_xi_xk_in_same_class ) (xi appartenant à classe 1 et xk appartenant à classe 2) [2.3]
+optimization trough graph reprezentation and minimum cut method [2.3]
+s is the source (and each sentence in the same part of the cut is labelled subj) [2.3]
+t is the sink (and each sentence in the same part of the cut is labelled obj) [2.3]
+it helps to categorize sentences that will have a medium score individualy by taking association score in account. [2.3]
+could be possible to add context (maybe by classifying paragrapahs instead of sentences) [4.2]
+but add a huge constraint by classifying all the sentences in the paragraph in the same label [4.2]
+
+- HELP OF SUBJ DETECTION FOR SENTIMENT ANALYSIS:
+it increase score or can reduce the needed number of data [4]
+subkjectivity detection can compress reviews int much shorter exracts that still retain polarity information [5. conclusion]
+
+
+
+
+
+
+
+
+
+
