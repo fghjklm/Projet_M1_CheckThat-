@@ -2,12 +2,15 @@ Article lu: A Survey on Concept-Level Sentiment Analysis Techniques of Textual D
 Lien: https://www.researchgate.net/publication/352621441_A_Survey_on_Concept-Level_Sentiment_Analysis_Techniques_of_Textual_Data
 Auteur de la synthèse: Delmote Adrien 
 
-Les numéros [X] correspondent au numéro de l’article dans les références de cet article si vous voulez avoir plus de détails.
+Les numéros (X) correspondent au numéro de l’article dans les références de cet article si vous voulez avoir plus de détails.
+[x,y]: l'élément est à la page x dans le paragraphe y
 
+Resumé 
+Explication de comment détecter le sentiment analysis dans des données de texte
 
-Intro
+[2] Intro
 
-Analyse de sentiment (SA) :
+[2,1] Analyse de sentiment (SA) :
 - domaines de recherche en exploration de texte. 
 - identifie, extrait, quantifie et aborde les états sentimentaux et la subjectivité  du texte de manière informatique et systématique. 
 - méthode d'extraction de la polarité contextuelle (positive, négative ou neutre) du texte. 
@@ -19,8 +22,8 @@ L’analyse des sentiments est utilisée dans :
 - L’analyse automatisée de corpus historiques
 - L’étude des avis sur les produits dans le but d’obtenir des retours client et de prédire les vents est cruciale
 
-II. Technique du SA pour les données textuelle
-SA à 3 couches :
+[2] II. Technique du SA pour les données textuelle
+[2,3] SA à 3 couches :
 - Couche d'identification des sentiments (prétraitement) : on note le document en sentiment négatif ou positif.
 - Couche de sélection de fonctionnalités : les opinions et les sentiments de chaque phrase sont classés. 
   Si la phrase est subjective, on la classe la phrase dans la catégorie des phrases avec sujet positif ou négatif. 
@@ -28,66 +31,73 @@ SA à 3 couches :
 - Couche de classification des sentiments : les sentiments sont classés selon des entités qui doivent être déterminés au début de cette étape.
 
 Les approches actuelles de SA reposent principalement sur un apprentissage supervisé qui s'appuie sur des échantillons étiquetés.
-
 3 catégories de SA :
 	- les méthodes statistiques/apprentissage
 	- les approches basées sur la connaissance
 	- une combinaison des deux (modèles hybrides).
 
+
+[2]
 A. Preprocessing and Aspect Extraction
 
-Prétraitement 
+[2,4] Prétraitement 
 - Nettoyer les données textuelles extraites pour enlever les informations pas intéressantes
 Extraction d’aspect
    - Identifie les mots de sentiment, d’idée et des aspects et calculer leur fréquence dans une phrase.
 - Élimination des mots rares (avec une fréquence rare) en exploitant les relations entre les mots exprimant des sentiments, des idées et des aspects.
 
 Approche :
-   - Méthode d'apprentissage dans le but de traduire les IAC (Items affectinf Content) en mots affectifs afin d’extraire leurs aspects émotionnels. [18]
-   - techniques d'extraction de règles pour traduire les mots de sentiment en mots exprimant directement des aspects liés aux sentiments. [19]
-- Méthode basée sur des règles pour traduire les aspects implicites dans le but de trouver des caractéristiques explicites. [20]
+   - Méthode d'apprentissage dans le but de traduire les IAC (Items affectinf Content) en mots affectifs afin d’extraire leurs aspects émotionnels. (18)
+   - techniques d'extraction de règles pour traduire les mots de sentiment en mots exprimant directement des aspects liés aux sentiments. (19)
+- Méthode basée sur des règles pour traduire les aspects implicites dans le but de trouver des caractéristiques explicites. (20)
 
-B,Feature Selection
+[3]
+B. Feature Selection
+[3,2]
 Tentative d'extraire les meilleures caractéristiques en vue de la classification des sentiments et d'automatiser la sélection des caractéristiques (FS). :
-   - Algorithme basé sur les Machines à Vecteurs de Support (SVM). [22]
-   - Approche basée sur l'Information Mutuelle Ponctuelle (PMI). [23]
-   - Technique consistant à créer un lexique dédié à un domaine particulier.[24]
-- Tentative de créer un lexique de pensée générique. [25] [26]
+   - Algorithme basé sur les Machines à Vecteurs de Support (SVM). (22)
+   - Approche basée sur l'Information Mutuelle Ponctuelle (PMI). (23)
+   - Technique consistant à créer un lexique dédié à un domaine particulier.(24)
+   - Tentative de créer un lexique de pensée générique. (25) (26)
 Problème : 
-  	- le besoin d'annotations manuelles par des humains [28]. 	
-	-  l’accord entre les humains [12] [27] 
+  	- le besoin d'annotations manuelles par des humains (28). 	
+	-  l’accord entre les humains (12) (27) 
 	- filtrage des mots qui apparaissent rarement dans le texte.
 Amélioration :
 - schéma de pondération des termes basé sur l'apprentissage supervisé par des fonctions statistiques. (29).
-
+[3]
 C. Classification Techniques and Supervised Learning
+[3,3]
 Solutions de Machine Learning pour la Classification des Sentiments (SC) dans l'Analyse de Sentiments (SA) :
-- Naive Bayes Classifier (NB) [31]: 
-	- Modèle probabiliste fondamental utilisé pour la récupération de 	texte. 
-	- Il existe un NB bien ajusté pour classifier précisément le 	sentiment d'un texte. 
-	- Cependant, il montre une précision moyenne diminuée lorsque 	les précisions des deux catégories étaient représentées à l’aide 	d’une estimation moyenne.
-- Support Vector Machine (SVM)[30]:.
-	- Combinaison de deux ou plusieurs classificateurs linéaire 	(séparateurs) pour réduire l’espace de recherche. 
+- Naive Bayes Classifier (NB) (31): 
+	- Modèle probabiliste fondamental utilisé pour la récupération de texte. 
+	- Il existe un NB bien ajusté pour classifier précisément le sentiment d'un texte. 
+	- Cependant, il montre une précision moyenne diminuée lorsque les précisions des deux catégories étaient représentées à l’aide d’une estimation moyenne.
+- Support Vector Machine (SVM)(30):
+	- Combinaison de deux ou plusieurs classificateurs linéaire (séparateurs) pour réduire l’espace de recherche. 
 	- Utilisé en raison de sa nature clairsemée.
-	- Plateforme qui effectue un résumé numérique d'opinions sur des 	micro-blogs, utilisant SVM pour la classification des pensées et 	des opinions [33].
-	- Méthode hybride utilisant à la fois le classificateur NB et SVM 	performait mieux dans les ensembles de données [34].
+	- Plateforme qui effectue un résumé numérique d'opinions sur des micro-blogs, utilisant SVM pour la classification des pensées et des opinions (33).
+	- Méthode hybride utilisant à la fois le classificateur NB et SVM performait mieux dans les ensembles de données (34).
 	-Bayesian Network (BN):
-	- Diffère des modèles bayésiens naïfs, ne nécessitant pas 	l'indépendance des variables ou que les caractéristiques soient 	dépendantes.
-	- Utilisation d’un BN multidimensionnel [35].
+	- Diffère des modèles bayésiens naïfs, ne nécessitant pas l'indépendance des variables ou que les caractéristiques soient dépendantes.
+	- Utilisation d’un BN multidimensionnel (35).
 -Decision Tree Classifier :
 	- Structure de données similaire aux réseaux bayésiens.
 	- Divise la population de manière hiérarchique basée sur des critères d'entropie et de gain d'information.  
     Cette division se poursuit pour avoir des étiquettes suffisamment pures.
 	- Attention, il ne doit pas être overfiting
-	- Arbre de recouvrement maximal pour créer un classificateur 	d'arbre de décision, qui peut extraire 
-    avec succès un aperçu significatif de l’organisation dans des aspects des individus dans un domaine peu étudié  [36].
+	- Arbre de recouvrement maximal pour créer un classificateur d'arbre de décision, qui peut extraire 
+    avec succès un aperçu significatif de l’organisation dans des aspects des individus dans un domaine peu étudié (36).
    - Neural Networks (NN) and Deep Learning:
-     - Les réseaux neuronaux, en particulier les SVM et NN, ont été 	utilisés avec succès pour la détection de polarité dans les 	relations biographiques [30].
-	- Recursive Neural Tensor Networks (RNTN) pour améliorer la 	précision de la détection de polarité 	[37].
+     - Les réseaux neuronaux, en particulier les SVM et NN, ont été utilisés avec succès pour la détection de polarité dans les relations biographiques (30).
+	- Recursive Neural Tensor Networks (RNTN) pour améliorer la précision de la détection de polarité (37).
+
+L'application of sentiment analysis
+Je trouve ça pas très pertinant pour notre sujet, les parties d'avant parlent des modèles utiliser qui peut être utilisés pour la subjectivité et la définition de SA qui peut être utilise cependant les lieux d'application je trouve pas pertinant 
 	
 CRITIQUE :
 +
-	- L’article contient énormément de référence et résume bien 	l’ensemble des articles. 
+	- L’article contient énormément de référence et résume bien l’ensemble des articles. 
 	- Pour une enquête, l’article est court (6 pages de texte).
 
 -
