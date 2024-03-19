@@ -9,21 +9,28 @@ MODELE : Un modèle deep learning basé sur BERT en combinant différents blocs 
 word embedding: GloVe, BERT
 AUTRES MODELES : DeepLearning : CNN with BERT, LSTM with GloVe, LSTM with BERT
 				 MachineLearning: MNB with GloVe(0.89), KNN with GloVe, DT with GloVe (0.73), RF with GloVe
-RESULTAT : 0.989 en précision
 
-	 |		obj predit                  |	  subj predit
------|----------------------------------|-------------------
-obj  |			TN: 1045  				|		FP: 6
------|----------------------------------|-------------------
-subj |			FN: 17 					| 		TP: 1012
+-[5] Results :
+RESULTAT
+Performance observée (pour la detection de FakeNews): 
+Précision : 0.989 
+FP: 0.016
+FN: 0.0059
 
 
+     |		obj predit      |	  	subj predit
+-----|--------------------------|-----------------------------------
+obj  |		TN: 1045  	|		FP: 6
+-----|--------------------------|-----------------------------------
+subj |		FN: 17 		| 		TP: 1012
 
-									  (3 parallel blocks)
-Le modèle FakeBERT:                   | 1D-CNN Maxpool |  
-					INPUT: Embeddings |	1D-CNN Maxpool | 1D-CNN Maxpool | 1D-CNN Maxpool | Dense 1 | Dense 2 | OUTPUT: classe obj ou subj
-									  | 1D-CNN Maxpool |
 
+-[Fig 5] Le modèle FakeBERT:
+									  	(3 parallel blocks)
+               						| 1D-CNN Maxpool |  
+					INPUT: Embeddings |	1D-CNN Maxpool	| 1D-CNN Maxpool | 1D-CNN Maxpool | Dense 1 | Dense 2 | OUTPUT: classe obj ou subj
+									  	| 1D-CNN Maxpool |
+-[3.6] Proposed model: FakeBERT
 Couche de convolution : 
 	Elle est constituée d'un ensemble de filtres et de noyaux visant à obtenir de meilleures représentations sémantiques de mots de longueurs différentes. Les principales opérations consistent en des multiplications matricielles, suivies d'une fonction d'activation pour produire la sortie finale. Notre modèle utilise trois blocs parallèles de 1D-CNN, chacun ayant une couche dans chaque bloc et deux couches simples après le processus de concaténation, avec des tailles de noyau et des filtres différents.
 
@@ -48,6 +55,42 @@ Fonction de perte (L) :
 	L = − (ylog(p) + (1 − y)log(1 − p)) (2)
 
 Pour une classification avec plus de deux classes, une perte distincte est calculée pour chaque étiquette de classe par observation et les résultats sont sommés.
+
+-[Table 5]
+Détail des couches:
+
+Layer 		Input size 				Output size 	Param number
+Embedding 	1000 					1000 × 100	25187700
+Conv1D 		1000 × 100 				998 × 128 	38528
+Conv1D 		1000 × 100 				997 × 128 	51328
+Conv1D 		1000 × 100 				996 × 128 	64128
+Maxpool		998 × 128 				199 × 128 	0
+Maxpool 	997 × 128 				199 × 128 	0
+Maxpool 	996 × 128 				199 × 128 	0
+Concatenate	199 × 128, 199 × 128, 199 × 128 	597 × 128 	0
+Conv1D 		597 × 128 				593 × 128 	82048
+Maxpool 	593 × 128 				118 × 128 	0
+Conv1D 		118 × 128 				114 × 128 	82048
+Maxpool 	114 × 128 				3 × 128 	0
+Flatten 	3 × 128 				384 		0
+Dense 		384 					128 		49280
+Dense 		128 					2 		258
+
+-[Table 8]
+Hyperparamètres utilisés:
+
+Hyperparameter 		Value
+Number of convolution layers 	5
+Number of max pooling layers 	5
+Number of dense layers 	2
+Number of Flatten layers 	1
+Dropout rate 			0.2
+Optimizer			Adadelta
+Activation function 		Relu
+Loss function 			Categorical-crossentropy
+Number of epochs 		10
+Batch size 			128
+
 
 ##########################################################################################################################################################################
 Critique par rapport au projet de détéction de la subjectivité dans les news :
