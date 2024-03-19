@@ -2,3 +2,18 @@ Article lu: Deep learning, graph‑based text representation and classification:
 Lien: https://www.zotero.org/groups/5443590/iafa-tiguable/collections/TBSFMVGX/items/G6JM6LBS/attachment/F3S66VYJ/reader
 Auteur de la synthèse: MEUNIER Mortimer
 
+
+Un tiers de l'article est inutile, la lecture a été mise en pause pour gagner du temps.
+
+On retrouve une vue générale de toutes les méthodes de représentation de textes
+Le document se concentre principalement sur toutes les méthodes à base de graphes et les détaille légèrement.
+
+
+
+
+
+
+
+
+
+
