@@ -1,0 +1,26 @@
+Article lu: Transformers: State-of-the-Art Natural Language Processing
+lien: https://arxiv.org/pdf/1910.03771.pdf
+Auteur de la synthèse: Oleiwan Joe
+
+-[0] : Transformers est une librairie open-source, soutenu par une grande libraire de modèles pre-trained open-source.
+
+-[3] : Chaque modèle est défini par 3 blocks : 
+         a) Un tokenizer, qui convertit le texte brut en encodages d'indices épars.
+         b) Un transformateur, qui convertit les indices épars en plongements contextuels (contextual embeddings).
+         c) Une tête (head), qui utilise les plongements contextuels pour faire une prédiction spécifique à la tâche.
+-[Tokenizer] : -il faut que le tokenizer soit en sync avec le modèle, on peut l'instancier directement du modèle choisi ou le configurer manuellement.
+               -généralement écrit en rust ou python, il est facilement modifiable
+               -peuvent également implémenter des fonctionnalités supplémentaires utiles comme des indices de type de token pour la classification de séquences à la troncature de la longueur maximale de séquence, en tenant compte des tokens spéciaux spécifiques au modèle (la plupart des modèles de Transformer préentraînés ont une longueur de séquence maximale).
+
+-[Heads] : 
+
+1. Chaque Transformer peut être associé à l'une des plusieurs têtes déjà implémentées en NLP.
+2. Ces têtes sont mises en œuvre comme des classes d'enveloppe supplémentaires au-dessus de la classe de base, ajoutant une couche de sortie spécifique et, facultativement, une fonction de perte au-dessus des plongements contextuels du Transformer.
+3. Pour les modèles préentraînés, les têtes utilisées pour préentraîner le modèle lui-même sont publiées. Par ex pour BERT, les têtes de modélisation du langage et de prédiction de la prochaine phrase sont rendues publiques, facilitant l'adaptation en utilisant les objectifs de préentraînement.
+
+
+########################################################
+Critique: l'article fourni des informations essentielles pour comprendre la notion de Transformers qui de nos jours est une base pour beaucoup de modèles qui traitent du NLP. La détéction de subjectivité étant un sous-domaine du TALN (traitement automatique du langage naturel) utilise dans certains cadres de recherche (par ex checkThat) du BERT qui est basé sur les Transformers. Cependant on trouve plus d'informations sur la disponibilités des modèles et des librairies que les détails de l'architecture en elle-même.
+
+L'article "Transformers: State-of-the-Art Natural Language Processing" présente un aperçu des progrès réalisés dans le domaine NLP grâce aux architectures de type Transformer, évoquant leur conception, la facilité d'accès aux modèles pré-entraînés via un hub communautaire, << HuggingFace >>, et leur adaptabilité pour diverses applications en NLP et déploiements en production.
+L'article fourni des informations essentielles pour comprendre la notion de Transformers qui de nos jours est une base pour beaucoup de modèles qui traitent du NLP. La détéction de subjectivité étant un sous-domaine du NLP  utilise dans certains cadres de recherche (par ex checkThat) du BERT qui est basé sur les Transformers. Cependant on trouve plus d'informations sur la disponibilités des modèles et des librairies que les détails de l'architecture en elle-même. Nous retrouverons par exemples les détails du pré-entrainement des Heads dans d'autres papiers.
