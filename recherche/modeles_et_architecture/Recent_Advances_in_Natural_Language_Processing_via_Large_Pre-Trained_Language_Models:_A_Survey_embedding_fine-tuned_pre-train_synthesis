@@ -1,0 +1,129 @@
+Article lu: Recent Advances in Natural Language Processing via Large Pre-Trained Language Models: A Survey
+Lien : https://arxiv.org/abs/2111.01243
+Autheur: Adrien Delmote
+[x,y] le texte est dans la page x paragraphe y 
+Je n’ai fait que le II : Paradigm 1 : Pre-Train then Fine-T
+
+[2,4]
+Pré-entraînement = modélisation de langage sur des données massives non étiquetées pour apprendre des représentations pour un ensemble de tâches en NLP.
+
+[4]
+2.1 The beginnings of the Paradigm Shift
+
+[3,3] 
+La majorité des modèles de langage populaire sont basés sur l’architecture transformer 
+architecture transformer : mécanisme d’auto-attention multi-têtes permet une captation efficace des dépendances à longue distance sans un coût élevé (comme les anciens modèles comme le LSTM).
+
+[3,3] Pour les détails du transformer voir : https://proceedings.neurips.cc/paper/2017/file/3f5ee243547dee91fbd053c1c4a845aa-Paper.pdf
+ou des tutos : http://nlp.seas.harvard.edu/2018/04/ 03/attention.html 
+		http://jalammar.github.io/ illustrated-transformer/
+
+[3]
+2.2 Modern Pre-Trained Language Models
+
+[3,4]
+Il y a 3 types de pre-trained langage Models :
+autoregessive langage models ( e.g. GPT) 
+masked langage models ( e.g. BERT)
+encoder-decoder models (e.g. BART,T5)
+
+Autoregressive Language Models
+	[3,5] Prédit le prochain mot en fonction les mots précédents dans la phrase.  
+	[4,1] GPT utilise seulement ce modèle de pré-entraînement. Chaque version de GPT augmente le nombre de mots qui lit pour prédire le suivant.
+	[4,1] Utilise la partie décodeur du transformer sur plusieurs couches.
+
+
+Masked Language Models
+	[4,3]MLM va prédire un mot masqué en fonction de tous les mots dans la séquence. (avant ou après) 
+	[4,4]Le BERT utilise le même principe, il masque plusieurs mots dans la séquence pour permettre un entraînement parallèle.
+	[4,4]La nature non autorégressive permet une parallélisation du calcul, ce qui le rend souvent plus efficace lors de l'inférence.
+	[4,4]Utilise la partie encodeur du transformer sur plusieurs couches.
+
+[5]
+Encodeur-décodeur language models
+	[5,2]Texte en entrée qui renvoie un texte en sortie.
+	[5,2]Plus flexible que les 2 autres modèles.
+	[5,2]Génère une séquence de jeton y a parti d’une séquence d’entrée x.
+	[5,3]Pour générer des données adéquates pour l’auto-entraînement, les chercheurs utilisent des formes de corruption. Et en sortie, le modèle doit reconstruire la phrase. Les corruptions sont la permutation de mots, le remplissage de texte, la suppression/masquage de jeton…
+	[5,4]Il est facile de régler finement le modèle de langage encodeur-décodeur pour effectuer des tâches seq2seq .
+
+
+
+
+[5]
+2.3 Pre-training Corpora
+
+[5,5]
+La taille et la qualité du corpus de pré-entraînement sont des facteurs clé pour les modèles.
+Augmentation de la taille et la diversité du corpus au fil du temps.
+Certains chercheurs pensent qu’augmenter la taille et l’ensemble des données rendrait le modèle plus performant d’autre pense que les modèles trop grands peuvent ne pas nécessairement mieux fonctionner en dehors de leur domaine d’entraînement (overfiting). Et d’autre que les modèles trop entraînés va intégrer les croyances et les malentendus humains ce qui va créer de fausse réponse.
+Le choix des données d’entraînement va donc dépendre du domaine final.
+
+[6]
+2.4 Fine-Tuning : Applying PLMs to NLP Tasks
+embedding 
+
+[6,1] Le modèle de pré-entraînement transforme les entrées en embeddings.  
+[6,1]Les embeddings sont ensuite utilisés comme entrée pour un autre modèle qui permet d’accomplir une tâche (comme la classification de texte).
+[6,1] Avoir des informations encodées sans avoir besoin de réajuster ses poids, ce qui est coûteux.
+[6,2] Utilisation :
+	-manque de données annotés
+	-manque de puissance de calcul
+	-la collection de données est insuffisante
+[6,3] le embedding est utilisé dans par exemple la traduction automatique, ou alors la traduction automatique
+[6,3] Permet de réduire la complexité de l’entraînement quand les tâches NLP sont hautement complexe.
+[6,4]Les tâches non supervisées telles que la désambiguïsation des sens des mots et l'induction des sens des mots utilisent des stratégies variées avec des plongements BERT gelés pour effectuer ces tâches.
+
+
+[7] Fine-tuning the PLM
+[7,1]Affiner certaines ou toutes les couches du PLM puis à ajouter une ou deux couches de sortie simple (prédiction heads).
+[7,1]Rôles des couches de sorties : condenser les informations fournies par les embeddings de chaque jeton dans le nombre de classes souhaitées. (voir figure 2 gauche)
+[7,2]Utilisation :
+	classification de séquence ( analyse de sentiment)
+	étiquetage (reconnaissance d’entités) 
+	extraction de span ( question-réponse)
+
+[7]
+Fine-tuning the PLM in Customized Models
+[7,6] Certaines tâches nécessitent une architecture supplémentaire au-dessus ainsi que d’affiner le modèle de langage. (figure 2 au centre)
+[7,6] Nécessite suffisamment de données d’entraînement et de puissance de calcul.
+[7,8] Utilisation:
+	tâches de prédiction de structure (analyse syntaxique et parfois étiquetage de séquence)
+
+[8]
+Efficient Fine-tuning Approaches
+[8,2] architecture qui consiste à affiner un modèle de pré-entraînement en ne modifiant qu’un petit nombre de ses poids
+[8,2] Il existe 2 catégories de méthode
+	Fine-tuning a separate, small network that is tightly coupled with the PLM.
+	Selecting only a small number of the PLM’s weights to fine-tune or keep.
+
+fine-tuning a separate, small network that is tightly coupled with the PLM
+[8,3] La méthode la plus vue du fine-tuning pour cette méthode sont les modules adaptateurs (figure 2 droite)
+Adaptateurs
+	[8,3] Ajoutent un petit ensemble de poids nouvellement initialisés à chaque couche du transformateur.
+	[8,3] L’emplacement et la configuration des adaptateurs varient selon les chercheurs.
+	[8,3] Pendant le fine-tuning, tous les poins du PLM sont figés, sauf les poids des adaptateurs.
+	[8,3] Plus efficace en termes d’entraînement et permet un partage des poids efficace.
+	[8,3] Des poids des adaptateurs entraînés indépendamment pour différentes tâches peuvent être combinés avec succès pour résoudre une nouvelle tâche.
+	[8,3] L’oubli des capacités lors du fine-tuning sur une nouvelle tâche ou un nouveau langage est évité.
+
+	Selecting only a small number of the PLM’s weights to fine-tune or keep.
+	[8,5] BitFit proposent de limiter l’affinage aux termes de biais Cela peut être plus efficace dans certaines tâches que le fine-tuned de tout BERT
+	[8,6] Radiya-Dixit et Wang montrent qu’il suffit de fine-tuned uniquement les couches les plus éloignées dans l’espace des paramètres du reste du modèle.
+	[8,7] Zhao proposent le masquage, c’est-à-dire la mise à zéro des poids, comme seulte alternative au fine-tuned des poids du modèles. Cette approche gèle tous les poids du PLM, sélectionne les poids pertinents pour une tâche donnée, et masque(ignore) le reste. Le masque est binaire donc plus simple à apprendre et à stocker.
+
+
+	
+
+	
+	
+
+
+critique :
++
+bonne définition de l’ensemble des principaux termes 
+très complet
+
+-
+l’article est assez vieux donc certaine information peuvent ne plus être d’actualité
+très peu d’explication 
