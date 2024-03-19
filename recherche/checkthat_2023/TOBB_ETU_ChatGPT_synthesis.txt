@@ -33,4 +33,6 @@ tive)
 10) Still, many of the nation’s 3.1 million public-school teachers have become [...]. (Subjective)
 "
 
-Surprenamment, ChatGPT a été plus performant en utilisant la méthode Zero-shot que Few-shot
+Surprenamment, ChatGPT a été globalement plus performant en utilisant la méthode Zero-shot que Few-shot
+
+Le meilleur score macro-f1 obtenu est 0.79 en Few-shot pour de dataset Turc
