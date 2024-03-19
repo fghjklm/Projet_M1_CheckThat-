@@ -1,0 +1,16 @@
+Article lu: SubjectivITA: An Italian Corpus for Subjectivity Detection in Newspapers
+Lien: https://link.springer.com/chapter/10.1007/978-3-030-85251-1_4
+Auteur de la synthèse: Mouysset Martin
+
+Article détaillant une méthode de création de modèle de detection de subjectivité dans les phrases et les documents, allant de la création du corpus à l'évaluations de modèles étudiés.
+Une partie détailant la création du corpus peut nous être utile, cependant la partie nous interessant est plutôt la détection dans les phrases, les modèles utilisés sont :
+	-bert-base-multilingual-uncased
+	-AlBERTo (bert entrainé sur la langue italienne)
+	-Bi-GRU (Bi-directionnal Gated Recurrent Unit), proche des transformeurs
+
+Meilleur résultats: Multilingual BERT 0.73 F1-marco
+
+On note aussi que le jeu de donné utilisé est très limité (1841 phrases).
+
+
+
