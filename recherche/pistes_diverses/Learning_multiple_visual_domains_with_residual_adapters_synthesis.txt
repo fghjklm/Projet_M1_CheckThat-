@@ -1,0 +1,10 @@
+Article lu: SubjectivITA: Learning multiple visual domains with residual adapters
+Lien: http://arxiv.org/abs/1705.08045
+Auteur de la synthèse: Mouysset Martin
+
+
+Article détaillant une utilisation d'adapteurs résiduels dans le domaine de la vision par ordinateur.
+
+Il s'agit d'un élément d'architechture assez simple, très utiles pour l'apprentissage sur domaine multiples.
+
+Pas trouvé de lien avec l'analyse de language naturel, ni d'utilisation dans des papiers plus récents (recherche non exhaustive, existe p-ê). 

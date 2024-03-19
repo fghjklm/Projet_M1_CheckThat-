@@ -1,0 +1,17 @@
+Article lu: Large Language Models Can Be Used to Estimate the Latent Positions of Politicians
+Lien: http://arxiv.org/abs/2303.12057
+Auteur de la synthèse: Mouysset Martin
+
+Article détaillant une approche visant à analyser la position de politiciens.
+
+Cette approche utilise ChatGPT3.5 pour faire de la comparaison par paire des sénateurs du 116th congrès des Etats-Unis suivant trois dimensions: idéologie libérale/conservative, soutient au controle des armes à feu, soutient au droit à l'avortement et à la contraception.
+les comparaison sont faites en zero-shot.
+
+Les auteurs estiment que, car ChatGPT est entrainé sur les informations présentes sur internet, il devrait synthétiser un grand volume d'information pour nous donner une réponse valable.
+
+Les résultats sont cohérents entres les différentes mesures effectuées, et stables entre plusieurs itérations.
+
+La tâche explorée ici semble donc être de la classification d'entitées présentes dans les données d'entrainement du modèle.
+
+Il semble cependant difficile d'étendre ces travaux à une analyse de subjectivité, car nous ne nous interessons pas à la classification d'entitées déjà conues du modèle.
+
