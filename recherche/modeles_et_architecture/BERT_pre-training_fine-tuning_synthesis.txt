@@ -1,9 +1,10 @@
 ##########################################################################
 Article lu: BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding
 Lien : https://aclanthology.org/N19-1423.pdf
-Path from seed (Clef Overview) : 29-11
 Autheur: Joe Oleiwan
 
+
+-[3] Model architecture + Figure 1 au dessu
 BERT : Bidirectional Encoder Representations from Transformers
 INPUT: TEXT
 OUTPUT: TEXT EMBEDDINGS
