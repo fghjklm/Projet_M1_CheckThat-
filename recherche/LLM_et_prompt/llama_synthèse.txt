@@ -1,0 +1,196 @@
+Article lu: LLaMA: Open and Efficient Foundation Language Models
+lien: https://arxiv.org/pdf/2302.13971.pdf
+Auteur de la synthèse: Oleiwan Joe
+
+
+
+-[2.1] Data : 
+
+Toutes les données d'entrainement sont open-source, voir Table 1 pour la répartition
+
+
+-[2.2] Architecture : 
+
+Tokenizer : byte-pair encoding (BPE) algorithm basé sur le Sentence-pièce de Kudo and
+Richardson, 2018.
+
+Modèles : 7B, 13B, 33B, 65B 
+
+Architecture par rapport à l'architecture transformer originale introduite par Vaswani et
+al. en 2017 :
+	1. Pre-normalization (Inspirée par GPT-3) : LLaMA utilise une technique de pré-
+normalisation où la normalisation est appliquée à l'entrée de chaque sous-couche du
+transformateur au lieu de sa sortie. Ceci est fait pour améliorer la stabilité durant
+l'entraînement. La fonction de normalisation utilisée est RMSNorm, qui a été introduite
+par Zhang et Sennrich en 2019.
+
+	2. Fonction d'activation SwiGLU (Inspirée par PaLM) : Au lieu de l'activation ReLU
+habituellement utilisée dans les réseaux de neurones, LLaMA utilise la fonction
+d'activation SwiGLU, proposée par Shazeer en 2020. Cette fonction est connue pour
+améliorer les performances du modèle. LLaMA utilise une dimension de 2/3×4d pour
+cette fonction d'activation, contrairement à PaLM qui utilise une dimension de 4d.
+
+	3. Rotary Embeddings (Inspirés par GPTNeo) : LLaMA élimine les embeddings
+positionnels absolus et utilise à la place des embeddings positionnels rotatifs (RoPE), qui
+ont été introduits par Su et al. en 2021. Ces embeddings sont ajoutés à chaque couche du
+réseau et permettent au modèle de mieux capturer la relation entre les positions dans les
+séquences de données.
+
+
+
+
+-[2.4] Implémentation efficace :
+
+Les techniques d'optimisation utilisées pour rendre l'entraînement du modèle LLaMA plus
+efficace :
+	1. Implémentation efficace de l'attention multi-têtes causale : Pour réduire l'utilisation
+de la mémoire et le temps d'exécution, LLaMA utilise une version optimisée de
+l'attention multi-têtes causale qui ne stocke pas les poids d'attention et ne calcule pas les
+scores clé/requête masqués par la causalité. Cette implémentation est disponible dans la
+bibliothèque xformers et s'inspire des travaux de Rabe et Staats (2021) ainsi que de
+l'approche de rétropropagation de Dao et al. (2022).
+
+	2. Checkpointing pour économiser les activations : Afin d'améliorer encore l'efficacité de
+l'entraînement, LLaMA sauvegarde les activations coûteuses à calculer, comme les
+sorties des couches linéaires. Cela est réalisé en implémentant manuellement la fonction
+de rétropropagation pour les couches de transformateurs, plutôt qu'en se fiant à la
+fonction d'autograd de PyTorch. Cette technique de checkpointing réduit la quantité de
+calculs nécessaires lors de la passe arrière.
+
+	3. Parallélisme de modèle et de séquence : Pour minimiser l'usage de la mémoire, LLaMA
+emploie le parallélisme de modèle et de séquence, une technique qui permet de distribuer
+les calculs sur plusieurs unités de traitement comme les GPU. Ce concept a été décrit par
+Korthikanti et al. (2022).
+
+	4. Chevauchement des calculs et communications : LLaMA maximise l'efficience en
+chevauchant le calcul des activations avec la communication entre les GPU sur le réseau,
+ce qui est crucial lors des opérations de réduction globale (all_reduce).
+
+Grâce à ces optimisations, l'entraînement d'un modèle LLaMA avec 65 milliards de paramètres
+peut traiter environ 380 tokens par seconde par GPU sur 2048 GPU A100 avec 80 Go de RAM,
+permettant de compléter l'entraînement sur un ensemble de données contenant 1,4 billion de
+tokens en environ 21 jours.
+
+
+
+
+-[3] Principaux résultats :
+
+Tâches en Zero-shot et Few-shot :
+	• Zero-shot : Description textuelle de la tâche et exemple de test donnés, le modèle génère une réponse ou classe des réponses proposées.
+	• Few-shot : Quelques exemples de la tâche (entre 1 et 64) et un exemple de test sont
+donnés, le modèle génère la réponse ou classe différentes options.
+
+
+
+Explication des benchmarks pour compréhension des résultats :
+1. BoolQ (Boolean Questions) : Un benchmark de compréhension de lecture où les
+modèles répondent à des questions fermées par oui ou non en se basant sur un passage de
+texte court.
+
+2. PIQA (Physical Interaction QA) : Teste la compréhension physique d'un modèle par
+des questions pratiques, demandant de prédire l'issue d'interactions physiques dans des scénarios donnés. Le modèle que nous pourrions implémenter à défaut de performances.
+
+3. SIQA (Social Interaction QA) : Un benchmark de raisonnement social qui pose des
+questions basées sur des scénarios de la vie quotidienne pour tester la compréhension des
+normes sociales et des conséquences des actions.
+
+4. HellaSwag : Un benchmark pour l'évaluation de la compréhension du langage modèle et
+la prédiction de fin d'histoires. Les modèles doivent choisir la continuation la plus
+plausible d'un scénario parmi plusieurs options.
+
+5. WinoGrande : Un test de raisonnement de bon sens à grande échelle qui améliore le
+WSC (Winograd Schema Challenge) original. Il évalue la capacité d'un modèle à
+résoudre des problèmes de désambiguïsation pronominale.
+
+6. ARC (AI2 Reasoning Challenge) Easy (ARC-e) et Challenge (ARC-c) : Un ensemble
+de questions de quiz scientifique de niveau scolaire. ARC-e contient des questions plus
+faciles, tandis que ARC-c comprend des questions jugées plus difficiles pour les modèles
+d'IA.
+
+7. OBQA (Open Book Question Answering) : Un benchmark de compréhension de
+lecture qui teste la capacité du modèle à répondre à des questions de connaissance
+générale sans accéder à une source externe d'information (comme si l'examen était "à
+livre ouvert").
+
+
+
+Performances sur les benchmarks :
+• LLaMA montre des performances compétitives sur une variété de benchmarks de
+raisonnement de bon sens, y compris BoolQ, PIQA, SIQA, HellaSwag, WinoGrande,
+ARC (facile et challenge) et OpenBookQA.
+
+-[3.2] Closed-Book Question Answering
+• Sur des benchmarks de question-réponse en livre fermé comme Natural Questions et
+TriviaQA, LLaMA-65B atteint des performances de pointe en zero-shot et few-shot.
+• LLaMA-13B est compétitif avec GPT-3 et Chinchilla malgré sa taille plus petite,
+fonctionnant sur un seul GPU V100 pendant l'inférence.
+Performances sur des Tâches spécifiques :
+
+-[3.4] Mathematical reasoning
+• Raisonnement mathématique : LLaMA est évalué sur des benchmarks de raisonnement
+mathématique, tels que MATH et GSM8k, montrant de meilleures performances que
+certains modèles finement ajustés sur des données mathématiques malgré l'absence de
+fine-tuning sur de telles données.
+
+-[3.5] Code Generation
+• Génération de code : LLaMA démontre une capacité à générer du code à partir d'une
+description en langage naturel sur des benchmarks comme HumanEval et MBPP,
+surpassant d'autres modèles généraux qui n'ont pas été finement ajustés pour la
+génération de code
+
+
+-[3.6] Massive Multitask Language Understanding
+Sur le benchmark MMLU, LLaMA-65B est légèrement derrière Chinchilla et PaLM, ce
+qui pourrait être dû à l'utilisation limitée de livres et de documents académiques dans les
+données d'entraînement de LLaMA.
+
+LLaMA-I (65B) surpasse d'autres
+modèles de taille modérée affinés avec des
+instructions sur MMLU, mais il reste encore
+loin de l'état de l'art, qui est de 77.4 pour le
+modèle GPT code-davinci-002 sur MMLU.
+
+
+-[5] Bias, Toxicity and Misinformation
+
+Point sur la toxicité, biais et vérité de réponses du modèle :
+Les modèles de langage peuvent générer un langage toxique, par exemple : insultes, discours de
+haine ou menaces.
+	1. Évaluation de la toxicité avec RealToxicityPrompts : Les scores de toxicité augmentent
+avec la taille du modèle, en particulier pour les prompts respectueux.
+
+	2. Évaluation des biais avec CrowS-Pairs, en mettant l'accent sur le genre : LLaMA
+présente des biais, en particulier dans les catégories religieuse, d'âge et de genre, mais
+obtient des résultats légèrement meilleurs que d'autres modèles.
+
+	3. Analyse des biais de genre avec WinoGender : LLaMA présente des biais de genre dans
+les résolutions de co-référence, montrant des préférences pour certaines professions.
+
+	4. Évaluation de la vérité des réponses avec TruthfulQA : LLaMA obtient des scores plus
+élevés que GPT-3 en termes de vérité des réponses, mais la qualité des réponses reste
+faible.
+
+
+############################################################################
+Critique par rapport au projet de détéction de la subjectivité dans les news :
+
+Récapitulatif : Le document "LLaMA: Open and Efficient Foundation Language Models"
+présente une série de modèles de langage naturel, offrant une alternative efficace en termes de
+taille et de performance aux modèles plus grands et coûteux. Ils sont formés sur des données
+publiques et montrent d'excellents résultats sur divers benchmarks.
+
+Points positifs :
+-LLaMA est opensource.
+-Les résultats montrent que LLaMA atteint ou dépasse les performances de modèles plus
+grands tout en étant plus efficient et moins coûteux à former.
+Points négatifs pour votre projet :
+- Pour la tâche de détéction de subjectivité, les performances de LLaMA pourraient ne pas être
+directement transposables.
+- Bien que LLaMA soit puissant, adapter son architecture ou son approche d'entraînement à vos
+besoins spécifiques pourrait nécessiter une expertise technique approfondie, on visera plutôt du
+prompt-based learning.
+
+
+Conclusion immédiate de l'étude effectué pour le projet : LLaMA est plus performant que les autres LLMs (à l’exception de
+Mixtral) dans différents aspect mais pas dans la totalité.
