@@ -17,6 +17,8 @@ Rangs:
 Dans le dataset originiel, il subsistait un grand déséquilibre entre les données objectives (4071) et subjectives (1957).
 Ils ont donc réduit le nombre de données objectives utilisées pour réduire cet écart.
 
+
+Les résultats vont de d'un score macro-f1 de 0.7033 pour le dataset Néerlandais à 0.9100 pour le dataset Turc.
 structure du modèle :
 "The model structure has a hidden size of 768, 12 layers and 12 attention heads."
 voir document pour les hyperparaètres en détails (Section 3)
