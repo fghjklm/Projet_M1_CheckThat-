@@ -33,7 +33,7 @@ styles choisis pour chaque langue: Turque éxagération, Allemand Propagande et 
 - Traitement des données
 
 subj en tâches journalistiques =!= subj dans autre tâche
-construct a subjectivity checklist from journalism and linguistic studies (table 2) => emotionnel, propagande, préjudice, partisan, désobligeant, exagéré
+construct a subjectivity checklist from journalism and linguistic studies (table 2) => emotionnel, propagande, préjugés, partisan, désobligeant, exagéré
 utilisation de différents styles subjectifs augmente les performances
 
 Comparaison entre deux modèles GPT-3: text-davinci-003, gpt-3.5-turbo. => résultats similaires
